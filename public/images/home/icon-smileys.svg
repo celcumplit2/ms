@@ -1,0 +1,23 @@
+<svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="15.0294" y="0.606201" width="48" height="48" rx="10" transform="rotate(15 15.0294 0.606201)" fill="#004EEB"/>
+    <g filter="url(#filter0_b_60_4080)">
+        <rect y="14" width="48" height="48" rx="10" fill="white" fill-opacity="0.6"/>
+        <rect x="0.5" y="14.5" width="47" height="47" rx="9.5" stroke="white" stroke-opacity="0.6"/>
+        <path d="M26 32.2V36C23.21 36.05 22.05 37.21 22 40H18.2C15.2 40 14 38.8 14 35.8V32.2C14 29.2 15.2 28 18.2 28H21.8C24.8 28 26 29.2 26 32.2Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18.96 31.87C18.43 31.51 17.73 31.51 17.2 31.89" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M22.96 31.87C22.43 31.51 21.73 31.51 21.2 31.89" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20.16 37.42H17.84C17.54 37.42 17.3 37.18 17.3 36.88C17.3 35.39 18.51 34.1801 20 34.1801C20.64 34.1801 21.23 34.4 21.69 34.77" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M34 40.2V43.8C34 46.8 32.8 48 29.8 48H26.2C23.2 48 22 46.8 22 43.8V40C22.05 37.21 23.21 36.05 26 36H29.8C32.8 36 34 37.2 34 40.2Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M26.96 39.62C26.43 39.98 25.73 39.98 25.2 39.6" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M30.96 39.62C30.43 39.98 29.73 39.98 29.2 39.6" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M25.84 42.1801H30.16C30.46 42.1801 30.7 42.42 30.7 42.72C30.7 44.21 29.49 45.42 28 45.42C26.51 45.42 25.3 44.21 25.3 42.72C25.3 42.42 25.54 42.1801 25.84 42.1801Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+        <filter id="filter0_b_60_4080" x="-16" y="-2" width="80" height="80" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feGaussianBlur in="BackgroundImageFix" stdDeviation="8"/>
+            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_60_4080"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_60_4080" result="shape"/>
+        </filter>
+    </defs>
+</svg>

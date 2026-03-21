@@ -1,0 +1,24 @@
+{
+  "name": "molds2",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "sync:moldstud": "node scripts/mirror-moldstud.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.0.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "cheerio": "^1.2.0",
+    "typescript": "^5.9.3"
+  }
+}

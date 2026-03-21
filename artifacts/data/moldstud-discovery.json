@@ -1,0 +1,444 @@
+{
+  "origin": "https://moldstud.com",
+  "firstContourPaths": [
+    "/",
+    "/services",
+    "/careers",
+    "/about-us",
+    "/contacts",
+    "/hire-us",
+    "/industries",
+    "/solutions",
+    "/technologies",
+    "/articles",
+    "/privacy-policy"
+  ],
+  "headerLinks": [
+    {
+      "text": "MoldStud",
+      "href": "/"
+    },
+    {
+      "text": "Services",
+      "href": "/services"
+    },
+    {
+      "text": "Careers",
+      "href": "/careers"
+    },
+    {
+      "text": "About Us",
+      "href": "/about-us"
+    },
+    {
+      "text": "Contact Us",
+      "href": "/contacts"
+    },
+    {
+      "text": "Hire Us",
+      "href": "/hire-us"
+    }
+  ],
+  "footerLinks": [
+    {
+      "text": "MoldStud",
+      "href": "/"
+    },
+    {
+      "text": "Services",
+      "href": "/services"
+    },
+    {
+      "text": "Careers",
+      "href": "/careers"
+    },
+    {
+      "text": "About Us",
+      "href": "/about-us"
+    },
+    {
+      "text": "Contact Us",
+      "href": "/contacts"
+    },
+    {
+      "text": "Hire Us",
+      "href": "/hire-us"
+    },
+    {
+      "text": "Industries",
+      "href": "/industries"
+    },
+    {
+      "text": "Solutions",
+      "href": "/solutions"
+    },
+    {
+      "text": "Technologies",
+      "href": "/technologies"
+    },
+    {
+      "text": "Our Articles",
+      "href": "/articles"
+    },
+    {
+      "text": "Privacy Policy",
+      "href": "/privacy-policy"
+    }
+  ],
+  "selectedArticles": [
+    {
+      "text": "A Beginner's Guide to API Testing Tools and Techniques Explained",
+      "href": "/articles/p-a-beginners-guide-to-api-testing-tools-and-techniques-explained"
+    },
+    {
+      "text": "The Versatility of .NET - Why It Fits Every Project for Seamless Development",
+      "href": "/articles/p-the-versatility-of-net-why-it-fits-every-project-for-seamless-development"
+    },
+    {
+      "text": "Maximize Your On-Demand Service App's Reach - Leveraging Influencer Marketing Strategies",
+      "href": "/articles/p-maximize-your-on-demand-service-apps-reach-leveraging-influencer-marketing-strategies"
+    },
+    {
+      "text": "Harnessing the Power of Graph Databases - Essential Tips and Tricks for Effective Querying",
+      "href": "/articles/p-harnessing-the-power-of-graph-databases-essential-tips-and-tricks-for-effective-querying"
+    },
+    {
+      "text": "Understanding Modem Specs - What Do Mbps, Latency, and Key Terms Mean?",
+      "href": "/articles/p-understanding-modem-specs-what-do-mbps-latency-and-key-terms-mean"
+    },
+    {
+      "text": "10 Essential Tips for Seamlessly Integrating PHP with HTML and CSS",
+      "href": "/articles/p-10-essential-tips-for-seamlessly-integrating-php-with-html-and-css"
+    },
+    {
+      "text": "Essential Strategies for Ensuring Network Security in Infrastructure Management",
+      "href": "/articles/p-essential-strategies-for-ensuring-network-security-in-infrastructure-management"
+    },
+    {
+      "text": "Optimizing Your Job Search - Headlines That Align Software Architecture Trends with Reader Interests",
+      "href": "/articles/p-optimizing-your-job-search-headlines-that-align-software-architecture-trends-with-reader-interests"
+    },
+    {
+      "text": "Creating Intuitive App UIs - Lessons from Design Communities",
+      "href": "/articles/p-creating-intuitive-app-uis-lessons-from-design-communities"
+    },
+    {
+      "text": "Essential Tips for Effective Collaboration with Technology Consultants in Product Development",
+      "href": "/articles/p-essential-tips-for-effective-collaboration-with-technology-consultants-in-product-development"
+    }
+  ],
+  "pageSummaries": [
+    {
+      "path": "/",
+      "template": "homepage",
+      "title": "Custom software development company",
+      "h1": "Together, We Can Redefine Technology Through Accessible Design and Development",
+      "h2": [
+        "Together",
+        "We Are Redefining Accessible Design and Development for Public and Private Organizations",
+        "Accessible Design and Development Services",
+        "Is Your Organization Expected to Meet the Requirements of WCAG 2.0 or WCAG 2.1?",
+        "By Taking a Value-added Approach Focused on Human Experience",
+        "To Make Life Better for Everyone"
+      ],
+      "sections": 9,
+      "articles": 20,
+      "forms": 1,
+      "inputs": 18
+    },
+    {
+      "path": "/services",
+      "template": "marketing-listing-with-form",
+      "title": "Software development services | MoldStud",
+      "h1": "Accessible Design and Development Services are the Future of IT",
+      "h2": [
+        "MoldStud Offers a Complete List of Professional IT Services",
+        "Services That Empower and Promote Accessibility in Design and Functionality",
+        "Why you Should Choose MoldStud",
+        "Is Your Organization Expected to Meet the Requirements of WCAG 2.0 or WCAG 2.1?",
+        "Have questions about accessible design and development?"
+      ],
+      "sections": 7,
+      "articles": 8,
+      "forms": 2,
+      "inputs": 15
+    },
+    {
+      "path": "/careers",
+      "template": "careers-page",
+      "title": "Careers | MoldStud",
+      "h1": "Do Work That Has An Impact",
+      "h2": [],
+      "sections": 0,
+      "articles": 24,
+      "forms": 0,
+      "inputs": 0
+    },
+    {
+      "path": "/about-us",
+      "template": "about-page",
+      "title": "About Us | MoldStud",
+      "h1": "MoldStud Is An Innovative IT Consulting And Development Company",
+      "h2": [
+        "Imagine A World Where The Technology We Used Were Truly Accessible For Everyone",
+        "Is Your Organization Expected to Meet the Requirements of WCAG 2.0 or WCAG 2.1?",
+        "Together"
+      ],
+      "sections": 5,
+      "articles": 9,
+      "forms": 0,
+      "inputs": 0
+    },
+    {
+      "path": "/contacts",
+      "template": "contact-form-page",
+      "title": "Contacts | MoldStud",
+      "h1": "Got a question?",
+      "h2": [
+        "Tell us about yourself"
+      ],
+      "sections": 0,
+      "articles": 0,
+      "forms": 1,
+      "inputs": 10
+    },
+    {
+      "path": "/hire-us",
+      "template": "contact-form-page",
+      "title": "Hire Us | MoldStud",
+      "h1": "Got a project for us?",
+      "h2": [
+        "Tell us about your project"
+      ],
+      "sections": 0,
+      "articles": 0,
+      "forms": 1,
+      "inputs": 11
+    },
+    {
+      "path": "/industries",
+      "template": "marketing-listing-with-form",
+      "title": "Software development industries | MoldStud",
+      "h1": "Your Industry is Evolving, Don’t Get Left Behind. Design and Develop with an Inclusive-First Approach",
+      "h2": [
+        "MoldStud Services Industries in Both the Private and Public Sectors",
+        "Industries Empowered by Accessibility in Design and Functionality",
+        "Why you Should Choose MoldStud",
+        "Is Your Organization Expected to Meet the Requirements of WCAG 2.0 or WCAG 2.1?",
+        "Have questions about accessible design and development?"
+      ],
+      "sections": 7,
+      "articles": 8,
+      "forms": 2,
+      "inputs": 15
+    },
+    {
+      "path": "/solutions",
+      "template": "marketing-listing-with-form",
+      "title": "Software development solutions | MoldStud",
+      "h1": "Turn your Idea Into a Digital Solution Designed and Developed with an Accessibility-First Approach",
+      "h2": [
+        "MoldStud Designs and Develops Digital Solutions that Matter",
+        "Impactful Solutions That Were Built with Accessibility in Mind",
+        "Why you Should Choose MoldStud",
+        "Is Your Organization Expected to Meet the Requirements of WCAG 2.0 or WCAG 2.1?",
+        "Have questions about accessible design and development?"
+      ],
+      "sections": 7,
+      "articles": 8,
+      "forms": 2,
+      "inputs": 15
+    },
+    {
+      "path": "/technologies",
+      "template": "marketing-listing-with-form",
+      "title": "Software development technologies | MoldStud",
+      "h1": "Work with a Vendor that has Extensive Experience in Legacy and Modern Technologies",
+      "h2": [
+        "MoldStud Operates with a Powerful Tech Stack; a Blend of Legacy and Modern Technologies",
+        "Technologies that are Empowering Accessible Digital Solutions",
+        "Why you Should Choose MoldStud",
+        "Is Your Organization Expected to Meet the Requirements of WCAG 2.0 or WCAG 2.1?",
+        "Have questions about accessible design and development?"
+      ],
+      "sections": 7,
+      "articles": 8,
+      "forms": 2,
+      "inputs": 15
+    },
+    {
+      "path": "/articles",
+      "template": "articles-index",
+      "title": "Articles | MoldStud",
+      "h1": "Articles",
+      "h2": [
+        "IT careers",
+        "IT services",
+        "IT practices",
+        "Developers FAQ"
+      ],
+      "sections": 4,
+      "articles": 16,
+      "forms": 0,
+      "inputs": 0
+    },
+    {
+      "path": "/privacy-policy",
+      "template": "policy-page",
+      "title": "Privacy Policy | MoldStud",
+      "h1": "Privacy Policy",
+      "h2": [
+        "1) Introduction",
+        "2) Scope",
+        "3) Collection and Use of Personal Data",
+        "4) Disclosing Your Personal Data",
+        "5) Data Retention",
+        "6) Region Specific Information"
+      ],
+      "sections": 0,
+      "articles": 0,
+      "forms": 0,
+      "inputs": 0
+    },
+    {
+      "path": "/articles/p-a-beginners-guide-to-api-testing-tools-and-techniques-explained",
+      "template": "article-detail",
+      "title": "API Testing Tools and Techniques for Beginners Guide | MoldStud",
+      "h1": "A Beginner's Guide to API Testing Tools and Techniques Explained",
+      "h2": [
+        "Understanding API Testing Basics",
+        "Popular API Testing Tools and Their Features"
+      ],
+      "sections": 2,
+      "articles": 13,
+      "forms": 1,
+      "inputs": 7
+    },
+    {
+      "path": "/articles/p-the-versatility-of-net-why-it-fits-every-project-for-seamless-development",
+      "template": "article-detail",
+      "title": "Exploring the Flexibility of .NET for All Development Needs | MoldStud",
+      "h1": "The Versatility of .NET - Why It Fits Every Project for Seamless Development",
+      "h2": [
+        "Choosing the Right .NET Framework for Your Project",
+        "Optimizing Development Processes with .NET Tools"
+      ],
+      "sections": 2,
+      "articles": 13,
+      "forms": 1,
+      "inputs": 7
+    },
+    {
+      "path": "/articles/p-maximize-your-on-demand-service-apps-reach-leveraging-influencer-marketing-strategies",
+      "template": "article-detail",
+      "title": "Boost Your On-Demand Service App with Influencer Marketing | MoldStud",
+      "h1": "Maximize Your On-Demand Service App's Reach - Leveraging Influencer Marketing Strategies",
+      "h2": [
+        "Identifying the Right Influencers for Your Niche",
+        "Crafting Impactful Campaigns with Influencers"
+      ],
+      "sections": 2,
+      "articles": 13,
+      "forms": 1,
+      "inputs": 7
+    },
+    {
+      "path": "/articles/p-harnessing-the-power-of-graph-databases-essential-tips-and-tricks-for-effective-querying",
+      "template": "article-detail",
+      "title": "Graph Database Querying Tips and Tricks for Success | MoldStud",
+      "h1": "Harnessing the Power of Graph Databases - Essential Tips and Tricks for Effective Querying",
+      "h2": [
+        "Understanding Graph Query Languages",
+        "Improving Query Performance in Graph Databases"
+      ],
+      "sections": 2,
+      "articles": 13,
+      "forms": 1,
+      "inputs": 7
+    },
+    {
+      "path": "/articles/p-understanding-modem-specs-what-do-mbps-latency-and-key-terms-mean",
+      "template": "article-detail",
+      "title": "Modem Specifications Explained Mbps Latency and Key Terms | MoldStud",
+      "h1": "Understanding Modem Specs - What Do Mbps, Latency, and Key Terms Mean?",
+      "h2": [
+        "Exploring Mbps: Download and Upload Speeds Explained",
+        "Latency and Its Impact on Internet Performance"
+      ],
+      "sections": 2,
+      "articles": 13,
+      "forms": 1,
+      "inputs": 7
+    },
+    {
+      "path": "/articles/p-10-essential-tips-for-seamlessly-integrating-php-with-html-and-css",
+      "template": "article-detail",
+      "title": "10 Tips for Seamless PHP Integration with HTML and CSS | MoldStud",
+      "h1": "10 Essential Tips for Seamlessly Integrating PHP with HTML and CSS",
+      "h2": [
+        "Structuring HTML with PHP: Best Practices",
+        "Styling PHP Output with CSS: Key Strategies"
+      ],
+      "sections": 2,
+      "articles": 13,
+      "forms": 1,
+      "inputs": 7
+    },
+    {
+      "path": "/articles/p-essential-strategies-for-ensuring-network-security-in-infrastructure-management",
+      "template": "article-detail",
+      "title": "Strategies for Network Security in Infrastructure Management | MoldStud",
+      "h1": "Essential Strategies for Ensuring Network Security in Infrastructure Management",
+      "h2": [
+        "Implementing Robust Access Controls",
+        "Conducting Proactive Security Assessments"
+      ],
+      "sections": 2,
+      "articles": 13,
+      "forms": 1,
+      "inputs": 7
+    },
+    {
+      "path": "/articles/p-optimizing-your-job-search-headlines-that-align-software-architecture-trends-with-reader-interests",
+      "template": "article-detail",
+      "title": "Crafting Job Search Headlines That Reflect Software Architecture Trends | MoldStud",
+      "h1": "Optimizing Your Job Search - Headlines That Align Software Architecture Trends with Reader Interests",
+      "h2": [
+        "Crafting Catchy Headlines for Your Job Applications",
+        "Engaging Your Audience with Relevant Content"
+      ],
+      "sections": 0,
+      "articles": 1,
+      "forms": 0,
+      "inputs": 0
+    },
+    {
+      "path": "/articles/p-creating-intuitive-app-uis-lessons-from-design-communities",
+      "template": "article-detail",
+      "title": "Intuitive App UI Design Insights from Community Collaboration | MoldStud",
+      "h1": "Creating Intuitive App UIs - Lessons from Design Communities",
+      "h2": [
+        "Understanding User Needs Through Community Feedback",
+        "Design Principles for Intuitive Interfaces"
+      ],
+      "sections": 2,
+      "articles": 13,
+      "forms": 1,
+      "inputs": 7
+    },
+    {
+      "path": "/articles/p-essential-tips-for-effective-collaboration-with-technology-consultants-in-product-development",
+      "template": "article-detail",
+      "title": "Collaboration Tips for Working with Technology Consultants in Product Development | MoldStud",
+      "h1": "Essential Tips for Effective Collaboration with Technology Consultants in Product Development",
+      "h2": [
+        "Understanding Your Project Needs",
+        "Building a Productive Partnership"
+      ],
+      "sections": 2,
+      "articles": 13,
+      "forms": 1,
+      "inputs": 7
+    }
+  ]
+}
