@@ -1,0 +1,23 @@
+<svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="15.0294" y="0.606201" width="48" height="48" rx="10" transform="rotate(15 15.0294 0.606201)" fill="#004EEB"/>
+    <g filter="url(#filter0_b_60_4044)">
+        <rect y="14" width="48" height="48" rx="10" fill="white" fill-opacity="0.6"/>
+        <rect x="0.5" y="14.5" width="47" height="47" rx="9.5" stroke="white" stroke-opacity="0.6"/>
+        <path d="M22.75 48.5001H25.27C26.23 48.5001 26.85 47.8201 26.67 46.9901L26.26 45.1802H21.76L21.35 46.9901C21.17 47.7701 21.85 48.5001 22.75 48.5001Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M26.26 45.1702L27.99 43.6301C28.96 42.7701 29 42.1701 28.23 41.2001L25.18 37.3302C24.54 36.5202 23.49 36.5202 22.85 37.3302L19.8 41.2001C19.03 42.1701 19.03 42.8001 20.04 43.6301L21.77 45.1702" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M24.01 37.1201V39.6501" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M23.15 31.1901L22.37 30.4101C21.9 29.9401 21.9 29.1802 22.37 28.7102L23.15 27.9301C23.62 27.4601 24.38 27.4601 24.85 27.9301L25.63 28.7102C26.1 29.1802 26.1 29.9401 25.63 30.4101L24.85 31.1901C24.38 31.6601 23.62 31.6601 23.15 31.1901Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M31.45 35.8101H32.55C33.21 35.8101 33.75 36.3501 33.75 37.0101V38.11C33.75 38.77 33.21 39.3101 32.55 39.3101H31.45C30.79 39.3101 30.25 38.77 30.25 38.11V37.0101C30.25 36.3501 30.79 35.8101 31.45 35.8101Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16.55 35.8101H15.45C14.79 35.8101 14.25 36.3501 14.25 37.0101V38.11C14.25 38.77 14.79 39.3101 15.45 39.3101H16.55C17.21 39.3101 17.75 38.77 17.75 38.11V37.0101C17.75 36.3501 17.21 35.8101 16.55 35.8101Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M30.54 36.1L25.24 30.8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.46 36.1L22.76 30.8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+        <filter id="filter0_b_60_4044" x="-16" y="-2" width="80" height="80" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feGaussianBlur in="BackgroundImageFix" stdDeviation="8"/>
+            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_60_4044"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_60_4044" result="shape"/>
+        </filter>
+    </defs>
+</svg>

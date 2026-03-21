@@ -1,0 +1,86 @@
+[
+  {
+    "path": "/",
+    "file": "index.html"
+  },
+  {
+    "path": "/services",
+    "file": "services/index.html"
+  },
+  {
+    "path": "/careers",
+    "file": "careers/index.html"
+  },
+  {
+    "path": "/about-us",
+    "file": "about-us/index.html"
+  },
+  {
+    "path": "/contacts",
+    "file": "contacts/index.html"
+  },
+  {
+    "path": "/hire-us",
+    "file": "hire-us/index.html"
+  },
+  {
+    "path": "/industries",
+    "file": "industries/index.html"
+  },
+  {
+    "path": "/solutions",
+    "file": "solutions/index.html"
+  },
+  {
+    "path": "/technologies",
+    "file": "technologies/index.html"
+  },
+  {
+    "path": "/articles",
+    "file": "articles/index.html"
+  },
+  {
+    "path": "/privacy-policy",
+    "file": "privacy-policy/index.html"
+  },
+  {
+    "path": "/articles/p-a-beginners-guide-to-api-testing-tools-and-techniques-explained",
+    "file": "articles/p-a-beginners-guide-to-api-testing-tools-and-techniques-explained/index.html"
+  },
+  {
+    "path": "/articles/p-the-versatility-of-net-why-it-fits-every-project-for-seamless-development",
+    "file": "articles/p-the-versatility-of-net-why-it-fits-every-project-for-seamless-development/index.html"
+  },
+  {
+    "path": "/articles/p-maximize-your-on-demand-service-apps-reach-leveraging-influencer-marketing-strategies",
+    "file": "articles/p-maximize-your-on-demand-service-apps-reach-leveraging-influencer-marketing-strategies/index.html"
+  },
+  {
+    "path": "/articles/p-harnessing-the-power-of-graph-databases-essential-tips-and-tricks-for-effective-querying",
+    "file": "articles/p-harnessing-the-power-of-graph-databases-essential-tips-and-tricks-for-effective-querying/index.html"
+  },
+  {
+    "path": "/articles/p-understanding-modem-specs-what-do-mbps-latency-and-key-terms-mean",
+    "file": "articles/p-understanding-modem-specs-what-do-mbps-latency-and-key-terms-mean/index.html"
+  },
+  {
+    "path": "/articles/p-10-essential-tips-for-seamlessly-integrating-php-with-html-and-css",
+    "file": "articles/p-10-essential-tips-for-seamlessly-integrating-php-with-html-and-css/index.html"
+  },
+  {
+    "path": "/articles/p-essential-strategies-for-ensuring-network-security-in-infrastructure-management",
+    "file": "articles/p-essential-strategies-for-ensuring-network-security-in-infrastructure-management/index.html"
+  },
+  {
+    "path": "/articles/p-optimizing-your-job-search-headlines-that-align-software-architecture-trends-with-reader-interests",
+    "file": "articles/p-optimizing-your-job-search-headlines-that-align-software-architecture-trends-with-reader-interests/index.html"
+  },
+  {
+    "path": "/articles/p-creating-intuitive-app-uis-lessons-from-design-communities",
+    "file": "articles/p-creating-intuitive-app-uis-lessons-from-design-communities/index.html"
+  },
+  {
+    "path": "/articles/p-essential-tips-for-effective-collaboration-with-technology-consultants-in-product-development",
+    "file": "articles/p-essential-tips-for-effective-collaboration-with-technology-consultants-in-product-development/index.html"
+  }
+]

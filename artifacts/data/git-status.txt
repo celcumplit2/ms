@@ -1,0 +1,35 @@
+ M README.md
+ M astro.config.mjs
+ M package.json
+ D public/favicon.ico
+ D public/favicon.svg
+ D src/pages/index.astro
+?? ARTIFACT_INDEX.md
+?? CHANGELOG_MOLDS2.md
+?? DECISIONS.md
+?? IMPLEMENTATION_LOG.md
+?? PARITY_AUDIT.md
+?? PROJECT_MAP.md
+?? TASK_REGISTRY.md
+?? artifacts/
+?? docs/
+?? package-lock.json
+?? public/_next/
+?? public/about-us/
+?? public/articles/
+?? public/careers/
+?? public/contacts/
+?? public/favicons/
+?? public/hire-us/
+?? public/images/
+?? public/index.html
+?? public/industries/
+?? public/local-enhancements.js
+?? public/mirror-assets/
+?? public/privacy-policy/
+?? public/services/
+?? public/solutions/
+?? public/technologies/
+?? public/uploads/
+?? public/videos/
+?? scripts/

@@ -1,0 +1,107 @@
+﻿[
+    {
+        "path":  "/",
+        "status":  200,
+        "length":  43075
+    },
+    {
+        "path":  "/services",
+        "status":  200,
+        "length":  21205
+    },
+    {
+        "path":  "/careers",
+        "status":  200,
+        "length":  35664
+    },
+    {
+        "path":  "/about-us",
+        "status":  200,
+        "length":  15102
+    },
+    {
+        "path":  "/contacts",
+        "status":  200,
+        "length":  8553
+    },
+    {
+        "path":  "/hire-us",
+        "status":  200,
+        "length":  9628
+    },
+    {
+        "path":  "/industries",
+        "status":  200,
+        "length":  20910
+    },
+    {
+        "path":  "/solutions",
+        "status":  200,
+        "length":  21244
+    },
+    {
+        "path":  "/technologies",
+        "status":  200,
+        "length":  20579
+    },
+    {
+        "path":  "/articles",
+        "status":  200,
+        "length":  58704
+    },
+    {
+        "path":  "/privacy-policy",
+        "status":  200,
+        "length":  38787
+    },
+    {
+        "path":  "/articles/p-a-beginners-guide-to-api-testing-tools-and-techniques-explained",
+        "status":  200,
+        "length":  70790
+    },
+    {
+        "path":  "/articles/p-the-versatility-of-net-why-it-fits-every-project-for-seamless-development",
+        "status":  200,
+        "length":  69405
+    },
+    {
+        "path":  "/articles/p-maximize-your-on-demand-service-apps-reach-leveraging-influencer-marketing-strategies",
+        "status":  200,
+        "length":  72102
+    },
+    {
+        "path":  "/articles/p-harnessing-the-power-of-graph-databases-essential-tips-and-tricks-for-effective-querying",
+        "status":  200,
+        "length":  71874
+    },
+    {
+        "path":  "/articles/p-understanding-modem-specs-what-do-mbps-latency-and-key-terms-mean",
+        "status":  200,
+        "length":  66375
+    },
+    {
+        "path":  "/articles/p-10-essential-tips-for-seamlessly-integrating-php-with-html-and-css",
+        "status":  200,
+        "length":  64014
+    },
+    {
+        "path":  "/articles/p-essential-strategies-for-ensuring-network-security-in-infrastructure-management",
+        "status":  200,
+        "length":  69001
+    },
+    {
+        "path":  "/articles/p-optimizing-your-job-search-headlines-that-align-software-architecture-trends-with-reader-interests",
+        "status":  200,
+        "length":  36323
+    },
+    {
+        "path":  "/articles/p-creating-intuitive-app-uis-lessons-from-design-communities",
+        "status":  200,
+        "length":  72306
+    },
+    {
+        "path":  "/articles/p-essential-tips-for-effective-collaboration-with-technology-consultants-in-product-development",
+        "status":  200,
+        "length":  62129
+    }
+]

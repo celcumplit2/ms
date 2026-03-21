@@ -1,0 +1,84 @@
+[
+  {
+    "page": "/services",
+    "check": "service-tag-filter",
+    "input": "cloud",
+    "visible": [
+      "Cloud Computing Services"
+    ],
+    "hiddenCount": 34,
+    "status": "pass",
+    "evidence": [
+      "artifacts/screenshots/local/services-search-cloud.png"
+    ]
+  },
+  {
+    "page": "/services",
+    "check": "faq-expand-first-item",
+    "question": "What types of custom software development does MoldStud offer?",
+    "excerpt": "MoldStud specializes in creating tailored software solutions, including web applications, mobile apps, enterprise software, and specialized tools for various industries, ensuring each product is aligned with the client's specific needs.",
+    "status": "pass",
+    "evidence": [
+      "artifacts/screenshots/local/services-faq-open.png"
+    ]
+  },
+  {
+    "page": "/industries",
+    "check": "tag-filter",
+    "input": "Automotive",
+    "visible": [
+      "Automotive"
+    ],
+    "hiddenCount": 36,
+    "status": "pass",
+    "evidence": [
+      "artifacts/screenshots/local/industries-filter-automotive.png"
+    ]
+  },
+  {
+    "page": "/solutions",
+    "check": "tag-filter",
+    "input": "AI-Powered Chatbots",
+    "visible": [
+      "AI-Powered Chatbots"
+    ],
+    "hiddenCount": 30,
+    "status": "pass",
+    "evidence": [
+      "artifacts/screenshots/local/solutions-filter-chatbots.png"
+    ]
+  },
+  {
+    "page": "/technologies",
+    "check": "tag-filter",
+    "input": "JavaScript",
+    "visible": [
+      "JavaScript"
+    ],
+    "hiddenCount": 36,
+    "status": "pass",
+    "evidence": [
+      "artifacts/screenshots/local/technologies-filter-javascript.png"
+    ]
+  },
+  {
+    "page": "/contacts",
+    "check": "contact-form-structure",
+    "fieldCount": 10,
+    "submitLabel": "Let's Start Working Together",
+    "status": "pass",
+    "evidence": [
+      "artifacts/screenshots/local/contacts.png"
+    ]
+  },
+  {
+    "page": "/hire-us",
+    "check": "contact-form-structure",
+    "fieldCount": 11,
+    "submitLabel": "Let's Start Working Together",
+    "status": "pass",
+    "evidence": [
+      "artifacts/screenshots/local/hire-us.png"
+    ]
+  }
+]
