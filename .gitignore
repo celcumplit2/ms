@@ -27,3 +27,9 @@ venv/
 
 # local runtime artifacts
 artifacts/data/preview-server.pid
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
