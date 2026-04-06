@@ -1,0 +1,104 @@
+---
+import ArticlePage from "../components/ArticlePage.astro";
+import ArticlesListPage from "../components/ArticlesListPage.astro";
+import CareerDetailPage from "../components/CareerDetailPage.astro";
+import CareersListPage from "../components/CareersListPage.astro";
+import CaseStudiesPage from "../components/CaseStudiesPage.astro";
+import CaseStudyPage from "../components/CaseStudyPage.astro";
+import DetailPage from "../components/DetailPage.astro";
+import HireUsPage from "../components/HireUsPage.astro";
+import ListingPage from "../components/ListingPage.astro";
+import ProfilePage from "../components/ProfilePage.astro";
+import SimplePage from "../components/SimplePage.astro";
+import TalentMarketplacePage from "../components/TalentMarketplacePage.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { allRoutePaths, resolveRoute } from "../data/site";
+
+export function getStaticPaths() {
+  return allRoutePaths
+    .filter((path) => path !== "/")
+    .map((path) => ({
+      params: {
+        slug: path.slice(1),
+      },
+      props: {
+        path,
+      },
+    }));
+}
+
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+const route = resolveRoute(path);
+
+if (!route) {
+  throw new Error(`Missing route configuration for ${path}`);
+}
+
+const pageTitle =
+  route.kind === "listing"
+    ? route.title
+    : route.kind === "detail"
+      ? route.entry.title
+      : route.kind === "articles-list"
+        ? "Articles"
+        : route.kind === "article-detail"
+          ? route.entry.title
+          : route.kind === "careers-list"
+            ? "Careers"
+            : route.kind === "career-detail" || route.kind === "career-apply"
+              ? route.entry.title
+              : route.kind === "case-studies-list"
+                ? "Case studies"
+                : route.kind === "case-study-detail"
+                  ? route.entry.title
+                  : route.kind === "profile"
+                    ? route.entry.title
+                    : route.kind === "hire-us"
+                      ? "Hire us"
+                      : route.kind === "request-profiles"
+                        ? "Request profiles"
+                        : route.kind === "talents-designers"
+                          ? "Talents designers"
+                          : route.kind === "simple"
+                            ? route.title
+                            : "Moldstud";
+---
+
+<BaseLayout title={pageTitle}>
+  {route.kind === "listing" && <ListingPage {...route} />}
+  {route.kind === "detail" && <DetailPage {...route} />}
+  {route.kind === "articles-list" && <ArticlesListPage entries={route.entries} />}
+  {route.kind === "article-detail" && <ArticlePage entry={route.entry} related={route.related} />}
+  {route.kind === "careers-list" && <CareersListPage entries={route.entries} />}
+  {route.kind === "career-detail" && <CareerDetailPage entry={route.entry} />}
+  {route.kind === "career-apply" && (
+    <TalentMarketplacePage
+      mode="career-apply"
+      title={`Apply for ${route.entry.title}`}
+      intro="This screen keeps the lighter marketplace flow but focuses the visitor on a single hiring step and a fast intake."
+    />
+  )}
+  {route.kind === "case-studies-list" && <CaseStudiesPage entries={route.entries} />}
+  {route.kind === "case-study-detail" && <CaseStudyPage entry={route.entry} related={route.related} />}
+  {route.kind === "profile" && <ProfilePage entry={route.entry} />}
+  {route.kind === "hire-us" && <HireUsPage />}
+  {route.kind === "request-profiles" && (
+    <TalentMarketplacePage
+      mode="request-profiles"
+      title="Top 5% Figma Designers Ready to Start"
+      intro="Use this route as the curated talent discovery layer. The cards are populated with demo data now and can be swapped to live profiles later."
+    />
+  )}
+  {route.kind === "talents-designers" && (
+    <TalentMarketplacePage
+      mode="talents-designers"
+      title="Top 5% Figma Designers Ready to Start"
+      intro="The design team directory follows the same light marketplace pattern as the hiring flow, with filter bars and repeatable profile cards."
+    />
+  )}
+  {route.kind === "simple" && <SimplePage title={route.title} intro={route.intro} />}
+</BaseLayout>

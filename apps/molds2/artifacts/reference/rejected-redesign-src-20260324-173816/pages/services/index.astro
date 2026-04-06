@@ -1,0 +1,18 @@
+---
+import ListingPage from "../../components/ListingPage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { homeFaqs } from "../../data/site-content";
+import { services } from "../../data";
+---
+
+<SiteLayout title="Services | Moldstud">
+  <ListingPage
+    eyebrow="Services"
+    title="Service pages in the new light system."
+    intro="The list route mirrors the Figma structure: hero, card grid, support value band, FAQ, and footer."
+    items={services}
+    hrefPrefix="/services"
+    faqItems={homeFaqs}
+    image="/images/home/services.png"
+  />
+</SiteLayout>

@@ -1,0 +1,25 @@
+#comment-form {
+  fieldset {
+    display: flex;
+    margin-bottom: 24px;
+    justify-content: space-between;
+
+    div {
+      display: block;
+      box-sizing: border-box;
+      width: calc(50% - 16px);
+    }
+
+    label {
+      width: 100%;
+    }
+
+    &:last-of-type {
+      flex-direction: column;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+}

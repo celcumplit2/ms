@@ -1,0 +1,18 @@
+---
+import ListingPage from "../../components/ListingPage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { homeFaqs } from "../../data/site-content";
+import { technologies } from "../../data";
+---
+
+<SiteLayout title="Technologies | Moldstud">
+  <ListingPage
+    eyebrow="Technologies"
+    title="Technology pages translate technical infrastructure into business-readable routes."
+    intro="The technology family shares the same list/detail shell as services and solutions, with different proof emphasis."
+    items={technologies}
+    hrefPrefix="/technologies"
+    faqItems={homeFaqs}
+    image="/images/home/main.png"
+  />
+</SiteLayout>

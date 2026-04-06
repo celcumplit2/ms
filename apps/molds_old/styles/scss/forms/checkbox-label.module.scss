@@ -1,0 +1,45 @@
+.checkbox-label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 6px 0;
+
+  .input {
+    margin-right: 12px;
+  }
+
+  span {
+    flex: 1 1 0;
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.14em;
+  }
+
+  &--error {
+    .input {
+      border-color: var(--color-red) !important;
+    }
+
+    & + p {
+      color: var(--color-red);
+      font-size: 14px;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .checkbox-label {
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+  }
+}

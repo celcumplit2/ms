@@ -1,0 +1,43 @@
+---
+import SectionLabel from "./SectionLabel.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import type { CaseStudyEntry } from "../data/site";
+
+interface Props {
+  entries: CaseStudyEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<main class="page-shell page-shell--light">
+  <section class="content-hero">
+    <SiteHeader theme="light" />
+    <div class="container content-hero__inner">
+      <SectionLabel label="Case studies" />
+      <h1>Selected projects that show how the system behaves under real delivery pressure.</h1>
+      <p>These pages hold the proof layer of the site: challenge, approach, result, and why the working model matters.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container article-card-grid">
+      {entries.map((entry) => (
+        <article class="article-card">
+          <img src={entry.image ?? "/images/home/services.png"} alt="" loading="lazy" />
+          <div>
+            <SectionLabel label={entry.eyebrow} />
+            <h2>{entry.title}</h2>
+            <p>{entry.summary}</p>
+            <div class="article-card__meta">
+              <span>{entry.client}</span>
+              <span>{entry.duration}</span>
+            </div>
+            <a href={`/case-studies/${entry.slug}`}>Read case study ↗</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <SiteFooter />
+</main>

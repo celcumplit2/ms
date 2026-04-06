@@ -1,0 +1,7 @@
+@use "../mixins";
+
+.heading {
+  p {
+    @include mixins.subheading;
+  }
+}

@@ -1,0 +1,13 @@
+.form {
+  label {
+    margin-top: 16px;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  button[type="submit"] {
+    margin-top: 16px;
+  }
+}

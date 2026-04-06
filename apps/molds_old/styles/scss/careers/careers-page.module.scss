@@ -1,0 +1,68 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../mixins";
+@use "../buttons";
+
+.heading {
+  display: grid;
+  gap: 16px;
+  margin-bottom: var(--section-space-tight);
+
+  p:first-child {
+    @include mixins.subheading;
+    margin: 0;
+  }
+
+  h1,
+  p:last-child {
+    margin: 0;
+  }
+}
+
+.divider {
+  border-top: 1px solid var(--color-footer-delimiter);
+  border-bottom: none;
+  margin: 24px 0;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 24px;
+}
+
+.jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pagination {
+  margin-top: 32px;
+}
+
+.apply-for-job {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    @include buttons.btn;
+    display: inline-block;
+  }
+}
+
+@media (min-width: map.get(breakpoints.$breakpoints, "lg")) {
+  .heading {
+    p:last-child {
+      max-width: 50ch;
+    }
+  }
+}

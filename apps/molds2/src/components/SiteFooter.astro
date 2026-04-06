@@ -1,0 +1,47 @@
+---
+import { company, footerGroups } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__main">
+    <div class="site-footer__contact">
+      <img src="/images/logo.svg" alt="Moldstud" width="102" height="32" />
+      <span class="site-footer__eyebrow">Get in touch</span>
+      <a href={`tel:${company.phone.replaceAll(" ", "")}`}>{company.phone}</a>
+      <a href="tel:+44087570009">+44 2048 570009</a>
+      <a href={`mailto:${company.email}`}>{company.email}</a>
+    </div>
+
+    {footerGroups.map((group) => (
+      <div class="site-footer__group">
+        <h2>{group.title}</h2>
+        <ul>
+          {group.links.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <div class="site-footer__legal">
+    <div class="container site-footer__legal-inner">
+      <p>© 2018 - 2026 MoldStud. All rights reserved.</p>
+      <div class="site-footer__policies">
+        <a href="/terms-and-conditions">Terms and conditions</a>
+        <a href="/privacy-policy">Privacy policy</a>
+        <a href="/cookie-policy">Cookie policy</a>
+      </div>
+      <div class="site-footer__socials" aria-label="Social links">
+        <span>f</span>
+        <span>◎</span>
+        <span>in</span>
+        <span>X</span>
+        <span>▶</span>
+        <span>◔</span>
+      </div>
+    </div>
+  </div>
+</footer>

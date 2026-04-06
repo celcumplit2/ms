@@ -1,0 +1,1 @@
+ALTER TABLE `Categories` MODIFY `description` text DEFAULT ('') NOT NULL;

@@ -1,0 +1,185 @@
+---
+import CalloutBand from "../components/CalloutBand.astro";
+import CollectionGrid from "../components/CollectionGrid.astro";
+import FaqSection from "../components/FaqSection.astro";
+import MarketingCard from "../components/MarketingCard.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import {
+  articles,
+  careers,
+  caseStudies,
+  homePage,
+  industries,
+  services,
+  siteCta,
+} from "../data";
+import {
+  certifications,
+  deliverySteps,
+  directions,
+  homeFaqs,
+  operatingPrinciples,
+  testimonials,
+} from "../data/site-content";
+---
+
+<SiteLayout title="Moldstud | New design implementation">
+  <PageHero
+    eyebrow={homePage.eyebrow}
+    title={homePage.title}
+    intro={homePage.intro}
+    metrics={homePage.stats}
+    primary={homePage.primary}
+    secondary={homePage.secondary}
+    image="/images/home/main.png"
+    imageAlt="Moldstud collaboration"
+    asideTitle="Home page - Light mode"
+    asideBody="Light canvas, dark inserts, clipped CTAs, mixed card surfaces, and one section-driven layout system."
+  />
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="What we offer"
+        title="The home page is built from explicit section blocks, not decorative improvisation."
+      />
+      <div class="principle-grid">
+        {operatingPrinciples.map((item, index) => (
+          <article class:list={["principle-card", index > 2 && "principle-card--dark"]}>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading
+        eyebrow="Services"
+        title="Core service cards follow the same clipped, mixed-surface language as the Figma sections page."
+        actionHref="/services"
+        actionLabel="Explore services"
+      />
+      <CollectionGrid items={services} hrefPrefix="/services" darkEvery={2} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Testimonials" title="Proof blocks stay dense, structured, and visibly tied to delivery language." />
+      <div class="three-up">
+        {testimonials.map((item, index) => (
+          <article class:list={["principle-card", index === 1 && "principle-card--dark"]}>
+            <h3>{item.author}</h3>
+            <p>{item.quote}</p>
+            <p>{item.role}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Directions" title="Each direction is framed as a compact card, not as a loose block of marketing copy." />
+      <div class="three-up">
+        {directions.map((item, index) => (
+          <MarketingCard
+            eyebrow="Direction"
+            title={item.title}
+            body={item.body}
+            variant={index % 2 === 1 ? "dark" : "light"}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="How it works" title="The runtime is assembled the same way the Figma file is organized: pages, sections, cards, and buttons." />
+      <div class="three-up">
+        {deliverySteps.map((item, index) => (
+          <article class:list={["principle-card", index === 1 && "principle-card--dark"]}>
+            <p class="eyebrow">{item.step}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CalloutBand
+    eyebrow="Video"
+    title="One system for content-heavy marketing pages, service pages, and lead-oriented routes."
+    body="This block stands in for the richer visual/video frame in Figma while preserving the same contrast rhythm and CTA logic."
+    primary={siteCta.primary}
+    secondary={siteCta.secondary}
+  />
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Benefits" title="The home page alternates soft white surfaces with deep navy support cards." />
+      <div class="three-up">
+        {homePage.spotlight.map((item, index) => (
+          <MarketingCard
+            eyebrow="Benefit"
+            title={item.title}
+            body={item.body}
+            variant={index === 1 ? "dark" : "light"}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Case study" title="Case studies are treated as first-class proof sections, not as afterthought content." />
+      <CollectionGrid items={caseStudies} hrefPrefix="/case-studies" darkEvery={2} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Industries" title="Industry pages reuse the same visual language while shifting the trust and proof emphasis." />
+      <CollectionGrid items={industries} hrefPrefix="/industries" darkEvery={2} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell case-study-panel">
+      <div>
+        <p class="eyebrow">Certifications</p>
+        <h2>Support labels and trust markers are treated as UI components, not loose paragraphs.</h2>
+        <p>The new light system still keeps a dark trust band so the hierarchy stays close to the Figma direction.</p>
+      </div>
+      <div class="case-study-panel__chips">
+        {certifications.map((item) => (
+          <span>{item}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Careers" title="Open roles live inside the same card and section system as the rest of the site." actionHref="/careers" actionLabel="View careers" />
+      <CollectionGrid items={careers} hrefPrefix="/careers" darkEvery={2} />
+    </div>
+  </section>
+
+  <FaqSection items={homeFaqs} />
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Blog" title="Articles reuse the same section grammar so the whole site feels like one product." actionHref="/articles" actionLabel="Browse articles" />
+      <CollectionGrid items={articles} hrefPrefix="/articles" darkEvery={2} />
+    </div>
+  </section>
+</SiteLayout>

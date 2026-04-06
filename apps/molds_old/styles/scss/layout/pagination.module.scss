@@ -1,0 +1,48 @@
+@use "../buttons";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 500;
+  color: var(--color-body);
+
+  a:not(:first-child):not(:last-child), span:not(:first-child):not(:last-child) {
+    box-sizing: border-box;
+    color: inherit;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+  }
+
+  a, span {
+    &:first-child, &:last-child {
+      @include buttons.btn-secondary;
+    }
+
+    &:first-child {
+      margin-right: auto;
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+
+  span {
+    &:first-child, &:last-child {
+      @include buttons.btn-secondary-disabled;
+    }
+  }
+
+  .active {
+    background: var(--bg-pagination-active);
+    border-radius: 50%;
+  }
+}

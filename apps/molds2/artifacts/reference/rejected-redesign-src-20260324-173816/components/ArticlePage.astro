@@ -1,0 +1,74 @@
+---
+import type { ArticleEntry } from "../data";
+import MarketingCard from "./MarketingCard.astro";
+import PageHero from "./PageHero.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+interface Props {
+  entry: ArticleEntry;
+  related: ArticleEntry[];
+}
+
+const { entry, related } = Astro.props;
+---
+
+<PageHero
+  eyebrow={entry.eyebrow}
+  title={entry.title}
+  intro={entry.intro}
+  metrics={[
+    { value: entry.readTime, label: "Read time" },
+    { value: entry.author, label: "Author" },
+    { value: entry.publishedAt, label: "Published" },
+  ]}
+  image={entry.image}
+  imageAlt={entry.title}
+  primary={{ href: "/articles", label: "Browse articles" }}
+  secondary={{ href: "/hire-us", label: "Start project" }}
+  asideTitle="Article layout"
+  asideBody="A cleaner editorial template built on the same section and card language as the rest of the site."
+/>
+
+<section class="section">
+  <div class="shell article-grid">
+    <div class="article-copy">
+      {entry.sections.map((section) => (
+        <article class="detail-block">
+          <h2>{section.title}</h2>
+          <p>{section.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <aside class="article-sidebar">
+      <div class="detail-sidebar__panel">
+        <p class="eyebrow">Takeaways</p>
+        <ul class="detail-checks">
+          {entry.takeaway.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <SectionHeading eyebrow="Blog" title="Related reading" />
+    <div class="three-up">
+      {related.map((item, index) => (
+        <MarketingCard
+          eyebrow={item.eyebrow}
+          title={item.title}
+          body={item.summary}
+          href={`/articles/${item.slug}`}
+          tags={item.tags}
+          stat={item.readTime}
+          image={item.image}
+          variant={index === 1 ? "dark" : "light"}
+        />
+      ))}
+    </div>
+  </div>
+</section>

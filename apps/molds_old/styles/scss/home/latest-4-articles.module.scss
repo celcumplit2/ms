@@ -1,0 +1,71 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../mixins";
+@use "../buttons";
+@use "../articles/article-mixins";
+
+.latest-4-articles {
+  @include article-mixins.article-list;
+
+  hgroup {
+    width: 100%;
+
+    p:first-child {
+      @include mixins.subheading;
+    }
+
+    p:last-child {
+      @include mixins.subheading;
+
+      a {
+        @include buttons.btn;
+      }
+    }
+  }
+
+  article {
+    h3 {
+      --line-clamp: 3;
+    }
+
+    p {
+      --line-clamp: 5;
+    }
+
+    > p, > h3 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: var(--line-clamp);
+      line-clamp: var(--line-clamp);
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'lg')) {
+    hgroup {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      p {
+        order: 4;
+        width: 100%;
+      }
+
+      p:first-child {
+        order: 0;
+        width: 100%;
+      }
+
+      h2 {
+        order: 1;
+      }
+
+      p:last-child {
+        order: 2;
+        width: auto;
+      }
+    }
+  }
+}

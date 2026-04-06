@@ -1,0 +1,50 @@
+---
+import FaqSection from "../components/FaqSection.astro";
+import FormPanel from "../components/FormPanel.astro";
+import MarketingCard from "../components/MarketingCard.astro";
+import PageHero from "../components/PageHero.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { aboutPage } from "../data";
+import { footerFaq } from "../data/site-content";
+---
+
+<SiteLayout title="About us | Moldstud">
+  <PageHero
+    eyebrow={aboutPage.eyebrow}
+    title={aboutPage.title}
+    intro={aboutPage.intro}
+    metrics={aboutPage.metrics}
+    image="/images/about-us/about-us.png"
+    imageAlt="About Moldstud"
+    primary={{ href: "/hire-us", label: "Start project" }}
+    secondary={{ href: "/contacts", label: "Contact us" }}
+    asideTitle="About page"
+    asideBody="A lighter canvas with dense values, proof, and contact paths."
+  />
+
+  <section class="section">
+    <div class="shell three-up">
+      {aboutPage.values.map((item, index) => (
+        <MarketingCard
+          eyebrow="Value"
+          title={item.title}
+          body={item.body}
+          variant={index === 1 ? "dark" : "light"}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <FormPanel
+        eyebrow="Work together"
+        title="If the direction is clear, move from discussion to direct execution."
+        body="This page is intentionally simple: values first, then direct contact and project flow."
+        submitLabel="Start conversation"
+      />
+    </div>
+  </section>
+
+  <FaqSection items={footerFaq} />
+</SiteLayout>

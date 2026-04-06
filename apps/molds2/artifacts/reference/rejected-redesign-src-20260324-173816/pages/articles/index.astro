@@ -1,0 +1,28 @@
+---
+import CollectionGrid from "../../components/CollectionGrid.astro";
+import PageHero from "../../components/PageHero.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { articles } from "../../data";
+---
+
+<SiteLayout title="Articles | Moldstud">
+  <PageHero
+    eyebrow="Articles"
+    title="Editorial pages inside the same design language."
+    intro="The article index is not a separate visual universe. It inherits the same hero, cards, spacing, and CTA behavior as the rest of the site."
+    image="/images/home/values.png"
+    imageAlt="Articles"
+    primary={{ href: "/hire-us", label: "Start project" }}
+    secondary={{ href: "/services", label: "See services" }}
+    asideTitle="Blog"
+    asideBody="The Figma moodboard and cards page both point to a compact, modular editorial layout."
+  />
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Articles" title="Structured article cards with the same mixed dark-light rhythm." />
+      <CollectionGrid items={articles} hrefPrefix="/articles" darkEvery={2} />
+    </div>
+  </section>
+</SiteLayout>

@@ -1,0 +1,18 @@
+@use "../mixins";
+
+.services {
+  > hgroup p:first-child {
+    @include mixins.subheading;
+  }
+
+  > p:last-of-type {
+    a {
+      color: var(--color-heading);
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

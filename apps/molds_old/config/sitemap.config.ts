@@ -1,0 +1,1 @@
+export const ARTICLES_MAX_URLS_PER_SITEMAP = 25_000;

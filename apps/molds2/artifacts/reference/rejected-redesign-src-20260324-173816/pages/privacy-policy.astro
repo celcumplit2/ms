@@ -1,0 +1,28 @@
+---
+import PageHero from "../components/PageHero.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { policyPage } from "../data";
+---
+
+<SiteLayout title="Privacy policy | Moldstud">
+  <PageHero
+    eyebrow={policyPage.eyebrow}
+    title={policyPage.title}
+    intro={policyPage.intro}
+    image="/images/home/values.png"
+    imageAlt="Privacy policy"
+    asideTitle="Policy page"
+    asideBody="This route is intentionally simple and ready for final legal content later."
+  />
+
+  <section class="section">
+    <div class="shell detail-copy">
+      {policyPage.sections.map((section) => (
+        <article class="detail-block">
+          <h2>{section.title}</h2>
+          <p>{section.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</SiteLayout>

@@ -1,0 +1,39 @@
+# Custom software development company
+
+As a custom software development company, we offer comprehensive solutions for proper software development adapted to the needs of customers. Our team is able to perfectly connect with our clients and use our skills and experience in order to fit their vision and their specific goals of a custom software development service.
+
+## Consultation and Engagement
+
+- [Schedule a Consultation](https://moldstud.com/#schedule-a-consultation): A service that allows potential clients to arrange a meeting to discuss their software development needs and how the company can assist them.
+- [Hire Us](https://moldstud.com/hire-us): Information on how to engage the company's services for custom software development projects.
+
+## Company Information
+
+- [About Us](https://moldstud.com/about-us): An overview of the company, its mission, and its values in the realm of custom software development.
+- [Careers](https://moldstud.com/careers): Opportunities for employment within the company, detailing available positions and the company culture.
+- [Contact Us](https://moldstud.com/contacts): Details on how to reach the company for inquiries or support.
+
+## Services and Solutions
+
+- [Services](https://moldstud.com/services): A comprehensive list of services offered by the company, tailored to meet various client needs in software development.
+- [Solutions](https://moldstud.com/solutions): Specific solutions provided by the company, showcasing how they address different challenges faced by clients.
+- [Industries](https://moldstud.com/industries): Information on the various industries the company serves, highlighting their expertise in different sectors.
+
+## Technical Insights
+
+- [Technologies](https://moldstud.com/technologies): An overview of the technologies utilized by the company in their software development processes.
+- [Mobile app session management](https://moldstud.com/articles/p-mobile-app-session-management): Insights into managing user sessions in mobile applications, a critical aspect of mobile app development.
+- [What is Android SDK?](https://moldstud.com/articles/p-what-is-android-sdk): A detailed explanation of the Android Software Development Kit, essential for developing Android applications.
+- [Technical architect](https://moldstud.com/articles/c-technical-architect?page=2): Information on the role of a technical architect in software development, outlining their responsibilities and importance in project success.
+
+## Additional Resources
+
+- [MoldStud](https://moldstud.com/): Information about MoldStud, potentially a product or service offered by the company.
+- [View All Articles](https://moldstud.com/articles): A collection of articles related to software development, providing insights and knowledge on various topics.
+- [Vasile Crudu - CEO at MoldStud](https://moldstud.com/authors/vasile-crudu): A profile of Vasile Crudu, highlighting his role and contributions to the company.
+
+## Policies and Compliance
+
+- [Privacy policy](https://moldstud.com/privacy-policy): The company's privacy policy, outlining how client data is handled and protected.
+- [What to know more about cookies?](https://moldstud.com/cookie-policy): Information regarding the use of cookies on the company's website, explaining their purpose and how they are used.
+- [Terms and Conditions](https://moldstud.com/terms-and-conditions): The company's terms and conditions.

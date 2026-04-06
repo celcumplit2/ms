@@ -1,0 +1,21 @@
+@use "../mixins";
+@use "article-mixins";
+
+.article-related, .article-recommended {
+  margin-top: 32px;
+  @include article-mixins.article-list(true);
+
+  header {
+    width: 100%;
+  }
+
+  hgroup {
+    p {
+      @include mixins.subheading;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  body: string;
+  href?: string;
+  tags?: string[];
+  stat?: string;
+  variant?: "light" | "dark";
+  image?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  body,
+  href,
+  tags = [],
+  stat,
+  variant = "light",
+  image,
+} = Astro.props;
+---
+
+<article class:list={["marketing-card", variant === "dark" && "marketing-card--dark"]}>
+  {image && (
+    <div class="marketing-card__media">
+      <img src={image} alt={title} />
+    </div>
+  )}
+  <div class="marketing-card__content">
+    <div class="marketing-card__topline">
+      <p class="marketing-card__eyebrow">{eyebrow}</p>
+      {stat && <span class="marketing-card__stat">{stat}</span>}
+    </div>
+    <h3>{title}</h3>
+    <p>{body}</p>
+    {tags.length > 0 && (
+      <ul class="marketing-card__tags">
+        {tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    )}
+    {href && <a class="marketing-card__link" href={href}>Explore</a>}
+  </div>
+</article>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  body: string;
+  submitLabel?: string;
+}
+
+const { eyebrow, title, body, submitLabel = "Send request" } = Astro.props;
+---
+
+<section class="form-panel">
+  <div class="form-panel__copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2>{title}</h2>
+    <p>{body}</p>
+  </div>
+
+  <form class="mock-form">
+    <label>
+      Name
+      <input type="text" placeholder="Your name" />
+    </label>
+    <label>
+      Email
+      <input type="email" placeholder="you@company.com" />
+    </label>
+    <label>
+      Company
+      <input type="text" placeholder="Company or product" />
+    </label>
+    <label>
+      Message
+      <textarea rows="5" placeholder="Project scope, roles, or delivery context"></textarea>
+    </label>
+    <button class="button button--green" type="button">{submitLabel}</button>
+  </form>
+</section>

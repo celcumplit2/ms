@@ -1,0 +1,119 @@
+@use "sass:map";
+@use "../breakpoints";
+
+.consent[open] {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100vw;
+  min-height: 100vh;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-height: 65vh;
+    border: 1px solid var(--form-input-border-color);
+    border-bottom: none;
+    border-radius: var(--form-input-border-radius) var(--form-input-border-radius) 0 0;
+    padding: 0;
+    background-color: var(--bg-body);
+  }
+
+  section {
+    padding: 10px 20px 0;
+    font-size: 14px;
+    overflow-y: auto;
+    flex-grow: 1;
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    h6 {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      label {
+        display: flex;
+        gap: 6px;
+      }
+    }
+
+    details {
+      summary {
+        cursor: pointer;
+      }
+
+      p {
+        margin-bottom: 5px;
+      }
+
+      p:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+
+        span {
+          background-color: var(--badge-bg-gray);
+          padding: 0 5px;
+          border-radius: var(--form-input-border-radius);
+        }
+      }
+    }
+  }
+
+  footer {
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    flex-shrink: 0;
+
+    button {
+      padding: 2px;
+      flex: 1 1 48%;
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--color-body);
+      text-decoration: underline;
+      font-size: 14px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, "lg")) {
+    div {
+      max-width: 70%;
+    }
+
+    footer {
+      button {
+        padding: 5px;
+      }
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, "xl")) {
+    div {
+      max-width: 50%;
+    }
+  }
+}

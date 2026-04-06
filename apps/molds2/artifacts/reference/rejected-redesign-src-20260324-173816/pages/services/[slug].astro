@@ -1,0 +1,19 @@
+---
+import DetailPage from "../../components/DetailPage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { services } from "../../data";
+
+export function getStaticPaths() {
+  return services.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const relatedItems = services.filter((item) => item.slug !== entry.slug).slice(0, 2);
+---
+
+<SiteLayout title={`${entry.title} | Moldstud`}>
+  <DetailPage entry={entry} relatedTitle="Related services" relatedItems={relatedItems} relatedHref="/services" />
+</SiteLayout>

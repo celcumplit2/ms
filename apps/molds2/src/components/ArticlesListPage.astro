@@ -1,0 +1,44 @@
+---
+import SectionLabel from "./SectionLabel.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import type { ArticleEntry } from "../data/site";
+
+interface Props {
+  entries: ArticleEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<main class="page-shell page-shell--light">
+  <section class="content-hero">
+    <SiteHeader theme="light" />
+    <div class="container content-hero__inner">
+      <SectionLabel label="Insights" />
+      <h1>Thoughtful articles for teams rebuilding digital delivery with intent.</h1>
+      <p>Use this library to explain strategy, systems, hiring, and product execution without filler content.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container article-card-grid">
+      {entries.map((entry) => (
+        <article class="article-card">
+          <img src={entry.image ?? "/images/home/services.png"} alt="" loading="lazy" />
+          <div>
+            <SectionLabel label={entry.eyebrow} />
+            <h2>{entry.title}</h2>
+            <p>{entry.summary}</p>
+            <div class="article-card__meta">
+              <span>{entry.author}</span>
+              <span>{entry.readTime}</span>
+            </div>
+            <a href={`/articles/${entry.slug}`}>Read article ↗</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <SiteFooter />
+</main>

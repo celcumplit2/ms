@@ -1,0 +1,30 @@
+---
+import Button from "./Button.astro";
+import { headerActions, navigation } from "../data/site";
+
+interface Props {
+  theme?: "light" | "dark";
+}
+
+const { theme = "light" } = Astro.props;
+---
+
+<header class={`site-header site-header--${theme}`}>
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href="/">
+      <img src="/images/logo.svg" alt="Moldstud" width="102" height="32" />
+    </a>
+
+    <nav aria-label="Primary" class="site-header__nav">
+      {navigation.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+
+    <div class="site-header__actions">
+      <Button href={headerActions.primary.href} label={headerActions.primary.label} variant="green" size="sm" />
+      <Button href={headerActions.secondary.href} label={headerActions.secondary.label} variant="blue" size="sm" />
+      <a class="site-header__join" href={headerActions.tertiary.href}>{headerActions.tertiary.label} ↗</a>
+    </div>
+  </div>
+</header>

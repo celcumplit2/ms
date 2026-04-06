@@ -1,0 +1,118 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../mixins";
+
+.case-studies {
+  display: flex;
+  flex-direction: column;
+
+  hgroup p:first-child {
+    @include mixins.subheading;
+  }
+
+  article {
+    --badge-bg: var(--badge-bg-blue);
+    --badge-border-color: var(--badge-border-color-blue);
+    --badge-color: var(--badge-color-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-top: 1px solid var(--color-footer-delimiter);
+    padding-top: 24px;
+
+    &:nth-of-type(2) {
+      --badge-bg: var(--badge-bg-purple);
+      --badge-border-color: var(--badge-border-color-purple);
+      --badge-color: var(--badge-color-purple);
+    }
+
+    &:nth-of-type(3) {
+      --badge-bg: var(--badge-bg-orange);
+      --badge-border-color: var(--badge-border-color-orange);
+      --badge-color: var(--badge-color-orange);
+    }
+
+    &:last-of-type {
+      --badge-bg: var(--badge-bg-green);
+      --badge-border-color: var(--badge-border-color-green);
+      --badge-color: var(--badge-color-green);
+    }
+
+    h3 {
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 8px;
+    }
+
+    > p {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      background-color: var(--badge-bg);
+      border: 1px solid var(--badge-border-color);
+      color: var(--badge-color);
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      padding: 0 10px;
+      margin: 0 0 10px;
+
+      &:before {
+        background-color: var(--badge-color);
+        display: block;
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+      }
+    }
+
+    h4 {
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 24px;
+      }
+
+      strong {
+        display: inline-block;
+        color: var(--color-heading);
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'lg')) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 64px;
+
+    article {
+      width: calc((100% - 64px) / 2);
+
+      div {
+        flex-direction: row;
+        column-gap: 32px;
+        width: 100%;
+
+        p {
+          display: block;
+          width: calc((100% - 32px) / 2);
+        }
+      }
+    }
+  }
+}

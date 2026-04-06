@@ -1,0 +1,90 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../mixins";
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+
+  hgroup {
+    margin-bottom: 36px;
+
+    p {
+      margin: 0;
+    }
+
+    p:first-child {
+      margin-bottom: 16px;
+
+      & + p {
+        @include mixins.subheading;
+      }
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  article {
+    background-color: var(--bg-service-card);
+    border: 1px solid var(--surface-line);
+    border-radius: var(--surface-radius-md);
+    padding: 24px;
+    box-sizing: border-box;
+    box-shadow: var(--surface-shadow-soft);
+
+    img {
+      margin-bottom: 32px;
+    }
+
+    h3 {
+      font-size: 20px;
+      line-height: 30px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 8px;
+      color: var(--color-heading);
+    }
+
+    p:last-child {
+      font-size: 16px;
+      margin: 0;
+      color: var(--color-body);
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'md')) {
+    div {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px 16px;
+    }
+
+    article {
+      flex: 0 1 calc((100% - 16px) / 2);
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'lg')) {
+    flex-direction: row;
+    column-gap: 32px;
+
+    hgroup, div {
+      flex: 0 1 30%;
+    }
+
+    div {
+      gap: 32px 32px;
+      flex: 1;
+    }
+
+    article {
+      flex: 0 1 calc((100% - 32px) / 2);
+    }
+  }
+}

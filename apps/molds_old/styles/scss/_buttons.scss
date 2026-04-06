@@ -1,0 +1,56 @@
+@mixin btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-bg);
+  color: var(--button-color);
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 600;
+  padding: 14px 22px;
+
+  &:hover {
+    background-color: var(--button-hover-bg);
+    cursor: pointer;
+  }
+
+  &[disabled], &.disabled {
+    background-color: var(--button-disabled-bg);
+    cursor: not-allowed;
+  }
+}
+
+@mixin btn-secondary-disabled {
+  color: var(--button-secondary-disabled-color);
+  border-color: var(--button-secondary-disabled-border-color);
+  cursor: not-allowed;
+}
+
+@mixin btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  box-sizing: border-box;
+  border: 1px solid var(--button-secondary-border-color);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-color);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 600;
+  padding: 11px 16px;
+
+  &:hover {
+    background-color: var(--button-secondary-hover-bg);
+    cursor: pointer;
+  }
+
+  &[disabled], &.disabled {
+    @include btn-secondary-disabled;
+  }
+}

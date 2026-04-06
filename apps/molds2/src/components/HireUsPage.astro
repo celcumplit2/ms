@@ -1,0 +1,31 @@
+---
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import Button from "./Button.astro";
+import SectionLabel from "./SectionLabel.astro";
+---
+
+<main class="page-shell page-shell--light">
+  <section class="content-hero">
+    <SiteHeader theme="light" />
+    <div class="container content-hero__inner content-hero__inner--split">
+      <div>
+        <SectionLabel label="Hire us" />
+        <h1>Use this route when the need is concrete and the delivery expectations are already visible.</h1>
+        <p>
+          The page keeps the same light-mode shell as the rest of the site but narrows the focus to
+          scoping, intake, and the fastest path into a real conversation.
+        </p>
+      </div>
+      <form class="lead-form">
+        <input placeholder="Full name" />
+        <input placeholder="Work email" />
+        <input placeholder="Company" />
+        <input placeholder="Budget range" />
+        <textarea rows="6" placeholder="Tell us about the product, the blockers, and the outcome you need."></textarea>
+        <Button href="/hire-us" label="Get matched with a project team" />
+      </form>
+    </div>
+  </section>
+  <SiteFooter />
+</main>

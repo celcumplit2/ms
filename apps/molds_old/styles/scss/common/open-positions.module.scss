@@ -1,0 +1,33 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../buttons";
+@use "../mixins";
+
+.open-positions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--grid-gap-x) var(--grid-gap-x);
+
+  > hgroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+
+    a {
+      @include buttons.btn;
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'md')) {
+    > hgroup {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'lg')) {
+    .job-card {
+      flex: 0 1 calc((100% - var(--grid-gap-x)) / 2);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@use "article-mixins";
+
+.articles {
+  @include article-mixins.article-list;
+}
+
+.pagination {
+  margin-top: var(--grid-gap-y);
+}

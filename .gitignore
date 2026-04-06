@@ -1,29 +1,34 @@
-# build output
-dist/
-# generated types
-.astro/
-
-# dependencies
+# workspace
 node_modules/
-
-# logs
+.pnpm-store/
+pnpm-debug.log*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
+# app caches and build outputs
+apps/*/node_modules/
+apps/*/.next/
+apps/*/.astro/
+apps/*/dist/
+apps/*/.wrangler/
+apps/*/coverage/
+apps/*/tsconfig.tsbuildinfo
+apps/*/pnpm-lock.yaml
+apps/*/package-lock.json
 
-# environment variables
-.env
-.env.production
+# env and local runtime files
+apps/*/.env
+apps/*/.env.local
+apps/*/.env.production
+apps/*/.dev.vars
+apps/*/.codex-next.log
+apps/*/.codex-next.err.log
+
+# python / local env
 .venv/
 venv/
 
-# macOS-specific files
+# OS / editor
 .DS_Store
-
-# jetbrains setting folder
 .idea/
-
-# local runtime artifacts
-artifacts/data/preview-server.pid

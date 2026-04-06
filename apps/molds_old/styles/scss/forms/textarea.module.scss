@@ -1,0 +1,6 @@
+@use "form-mixins";
+
+.textarea {
+  @include form-mixins.input;
+  resize: vertical;
+}

@@ -1,0 +1,56 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../mixins";
+@use "../buttons";
+
+.heading {
+  display: grid;
+  gap: 26px;
+  margin-bottom: var(--section-space-tight);
+  padding: 28px;
+  border: 1px solid var(--surface-line);
+  border-radius: var(--surface-radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(242, 242, 250, 0.98)),
+    var(--bg-body);
+  box-shadow: var(--surface-shadow-soft);
+
+  hgroup {
+    p:first-child {
+      @include mixins.subheading;
+      margin-bottom: 14px;
+    }
+
+    a {
+      @include buttons.btn;
+      display: inline-block;
+      margin-top: 8px;
+    }
+  }
+
+  blockquote {
+    font-size: 16px;
+    line-height: 1.68;
+    margin: 0;
+    padding: 0;
+    color: var(--color-body);
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    i {
+      color: var(--color-footer-heading);
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, "lg")) {
+    grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+    align-items: start;
+    column-gap: 40px;
+
+    blockquote {
+      padding-top: 22px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+---
+import "../styles/global.css";
+import { company } from "../data";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${company.name} | ${company.descriptor}`,
+  description = company.descriptor,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <div class="site-shell">
+      <SiteHeader />
+      <main>
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

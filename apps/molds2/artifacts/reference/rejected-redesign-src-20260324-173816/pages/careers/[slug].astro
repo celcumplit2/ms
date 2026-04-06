@@ -1,0 +1,71 @@
+---
+import FormPanel from "../../components/FormPanel.astro";
+import PageHero from "../../components/PageHero.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { careers } from "../../data";
+
+export function getStaticPaths() {
+  return careers.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<SiteLayout title={`${entry.title} | Moldstud`}>
+  <PageHero
+    eyebrow={entry.eyebrow}
+    title={entry.title}
+    intro={entry.intro}
+    metrics={[
+      { value: entry.location, label: "Location" },
+      { value: entry.employmentType, label: "Employment type" },
+      { value: entry.level, label: "Level" },
+    ]}
+    image={entry.image}
+    imageAlt={entry.title}
+    primary={{ href: "/contacts", label: "Apply now" }}
+    secondary={{ href: "/careers", label: "All careers" }}
+    asideTitle="Career detail"
+    asideBody={entry.compensation}
+  />
+
+  <section class="section">
+    <div class="shell three-up">
+      <div class="detail-block">
+        <p class="eyebrow">Responsibilities</p>
+        <ul class="detail-checks">
+          {entry.responsibilities.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="detail-block">
+        <p class="eyebrow">Requirements</p>
+        <ul class="detail-checks">
+          {entry.requirements.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="detail-sidebar__panel">
+        <p class="eyebrow">Benefits</p>
+        <ul class="detail-checks">
+          {entry.benefits.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Apply" title="The application block stays inside the same page system." />
+      <FormPanel eyebrow="Apply" title={`Apply for ${entry.title}`} body="This form is still static in the current phase, but the route and layout are already in place." submitLabel="Apply" />
+    </div>
+  </section>
+</SiteLayout>

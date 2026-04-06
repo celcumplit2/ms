@@ -1,0 +1,79 @@
+.specialist-card {
+  hgroup {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    margin-bottom: 4px;
+
+    h3, p {
+      color: var(--form-input-color);
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  h3 {
+    a {
+      color: var(--form-input-color);
+    }
+  }
+
+  h4 {
+    color: var(--color-primary);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 4px;
+
+    & + p {
+      display: inline-block;
+      border: 1px solid var(--badge-border-color-blue);
+      background-color: var(--badge-bg-blue);
+      border-radius: 16px;
+      color: var(--badge-color-blue);
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      padding: 4px 12px;
+      margin: 0 0 16px;
+    }
+  }
+
+  h5 {
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--form-input-color);
+    margin-bottom: 8px;
+
+    & + div {
+      display: flex;
+      column-gap: 12px;
+
+      p {
+        color: var(--form-input-color);
+        font-size: 18px;
+        line-height: 28px;
+
+        span {
+          color: var(--color-body);
+        }
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    p {
+      display: flex;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      align-items: center;
+      column-gap: 5px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

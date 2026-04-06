@@ -1,0 +1,72 @@
+---
+import type { CareerEntry } from "../data/site";
+
+interface Props {
+  entry: CareerEntry;
+}
+
+const { entry } = Astro.props;
+---
+
+<main class="market-shell">
+  <header class="market-header">
+    <div class="market-header__top">Toptal launches HireGlobal ⚡ The most competitively priced global workforce payroll platform.</div>
+    <div class="market-header__nav">
+      <img src="/images/logo.svg" alt="Moldstud" width="102" height="32" />
+      <nav>
+        <a href="/request-profiles">Hire Talent</a>
+        <a href="/solutions">Consulting &amp; Services</a>
+        <a href="/articles">Blog</a>
+        <a href="/about-us">About Us</a>
+      </nav>
+      <div class="market-header__actions">
+        <a href="/request-profiles">Apply as a Talent</a>
+        <a class="market-button" href="/hire-us">Hire Top Talent</a>
+        <a href="/contacts">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="market-hero market-hero--detail">
+    <div class="market-container market-detail">
+      <div class="market-detail__main">
+        <h1>{entry.title}</h1>
+        <p>{entry.intro}</p>
+        <div class="market-detail__meta">
+          <span>{entry.location}</span>
+          <span>{entry.employmentType}</span>
+          <span>{entry.level}</span>
+          <span>{entry.compensation}</span>
+        </div>
+        <section>
+          <h2>Responsibilities</h2>
+          <ul class="feature-list">
+            {entry.responsibilities.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+        <section>
+          <h2>Requirements</h2>
+          <ul class="feature-list">
+            {entry.requirements.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+        <section>
+          <h2>Benefits</h2>
+          <ul class="feature-list">
+            {entry.benefits.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+      </div>
+      <aside class="market-detail__aside">
+        <div class="filter-panel">
+          <h2>Apply for this role</h2>
+          <input placeholder="Full name" />
+          <input placeholder="Email" />
+          <input placeholder="Portfolio or LinkedIn" />
+          <textarea rows="6" placeholder="Short note"></textarea>
+          <a class="market-button market-button--full" href={`/careers/${entry.slug}/apply`}>Continue</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>

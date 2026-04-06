@@ -1,0 +1,62 @@
+---
+import type { DetailEntry, FaqItem } from "../data";
+import { operatingPrinciples } from "../data/site-content";
+import CollectionGrid from "./CollectionGrid.astro";
+import FaqSection from "./FaqSection.astro";
+import PageHero from "./PageHero.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  items: DetailEntry[];
+  hrefPrefix: string;
+  faqItems: FaqItem[];
+  image?: string;
+}
+
+const { eyebrow, title, intro, items, hrefPrefix, faqItems, image } = Astro.props;
+---
+
+<PageHero
+  eyebrow={eyebrow}
+  title={title}
+  intro={intro}
+  image={image}
+  imageAlt={title}
+  primary={{ href: "/hire-us", label: "Get consultation" }}
+  secondary={{ href: "/request-profiles", label: "Hire talents" }}
+  asideTitle="Cross-industry value"
+  asideBody="One reusable front-end language for services, hiring, and content-heavy pages."
+/>
+
+<section class="section">
+  <div class="shell">
+    <SectionHeading
+      eyebrow={eyebrow}
+      title="Page family built from hero, cards, proof, FAQ, and footer."
+      body="The light variant keeps the white page shell while mixing dark and light cards inside the same system."
+    />
+    <CollectionGrid items={items} hrefPrefix={hrefPrefix} darkEvery={2} />
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="What we offer"
+      title="Reusable sections keep each listing page specific without rebuilding the system each time."
+    />
+    <div class="principle-grid">
+      {operatingPrinciples.map((item, index) => (
+        <article class:list={["principle-card", index > 1 && "principle-card--dark"]}>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<FaqSection items={faqItems} />

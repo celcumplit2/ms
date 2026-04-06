@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../breakpoints";
+
+.specialist-list {
+  display: flex;
+  row-gap: 64px;
+
+  /* Mobile Styles */
+  @media (max-width: map.get(breakpoints.$breakpoints, "sm")) {
+    flex-direction: column;
+  }
+
+  /* Desktop & Tablet Styles */
+  @media (width > map.get(breakpoints.$breakpoints, "sm")) {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: var(--grid-gap-x);
+
+    .specialist-card {
+      flex: 0 1 calc((100% - var(--grid-gap-x)) / 2);
+    }
+  }
+}

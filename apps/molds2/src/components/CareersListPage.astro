@@ -1,0 +1,84 @@
+---
+import type { CareerEntry } from "../data/site";
+
+interface Props {
+  entries: CareerEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<main class="market-shell">
+  <header class="market-header">
+    <div class="market-header__top">Toptal launches HireGlobal ⚡ The most competitively priced global workforce payroll platform.</div>
+    <div class="market-header__nav">
+      <img src="/images/logo.svg" alt="Moldstud" width="102" height="32" />
+      <nav>
+        <a href="/request-profiles">Hire Talent</a>
+        <a href="/solutions">Consulting &amp; Services</a>
+        <a href="/articles">Blog</a>
+        <a href="/about-us">About Us</a>
+      </nav>
+      <div class="market-header__actions">
+        <a href="/request-profiles">Apply as a Talent</a>
+        <a class="market-button" href="/hire-us">Hire Top Talent</a>
+        <a href="/contacts">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="market-hero">
+    <div class="market-container">
+      <div class="market-hero__copy">
+        <h1>Find top jobs for web designers and developers.</h1>
+        <p>Hiring? Connect with over 11,000 talented web designers and developers available for full-time, part-time, or freelance opportunities.</p>
+        <div class="market-chip-row">
+          <span>Web Design</span>
+          <span>Web Development</span>
+          <span>Web Entry</span>
+        </div>
+      </div>
+
+      <div class="market-layout">
+        <div class="market-jobs">
+          {entries.map((entry, index) => (
+            <article class="job-board-card">
+              <div class="job-board-card__logo">{entry.title.slice(0, 1)}</div>
+              <div class="job-board-card__copy">
+                <h2>{entry.title}</h2>
+                <p>{entry.location} • {entry.employmentType} • {entry.level}</p>
+                <ul class="tag-list">
+                  {entry.tags.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+              <div class="job-board-card__meta">
+                {index === 1 && <a class="market-button market-button--small" href={`/careers/${entry.slug}`}>Apply</a>}
+                <span>{index + 3}d</span>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <aside class="market-sidebar">
+          <div class="filter-panel">
+            <label>Keywords<input placeholder="Job title or company..." /></label>
+            <label>Categories<select><option>All categories</option></select></label>
+            <label>Related tags<select><option>All related tags</option></select></label>
+            <label>Job type<select><option>Job type</option></select></label>
+            <label>Location<select><option>Location</option></select></label>
+            <label>Remote<select><option>Remote</option></select></label>
+            <button type="button" class="market-button market-button--full">Filter jobs</button>
+          </div>
+          <div class="newsletter-card">
+            <h2>Get the latest jobs delivered to your inbox every week</h2>
+            <input placeholder="First name" />
+            <input placeholder="Email address" />
+            <button type="button" class="market-button market-button--dark">Sign up for free</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,117 @@
+---
+import type { DetailEntry, FaqItem } from "../data";
+import { certifications } from "../data/site-content";
+import FaqSection from "./FaqSection.astro";
+import MarketingCard from "./MarketingCard.astro";
+import PageHero from "./PageHero.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+interface Props {
+  entry: DetailEntry;
+  relatedTitle: string;
+  relatedItems: DetailEntry[];
+  relatedHref: string;
+  faqItems?: FaqItem[];
+}
+
+const { entry, relatedTitle, relatedItems, relatedHref, faqItems = entry.faqs } = Astro.props;
+---
+
+<PageHero
+  eyebrow={entry.eyebrow}
+  title={entry.title}
+  intro={entry.intro}
+  metrics={entry.metrics}
+  image={entry.image}
+  imageAlt={entry.title}
+  primary={{ href: "/hire-us", label: "Start project" }}
+  secondary={{ href: "/request-profiles", label: "Hire talents" }}
+  asideTitle={entry.ctaTitle || "Structured implementation"}
+  asideBody={entry.ctaCopy || entry.summary}
+/>
+
+<section class="section">
+  <div class="shell detail-grid">
+    <div class="detail-copy">
+      {entry.sections.map((section) => (
+        <article class="detail-block">
+          <h2>{section.title}</h2>
+          <p>{section.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <aside class="detail-sidebar">
+      <div class="detail-sidebar__panel">
+        <p class="eyebrow">Benefits</p>
+        <ul class="detail-checks">
+          {entry.bullets.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      {entry.quote && (
+        <div class="detail-sidebar__quote">
+          <p>{entry.quote}</p>
+        </div>
+      )}
+    </aside>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="Benefits"
+      title="The detail template stays light, but its proof and support blocks still use dark surfaces."
+    />
+    <div class="three-up">
+      {entry.bullets.map((item, index) => (
+        <MarketingCard
+          eyebrow={entry.eyebrow}
+          title={item}
+          body={entry.sections[index % entry.sections.length]?.body || entry.summary}
+          variant={index === 1 ? "dark" : "light"}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell case-study-panel">
+    <div>
+      <p class="eyebrow">Case study</p>
+      <h2>{entry.ctaTitle || "Support sections connect the page to the broader content system."}</h2>
+      <p>{entry.ctaCopy || entry.summary}</p>
+    </div>
+    <div class="case-study-panel__chips">
+      {certifications.map((item) => (
+        <span>{item}</span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <SectionHeading eyebrow="Related" title={relatedTitle} />
+    <div class="three-up">
+      {relatedItems.map((item, index) => (
+        <MarketingCard
+          eyebrow={item.eyebrow}
+          title={item.title}
+          body={item.summary}
+          href={`${relatedHref}/${item.slug}`}
+          tags={item.tags}
+          stat={item.stat}
+          image={item.image}
+          variant={index === 1 ? "dark" : "light"}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<FaqSection items={faqItems} />

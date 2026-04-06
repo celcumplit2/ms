@@ -1,0 +1,19 @@
+---
+import DetailPage from "../../components/DetailPage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { solutions } from "../../data";
+
+export function getStaticPaths() {
+  return solutions.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const relatedItems = solutions.filter((item) => item.slug !== entry.slug).slice(0, 2);
+---
+
+<SiteLayout title={`${entry.title} | Moldstud`}>
+  <DetailPage entry={entry} relatedTitle="Related solutions" relatedItems={relatedItems} relatedHref="/solutions" />
+</SiteLayout>

@@ -1,0 +1,22 @@
+.alert {
+  box-sizing: border-box;
+  position: sticky;
+  top: 10px;
+  right: 100px;
+  color: #FFFFFF !important;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 24px;
+  font-size: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+
+  &.success {
+    background: #45D964;
+  }
+
+  &.failure {
+    background: #E45A5A;
+  }
+}

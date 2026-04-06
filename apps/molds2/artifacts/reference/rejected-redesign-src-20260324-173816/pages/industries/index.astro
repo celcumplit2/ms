@@ -1,0 +1,18 @@
+---
+import ListingPage from "../../components/ListingPage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { homeFaqs } from "../../data/site-content";
+import { industries } from "../../data";
+---
+
+<SiteLayout title="Industries | Moldstud">
+  <ListingPage
+    eyebrow="Industries"
+    title="Industry templates keep the same visual system and shift the messaging emphasis."
+    intro="Industry list pages reuse the hero, cards, FAQ, and footer structure from the Figma route family."
+    items={industries}
+    hrefPrefix="/industries"
+    faqItems={homeFaqs}
+    image="/images/home/expertise.png"
+  />
+</SiteLayout>

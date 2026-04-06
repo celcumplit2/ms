@@ -1,0 +1,108 @@
+:root {
+  // Layout
+  --bg-body: #FDFDFF;
+  --bg-soft: #F2F2FA;
+  --bg-card: #F6F6FB;
+  --bg-card-strong: #EEF1FB;
+  --bg-overlay: rgba(23, 23, 38, 0.52);
+
+  --color-primary: #2D36FF;
+  --color-body: #5D6280;
+  --color-heading: #26283B;
+  --color-logo: #171726;
+  --color-footer-heading: #8386A1;
+  --color-footer-delimiter: rgba(30, 32, 58, 0.08);
+  --color-links: var(--color-primary);
+  --color-red: #F04438;
+  --color-green: #2FCB73;
+
+  --border-radius: 12px;
+  --img-border-radius: 24px;
+  --surface-radius-lg: 28px;
+  --surface-radius-md: 18px;
+  --surface-shadow: 0 22px 48px rgba(34, 37, 59, 0.1);
+  --surface-shadow-soft: 0 14px 30px rgba(34, 37, 59, 0.08);
+  --surface-line: rgba(30, 32, 58, 0.08);
+
+  --container-padding-x: 18px;
+  --container-padding-x-xl: 40px;
+  --section-space: clamp(56px, 7vw, 92px);
+  --section-space-tight: clamp(36px, 5vw, 64px);
+  --block-space: 24px;
+  --content-measure: 72ch;
+  --content-measure-wide: 84ch;
+
+  // Grid
+  --grid-gap-x: 20px;
+  --grid-gap-x-xl: 32px;
+  --grid-gap-y: 28px;
+  --grid-gap-y-xl: 32px;
+
+  // Forms
+  --form-input-border-color: rgba(30, 32, 58, 0.14);
+  --form-input-border-radius: 14px;
+  --form-checkbox-border-radius: 5px;
+  --form-input-color: #26283B;
+  --form-input-paceholder-color: #98A2B3;
+  --form-label-color: #414560;
+
+  --form-input-focused-bg: rgba(45, 54, 255, 0.08);
+  --form-input-disabled-bg: #F2F4F7;
+
+  // Buttons
+  --button-color: #FFFFFF;
+  --button-bg: var(--color-primary);
+  --button-border-radius: var(--form-input-border-radius);
+  --button-hover-bg: #2431FF;
+  --button-disabled-bg: #B7C2FF;
+  --button-secondary-color: #2E314A;
+  --button-secondary-bg: rgba(255, 255, 255, 0.92);
+  --button-secondary-hover-bg: var(--bg-card);
+  --button-secondary-border-color: rgba(30, 32, 58, 0.12);
+  --button-secondary-disabled-border-color: rgba(30, 32, 58, 0.08);
+  --button-secondary-disabled-color: #B0B4C8;
+
+  // Articles
+  --color-subheading: #2D36FF;
+  --bg-article-time-start: rgba(0, 0, 0, 0);
+  --bg-article-time-end: rgba(23, 23, 38, 0.38);
+  --color-article-time: #FFFFFF;
+
+  // Pagination
+  --bg-pagination-active: var(--bg-card);
+  --color-pagination-btn-border: rgba(30, 32, 58, 0.12);
+
+  // Home
+  --bg-video: #C7CEE8;
+  --bg-service-card: var(--bg-card);
+
+  // Author
+  --bg-author-education: var(--bg-card);
+
+  //  Careers
+  --bg-tag-blue: #2E90FA;
+  --bg-tag-red: #EF6820;
+  --bg-tag-green: #17B26A;
+
+  //  Services
+  --badge-bg-blue: rgba(45, 54, 255, 0.08);
+  --badge-border-color-blue: rgba(45, 54, 255, 0.16);
+  --badge-color-blue: #2D36FF;
+  --badge-bg-purple: #F1F0FF;
+  --badge-border-color-purple: #DCD8FF;
+  --badge-color-purple: #5B4DD8;
+  --badge-bg-orange: #FEF6EE;
+  --badge-border-color-orange: #F6D3A8;
+  --badge-color-orange: #C36A20;
+  --badge-bg-green: rgba(47, 203, 115, 0.12);
+  --badge-border-color-green: rgba(47, 203, 115, 0.22);
+  --badge-color-green: #1B9D58;
+
+  // Badges
+  --badge-bg-gray: var(--bg-soft);
+  --badge-border-color-gray: rgba(30, 32, 58, 0.1);
+  --badge-color-gray: #3F4362;
+
+  // About Us
+  --bg-plan-card: var(--bg-card);
+}

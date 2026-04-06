@@ -1,0 +1,62 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../mixins";
+
+.services {
+  --services-grid-gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--services-grid-gap) var(--services-grid-gap);
+
+  hgroup p:first-child {
+    @include mixins.subheading;
+  }
+
+  article {
+    background-color: var(--bg-service-card);
+    border: 1px solid var(--surface-line);
+    border-radius: var(--surface-radius-md);
+    padding: 24px;
+    box-sizing: border-box;
+    box-shadow: var(--surface-shadow-soft);
+    height: 100%;
+
+    > img {
+      margin-bottom: 32px;
+    }
+
+    h3 {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    a {
+      @include mixins.read-more;
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'md')) {
+    flex-direction: row;
+
+    hgroup {
+      width: 100%;
+    }
+
+    article {
+      flex: 0 1 calc((100% - var(--services-grid-gap)) / 2);
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'lg')) {
+    --services-grid-gap: 32px;
+
+    article {
+      flex: 0 1 calc((100% - var(--services-grid-gap) * 2) / 3);
+    }
+  }
+}

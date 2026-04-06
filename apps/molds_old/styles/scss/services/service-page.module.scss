@@ -1,0 +1,44 @@
+@use "../mixins";
+@use "../buttons";
+
+.heading {
+  margin-bottom: 64px;
+
+  p {
+    &:first-child {
+      @include mixins.subheading;
+    }
+
+    &:last-of-type {
+      color: var(--color-heading);
+      font-size: 48px;
+      line-height: 60px;
+      margin: 0 0 24px;
+      font-weight: 600;
+    }
+  }
+
+  a {
+    @include buttons.btn;
+    display: inline-block;
+  }
+}
+
+.service {
+  margin-bottom: 64px;
+
+  span:first-child {
+    @include mixins.subheading;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  h1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+.benefits, .wcag, .faq, .engagement-models {
+  margin-bottom: 64px;
+}

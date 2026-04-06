@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Props {
+  title: string;
+  image: string;
+  alt: string;
+  frameWidth: number;
+}
+
+const { title, image, alt, frameWidth } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <main class="frame-page" style={`--frame-width:${frameWidth}px;`}>
+    <div class="frame-scroll">
+      <img class="frame-image" src={image} alt={alt} loading="eager" decoding="async" />
+    </div>
+  </main>
+</BaseLayout>

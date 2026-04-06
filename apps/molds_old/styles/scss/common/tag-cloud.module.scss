@@ -1,0 +1,29 @@
+@use "sass:map";
+@use "../breakpoints";
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 28px 0 0;
+  padding: 0;
+
+  li {
+    background-color: var(--bg-service-card);
+    color: var(--color-subheading);
+    border: 1px solid var(--surface-line);
+    border-radius: var(--surface-radius-md);
+    font-weight: 600;
+    margin: 0;
+    padding: 14px 18px;
+    display: inline-block;
+    list-style: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  }
+}
+
+@media (min-width: map.get(breakpoints.$breakpoints, 'lg')) {
+  .form {
+    max-width: 560px;
+  }
+}

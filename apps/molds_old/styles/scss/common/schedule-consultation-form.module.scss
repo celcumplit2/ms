@@ -1,0 +1,71 @@
+@use "sass:map";
+@use "../breakpoints";
+
+.schedule-consultation-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  padding: 24px;
+  border: 1px solid var(--surface-line);
+  border-radius: var(--surface-radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 246, 251, 0.98)),
+    var(--bg-card);
+  box-shadow: var(--surface-shadow-soft);
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+    row-gap: 16px;
+    margin-bottom: 16px;
+
+    > div {
+      &:nth-child(3), &:nth-child(8), &:last-of-type {
+        grid-column: span 2;
+      }
+    }
+  }
+
+  h3 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.02;
+    margin-bottom: 24px;
+  }
+
+  img {
+    display: flex;
+    object-fit: cover;
+    object-position: center;
+    max-width: 100%;
+    height: auto;
+    border-radius: 24px;
+  }
+
+  /* Tablet & Desktop */
+  @media (min-width: map.get(breakpoints.$breakpoints, "md")) {
+    padding: 32px;
+
+    img {
+      align-self: center;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: map.get(breakpoints.$breakpoints, "xl")) {
+    flex-direction: row;
+    align-items: start;
+    column-gap: 32px;
+
+    form {
+      order: 1;
+      flex: 1 1 58%;
+    }
+
+    img {
+      order: 0;
+      align-self: stretch;
+      flex: 0 1 42%;
+    }
+  }
+}

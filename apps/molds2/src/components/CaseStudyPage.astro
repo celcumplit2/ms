@@ -1,0 +1,62 @@
+---
+import SectionLabel from "./SectionLabel.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import type { CaseStudyEntry } from "../data/site";
+
+interface Props {
+  entry: CaseStudyEntry;
+  related: CaseStudyEntry[];
+}
+
+const { entry, related } = Astro.props;
+---
+
+<main class="page-shell page-shell--light">
+  <article class="article-page">
+    <SiteHeader theme="light" />
+    <div class="container article-page__hero">
+      <SectionLabel label={entry.eyebrow} />
+      <h1>{entry.title}</h1>
+      <p>{entry.intro}</p>
+      <div class="article-page__meta">
+        <span>{entry.client}</span>
+        <span>{entry.duration}</span>
+        <span>{entry.outcome}</span>
+      </div>
+      <img src={entry.image ?? "/images/home/services.png"} alt="" loading="lazy" />
+    </div>
+
+    <div class="container article-page__body">
+      <section>
+        <h2>Challenge</h2>
+        <p>{entry.challenge}</p>
+      </section>
+      <section>
+        <h2>Approach</h2>
+        <p>{entry.approach}</p>
+      </section>
+      <section>
+        <h2>Result</h2>
+        <p>{entry.result}</p>
+      </section>
+    </div>
+
+    <div class="container article-page__related">
+      <SectionLabel label="Related case studies" />
+      <div class="article-card-grid">
+        {related.map((item) => (
+          <article class="article-card">
+            <img src={item.image ?? "/images/home/services.png"} alt="" loading="lazy" />
+            <div>
+              <h2>{item.title}</h2>
+              <p>{item.summary}</p>
+              <a href={`/case-studies/${item.slug}`}>Read case study ↗</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </article>
+  <SiteFooter />
+</main>

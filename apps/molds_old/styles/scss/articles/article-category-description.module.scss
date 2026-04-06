@@ -1,0 +1,27 @@
+.category-description {
+  margin-top: 48px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+
+    tr, th, td {
+      border: 1px solid var(--form-input-border-color);
+    }
+
+    th, td {
+      padding: 5px 8px;
+    }
+  }
+
+  code {
+    display: block;
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  ul, ol {
+    width: 100%;
+  }
+}

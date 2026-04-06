@@ -1,0 +1,423 @@
+---
+import Button from "./Button.astro";
+import FaqList from "./FaqList.astro";
+import SectionLabel from "./SectionLabel.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import {
+  articles,
+  benefitTiles,
+  certifications,
+  heroCards,
+  heroPortraits,
+  homeJobs,
+  industryTiles,
+  mainFaqs,
+  processSteps,
+  serviceTiles,
+  testimonialFilters,
+  testimonials,
+} from "../data/site";
+---
+
+<main class="page-shell page-shell--light">
+  <section class="hero hero--home">
+    <SiteHeader theme="light" />
+
+    <div class="container hero__inner hero__inner--home">
+      <div class="hero__portrait-field" aria-hidden="true">
+        {heroPortraits.map((portrait) => (
+          <img
+            class="hero__portrait"
+            src={portrait.src}
+            alt=""
+            style={`top:${portrait.top};left:${portrait.left ?? "auto"};right:${portrait.right ?? "auto"};animation-delay:${portrait.delay};`}
+            loading="lazy"
+          />
+        ))}
+      </div>
+
+      <div class="theme-switch" aria-hidden="true">
+        <span>◔</span>
+        <span>☼</span>
+      </div>
+
+      <div class="hero__copy hero__copy--center">
+        <h1>Find &amp; Hire Top Talents, Ready-Formed Team</h1>
+        <p>
+          Our MoldstudTM is the easiest way to find, onboard, and pay a high-performing remote
+          workforce, from software engineers building your product to specialists evaluating your AI
+          models.
+        </p>
+        <Button href="/hire-us" label="Get 30 min consultation" />
+      </div>
+
+      <div class="talent-strip-wrap">
+        <div class="talent-strip">
+          {heroCards.map((card, index) => (
+            <article class={`talent-chip ${index === 2 ? "talent-chip--featured" : ""}`}>
+              <img src={card.avatar} alt="" loading="lazy" />
+              <div>
+                <p>{card.name}, {card.years}</p>
+                <strong>{card.role}</strong>
+                <ul>
+                  {card.skills.map((skill) => (
+                    <li>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container split-intro">
+      <div class="split-intro__copy">
+        <SectionLabel label="Services" />
+        <h2>Elite sales engineers for exceptional results</h2>
+        <p>
+          Our MoldstudTM is the easiest way to find, onboard, and pay a high-performing remote
+          workforce, from software engineers building your product to specialists evaluating your AI
+          models.
+        </p>
+        <div class="action-row">
+          <Button href="/hire-us" label="I need a product" />
+          <a class="text-link" href="/request-profiles">I need engineers ↗</a>
+        </div>
+      </div>
+
+      <div class="tile-grid tile-grid--services">
+        {serviceTiles.map((tile) => (
+          <article class={`info-tile ${tile.featured ? "info-tile--dark" : ""}`}>
+            <h3>{tile.title}</h3>
+            <p>{tile.copy}</p>
+            <a href={tile.href}>Learn more ↗</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--row">
+        <div>
+          <SectionLabel label="Testimonials" />
+          <h2>Our clients love our developers</h2>
+        </div>
+        <Button href="/case-studies" label="See outcomes" size="sm" />
+      </div>
+
+      <div class="filter-row">
+        {testimonialFilters.map((filter, index) => (
+          <span class={`filter-pill ${index === 0 ? "filter-pill--active" : ""}`}>{filter}</span>
+        ))}
+      </div>
+
+      <div class="quote-grid">
+        {testimonials.map((item) => (
+          <article class="quote-card">
+            <div>
+              <span class="quote-card__label">{item.category}</span>
+              <p class="quote-card__meta">{item.company}</p>
+              <ul class="tag-list">
+                {item.metrics.map((metric) => (
+                  <li>{metric}</li>
+                ))}
+              </ul>
+            </div>
+            <blockquote>{item.quote}</blockquote>
+            <footer>
+              <strong>{item.author}</strong>
+              <span>{item.role}</span>
+            </footer>
+          </article>
+        ))}
+      </div>
+
+      <div class="promo-grid">
+        <article class="promo-panel">
+          <SectionLabel label="Build" tone="light" />
+          <h3>Product Delivery</h3>
+          <p>
+            End-to-end delivery: from discovery and UX/UI to development, launch, and growth
+            iterations.
+          </p>
+          <ul>
+            <li>MVP → Production</li>
+            <li>AI integrations, CRM/ERP, Web/Mobile</li>
+            <li>Clear scope, roadmap, milestones</li>
+          </ul>
+          <div class="action-row">
+            <Button href="/hire-us" label="Get project estimate" size="sm" />
+            <a class="text-link text-link--light" href="/solutions">See process ↗</a>
+          </div>
+        </article>
+
+        <article class="promo-panel">
+          <SectionLabel label="Scale" tone="light" />
+          <h3>Engineering Teams</h3>
+          <p>Vetted specialists and cross-functional squads to strengthen your product velocity.</p>
+          <ul>
+            <li>Fixed roles or squads (FE/BE/QA/DevOps/PM)</li>
+            <li>Fast onboarding &amp; replacement</li>
+            <li>Quality control under Moldstud</li>
+          </ul>
+          <div class="action-row">
+            <Button href="/request-profiles" label="Assemble a team" size="sm" />
+            <a class="text-link text-link--light" href="/hire-us">30 min consultation ↗</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="container">
+      <SectionLabel label="How the things happen" />
+      <h2>Meet our process of working</h2>
+
+      <div class="process-strip">
+        {processSteps.map((step) => (
+          <article class="process-step">
+            <strong>{step.number}</strong>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="split-feature">
+        <div class="split-feature__copy">
+          <h2>Unleash your sales potential with top-tier engineers</h2>
+          <p>
+            Discover how our MoldstudTM simplifies hiring remote experts, from tech innovators to
+            AI specialists.
+          </p>
+        </div>
+        <div class="split-feature__media split-feature__media--video">
+          <img src="/images/home/main-video-cover.webp" alt="Remote team presentation" loading="lazy" />
+          <span class="play-badge">▶</span>
+        </div>
+      </div>
+
+      <div class="promo-grid promo-grid--compact">
+        <article class="promo-panel">
+          <h3>Visibility</h3>
+          <ul>
+            <li>Shared task tracking &amp; sprint boards</li>
+            <li>Access to delivery lead &amp; team</li>
+            <li>Weekly reports and demo cadence</li>
+            <li>Clear ownership and escalation path</li>
+          </ul>
+        </article>
+        <article class="promo-panel">
+          <h3>Engineering Standards</h3>
+          <ul>
+            <li>Code review, QA, release checklists</li>
+            <li>CI/CD, tests, environments</li>
+            <li>Observability and performance budgets</li>
+            <li>Security baseline (NDA, access, hygiene)</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionLabel label="Benefits" />
+      <h2>Why organizations choose Moldstud</h2>
+      <p class="section-copy">
+        We sell outcome and accountability — and back it with real engineers and controlled
+        delivery.
+      </p>
+      <div class="benefit-grid">
+        {benefitTiles.map((item) => (
+          <article class="benefit-tile">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="case-study">
+        <div class="case-study__head">
+          <SectionLabel label="Case studies" />
+          <h2>Success stories written with Moldstud</h2>
+        </div>
+        <div class="case-study__content">
+          <img src="/images/home/services.png" alt="Healthcare case study" loading="lazy" />
+          <div class="case-study__body">
+            <div class="case-study__meta">
+              <div>
+                <span>Industry</span>
+                <strong>CTO of Healthcare Startup</strong>
+              </div>
+              <div>
+                <span>Country</span>
+                <strong>Germany</strong>
+              </div>
+            </div>
+            <p>
+              Spearheaded the creation of the MediCloud platform, a secure and HIPAA-compliant
+              solution for remote healthcare, integrating AI-driven diagnostics and real-time
+              monitoring to improve patient outcomes and data security.
+            </p>
+            <div class="metric-row">
+              <div><strong>+5</strong><span>hrs average response time</span></div>
+              <div><strong>+8</strong><span>hrs daily active users</span></div>
+              <div><strong>+15</strong><span>hrs customer support inquiries</span></div>
+              <div><strong>+10</strong><span>hrs new feature requests</span></div>
+            </div>
+            <Button href="/case-studies/reframing-a-content-heavy-growth-site" label="Read more" variant="ghost" size="sm" />
+          </div>
+        </div>
+      </div>
+
+      <div class="dual-showcase">
+        <div class="dual-showcase__panel dual-showcase__panel--blue">
+          <SectionLabel label="What we can help with" tone="light" />
+          <h3>Expertise (what we build)</h3>
+          <ul class="tag-list">
+            <li>All industries</li>
+            <li>Web</li>
+            <li>Mobile</li>
+            <li>Artificial intelligence</li>
+            <li>Cloud</li>
+          </ul>
+          <ul class="feature-list">
+            <li>Custom Web Apps</li>
+            <li>Application Development</li>
+            <li>Performance Optimization</li>
+          </ul>
+        </div>
+
+        <div class="dual-showcase__panel dual-showcase__panel--soft">
+          <SectionLabel label="Roles" />
+          <h3>Roles (who we provide)</h3>
+          <ul class="tag-list">
+            <li>All roles</li>
+            <li>Back-end</li>
+            <li>Front-end</li>
+            <li>Full-stack</li>
+            <li>QA</li>
+          </ul>
+          <ul class="feature-list">
+            <li>API Engineers</li>
+            <li>Senior Backend Engineer</li>
+            <li>Platform Reliability</li>
+          </ul>
+          <a class="text-link" href="/talents/designers">View talents profiles ↗</a>
+        </div>
+      </div>
+
+      <div class="industry-section">
+        <SectionLabel label="Industries" />
+        <h2>Expert talent across diverse industries</h2>
+        <p class="section-copy">
+          Explore how our MoldstudTM streamlines the process of finding and hiring remote
+          professionals across various sectors, from healthcare to finance.
+        </p>
+        <div class="tile-grid tile-grid--industries">
+          {industryTiles.map((tile) => (
+            <article class="info-tile">
+              <h3>{tile.title}</h3>
+              <p>{tile.copy}</p>
+              <a href={tile.href}>Learn more ↗</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container promo-split">
+      <article class="promo-panel promo-panel--cta">
+        <SectionLabel label="Action right now" tone="light" />
+        <h2>Build and scale remote engineering teams</h2>
+        <p>
+          Get AI-vetted developers and full-service teams perfectly matched to your tech stack and
+          project roadmap. Fast, compliant, and ready to deliver.
+        </p>
+        <Button href="/request-profiles" label="Build my team now" size="sm" />
+      </article>
+
+      <div class="cert-list">
+        <SectionLabel label="Certifications" />
+        <h2>Certifications &amp; Awards</h2>
+        {certifications.map((cert) => (
+          <article class="cert-card">
+            <div class="cert-card__badge">ISO</div>
+            <div>
+              <h3>{cert.title}</h3>
+              <p>{cert.copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="container careers-home">
+      <div class="careers-home__copy">
+        <SectionLabel label="Careers" />
+        <h2>Become a part of our growing team</h2>
+        <p>Vacancies drive growth and trust. Keep this block visible and linked from the first screen.</p>
+        <Button href="/careers/senior-product-designer/apply" label="I'm a developer — apply" size="sm" />
+      </div>
+      <div class="careers-home__list">
+        {homeJobs.map((job) => (
+          <article class="job-mini-card">
+            <h3>{job.title}</h3>
+            <p>{job.copy}</p>
+            <a href={job.href}>Learn more ↗</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container faq-layout">
+      <div class="faq-layout__copy">
+        <SectionLabel label="Frequent questions & answers" />
+        <h2>Still have questions? Find your answers here</h2>
+        <Button href="/hire-us" label="Get 30 min consultation" size="sm" />
+        <div class="toggle-row">
+          <span class="toggle-pill">I'm a talent</span>
+          <span class="toggle-pill toggle-pill--active">I'm a company</span>
+        </div>
+      </div>
+
+      <FaqList items={mainFaqs} />
+    </div>
+
+    <div class="container blog-strip">
+      <div class="section-head">
+        <SectionLabel label="Blog" />
+        <h2>Fresh Ideas From Our Blog</h2>
+        <p class="section-copy">
+          Explore how our MoldstudTM streamlines the process of finding and hiring remote
+          professionals across various sectors, from healthcare to finance.
+        </p>
+      </div>
+
+      <div class="article-preview-grid">
+        {articles.slice(0, 3).map((article) => (
+          <article class="article-preview">
+            <SectionLabel label="Insights" />
+            <h3>{article.title}</h3>
+            <p>{article.summary}</p>
+            <a href={`/articles/${article.slug}`}>Learn more ↗</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SiteFooter />
+</main>

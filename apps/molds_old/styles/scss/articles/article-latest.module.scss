@@ -1,0 +1,31 @@
+@use "../mixins";
+@use "../buttons";
+@use "article-mixins";
+
+.article-latest {
+  @include article-mixins.article-list();
+
+  > header {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px 24px;
+
+    h3 {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      @include buttons.btn;
+    }
+  }
+
+  hgroup {
+    p {
+      @include mixins.subheading;
+    }
+  }
+}

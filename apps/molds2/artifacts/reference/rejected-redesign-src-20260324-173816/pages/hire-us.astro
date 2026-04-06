@@ -1,0 +1,41 @@
+---
+import FormPanel from "../components/FormPanel.astro";
+import MarketingCard from "../components/MarketingCard.astro";
+import PageHero from "../components/PageHero.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { hireUsPage } from "../data";
+import { deliverySteps } from "../data/site-content";
+---
+
+<SiteLayout title="Hire us | Moldstud">
+  <PageHero
+    eyebrow={hireUsPage.eyebrow}
+    title={hireUsPage.title}
+    intro={hireUsPage.intro}
+    image="/images/home/services.png"
+    imageAlt="Hire Moldstud"
+    primary={{ href: "/contacts", label: "Talk to team" }}
+    secondary={{ href: "/request-profiles", label: "Hire talents" }}
+    asideTitle="Hire us page"
+    asideBody="A direct intake route built from the same hero, card, and form primitives."
+  />
+
+  <section class="section">
+    <div class="shell three-up">
+      {deliverySteps.map((item, index) => (
+        <MarketingCard eyebrow={item.step} title={item.title} body={item.body} variant={index === 1 ? "dark" : "light"} />
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <FormPanel
+        eyebrow="Project intake"
+        title="Describe the scope and the decision path gets shorter."
+        body="This route is for concrete engagements, rebuilds, and structured front-end delivery."
+        submitLabel="Request consultation"
+      />
+    </div>
+  </section>
+</SiteLayout>

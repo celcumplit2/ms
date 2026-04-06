@@ -1,0 +1,43 @@
+name: MOLDS_OLD CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/molds_old/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/molds-old-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "apps/molds_old/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/molds-old-ci.yml"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.18.3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.16.0
+          cache: pnpm
+
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run TypeScript checks
+        run: pnpm --dir apps/molds_old check

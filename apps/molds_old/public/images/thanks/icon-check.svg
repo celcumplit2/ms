@@ -1,0 +1,7 @@
+<svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g style="mix-blend-mode:multiply">
+        <rect x="1.5" y="1.5" width="81" height="81" rx="40.5" fill="#ECFDF3"/>
+        <rect x="1.5" y="1.5" width="81" height="81" rx="40.5" stroke="#ABEFC6" stroke-width="3"/>
+        <path d="M54 33L37.5 49.5L30 42" stroke="#17B26A" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+</svg>

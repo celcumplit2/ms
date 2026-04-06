@@ -1,0 +1,28 @@
+.file-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--form-input-border-color);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  padding: 16px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  cursor: pointer;
+
+  &--error {
+    border-color: var(--color-red);
+  }
+
+  span {
+    margin-top: 16px;
+  }
+
+  input {
+    display: none;
+  }
+}

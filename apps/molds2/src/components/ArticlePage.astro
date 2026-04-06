@@ -1,0 +1,65 @@
+---
+import SectionLabel from "./SectionLabel.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import type { ArticleEntry } from "../data/site";
+
+interface Props {
+  entry: ArticleEntry;
+  related: ArticleEntry[];
+}
+
+const { entry, related } = Astro.props;
+---
+
+<main class="page-shell page-shell--light">
+  <article class="article-page">
+    <SiteHeader theme="light" />
+    <div class="container article-page__hero">
+      <SectionLabel label={entry.eyebrow} />
+      <h1>{entry.title}</h1>
+      <p>{entry.intro}</p>
+      <div class="article-page__meta">
+        <span>{entry.author}</span>
+        <span>{entry.publishedAt}</span>
+        <span>{entry.readTime}</span>
+      </div>
+      <img src={entry.image ?? "/images/home/services.png"} alt="" loading="lazy" />
+    </div>
+
+    <div class="container article-page__body">
+      {entry.sections.map((section) => (
+        <section>
+          <h2>{section.title}</h2>
+          <p>{section.body}</p>
+        </section>
+      ))}
+
+      <section>
+        <h2>Takeaways</h2>
+        <ul class="feature-list">
+          {entry.takeaway.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </section>
+    </div>
+
+    <div class="container article-page__related">
+      <SectionLabel label="Related articles" />
+      <div class="article-card-grid">
+        {related.map((item) => (
+          <article class="article-card">
+            <img src={item.image ?? "/images/home/services.png"} alt="" loading="lazy" />
+            <div>
+              <h2>{item.title}</h2>
+              <p>{item.summary}</p>
+              <a href={`/articles/${item.slug}`}>Read article ↗</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </article>
+  <SiteFooter />
+</main>

@@ -1,0 +1,46 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "molds2-site",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-03-24",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "APP_ENV": "production",
+    "ROOT_DOMAIN": "<root-domain>",
+    "SITE_HOST": "www.<root-domain>",
+    "IMAGE_HOST": "img.<root-domain>",
+    "API_HOST": "api.<root-domain>"
+  },
+  "r2_buckets": [
+    {
+      "binding": "MEDIA_BUCKET",
+      "bucket_name": "molds2-media-production",
+      "preview_bucket_name": "molds2-media-preview"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "COMMENTS_DB",
+      "database_name": "molds2-comments-production",
+      "database_id": "<comments-db-id>",
+      "preview_database_id": "<comments-preview-db-id>"
+    }
+  ],
+  "env": {
+    "preview": {
+      "vars": {
+        "APP_ENV": "preview",
+        "ROOT_DOMAIN": "<preview-root-domain>",
+        "SITE_HOST": "preview-www.<preview-root-domain>",
+        "IMAGE_HOST": "preview-img.<preview-root-domain>",
+        "API_HOST": "preview-api.<preview-root-domain>"
+      }
+    }
+  }
+}

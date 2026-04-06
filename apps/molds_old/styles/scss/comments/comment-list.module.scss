@@ -1,0 +1,39 @@
+#comment-list {
+  margin-top: 32px;
+
+  article {
+    border-bottom: 1px solid var(--form-input-border-color);
+    padding: 16px 0;
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      border: none;
+    }
+  }
+
+  header {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 20px;
+
+    strong {
+      font-weight: 500;
+      margin-right: 8px;
+      color: var(--color-heading);
+    }
+  }
+
+  p {
+    border: 1px solid var(--form-input-border-color);
+    border-radius: 0 var(--border-radius) var(--border-radius) var(--border-radius);
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 12px;
+    margin: 0;
+  }
+}

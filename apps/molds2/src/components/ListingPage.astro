@@ -1,0 +1,306 @@
+---
+import Button from "./Button.astro";
+import FaqList from "./FaqList.astro";
+import SectionLabel from "./SectionLabel.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import {
+  benefitTiles,
+  certifications,
+  industryTiles,
+  mainFaqs,
+  serviceTiles,
+  techStack,
+  type DetailEntry,
+} from "../data/site";
+
+interface Props {
+  family: "services" | "industries" | "solutions" | "technologies";
+  title: string;
+  intro: string;
+  theme: "light" | "dark";
+  heroImage?: { src: string; alt: string };
+  cards: DetailEntry[];
+}
+
+const { family, title, intro, theme, heroImage, cards } = Astro.props;
+
+const showBenefits = family === "industries";
+const showServiceIntro = family === "services";
+const showSolutionsGrid = family === "solutions";
+const showTechAccordion = family === "technologies";
+---
+
+<main class={`page-shell page-shell--${theme}`}>
+  <section class={`hero hero--listing hero--${theme}`}>
+    <SiteHeader theme={theme === "dark" ? "dark" : "light"} />
+
+    <div class="container hero__inner hero__inner--listing">
+      <div class="theme-switch" aria-hidden="true">
+        <span>◔</span>
+        <span>☼</span>
+      </div>
+
+      <div class="hero__copy">
+        <h1>{title}</h1>
+        <p>{intro}</p>
+        {(family === "services" || family === "industries" || family === "solutions") && (
+          <div class="action-row">
+            <Button href="/hire-us" label="I need a product" size="sm" />
+            <a class={`text-link ${theme === "dark" ? "text-link--light" : ""}`} href="/request-profiles">
+              I need engineers ↗
+            </a>
+          </div>
+        )}
+      </div>
+
+      {heroImage ? (
+        <div class="hero__image-panels">
+          <div class="hero__image-panel hero__image-panel--wide">
+            <img src={heroImage.src} alt={heroImage.alt} loading="lazy" />
+          </div>
+          <div class="hero__image-panel">
+            <img src={heroImage.src} alt="" loading="lazy" />
+          </div>
+        </div>
+      ) : (
+        <div class="hero__geometry" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </div>
+      )}
+    </div>
+
+    {family === "industries" && (
+      <div class="container listing-hero-grid">
+        {industryTiles.map((tile) => (
+          <article class="listing-dark-card">
+            <h3>{tile.title}</h3>
+            <p>{tile.copy}</p>
+            <a href={tile.href}>Learn more ↗</a>
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
+
+  {showServiceIntro && (
+    <section class="section section--soft">
+      <div class="container split-intro">
+        <div class="split-intro__copy">
+          <SectionLabel label="Services" />
+          <h2>Elite sales engineers for exceptional results</h2>
+          <p>
+            Our MoldstudTM is the easiest way to find, onboard, and pay a high-performing remote
+            workforce, from software engineers building your product to specialists evaluating your
+            AI models.
+          </p>
+          <div class="action-row">
+            <Button href="/hire-us" label="I need a product" />
+            <a class="text-link" href="/request-profiles">I need engineers ↗</a>
+          </div>
+        </div>
+        <div class="tile-grid tile-grid--services">
+          {serviceTiles.map((tile) => (
+            <article class={`info-tile ${tile.featured ? "info-tile--dark" : ""}`}>
+              <h3>{tile.title}</h3>
+              <p>{tile.copy}</p>
+              <a href={tile.href}>Learn more ↗</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {showBenefits && (
+    <section class="section">
+      <div class="container">
+        <SectionLabel label="Benefits" />
+        <h2>Why organizations choose Moldstud</h2>
+        <p class="section-copy">
+          We sell outcome and accountability — and back it with real engineers and controlled
+          delivery.
+        </p>
+        <div class="benefit-grid">
+          {benefitTiles.map((item) => (
+            <article class="benefit-tile">
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {showSolutionsGrid && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <h2>Types of development we provide</h2>
+        </div>
+        <div class="tile-grid tile-grid--three">
+          {cards.map((item) => (
+            <article class="info-tile">
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <a href={`/solutions/${item.slug}`}>Learn more ↗</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {showTechAccordion && (
+    <section class="section">
+      <div class="container intro-accordion">
+        <div class="intro-accordion__copy">
+          <SectionLabel label="Why it matters" />
+          <h2>Why the technology stack matters</h2>
+          <p>
+            Choosing the right technology stack is crucial for building scalable, maintainable, and
+            high-performing software. Moldstud carefully selects technologies that fit each project's
+            unique requirements to maximize efficiency and results.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          {["Performance and speed", "Scalability", "Maintainability", "Developer availability", "Integration capabilities", "Future-proofing"].map((item, index) => (
+            <details class="faq-item" open={index === 0}>
+              <summary>{item}</summary>
+              <p>The right stack ensures your application runs quickly and efficiently, providing a smooth experience for users.</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      {family === "technologies" ? (
+        <>
+          <SectionLabel label="Technologies categories" />
+          <h2>Key technology categories that power our modern development stack</h2>
+          <p class="section-copy">
+            Our technology stack is organized into clear categories, making it easy to understand
+            the tools and frameworks we use to build modern digital products.
+          </p>
+        </>
+      ) : family === "solutions" ? (
+        <div class="split-feature split-feature--soft">
+          <div class="split-feature__copy">
+            <SectionLabel label="What we offer" />
+            <h2>Where Your Investment Turns into Growth</h2>
+            <ul class="feature-list">
+              <li>We provide dedicated project managers who ensure clear communication, timely delivery, and alignment with your strategy goals.</li>
+              <li>Gain access to our network of niche experts, each a leader in their field.</li>
+              <li>Experience transparent communication at every stage of your project.</li>
+              <li>Leverage our expertise in agile methodologies to accelerate product delivery.</li>
+            </ul>
+            <Button href="/hire-us" label="Get 30 min consultation" size="sm" />
+          </div>
+          <div class="split-feature__media">
+            <img src="/images/about-us/about-us.png" alt="Working session" loading="lazy" />
+          </div>
+        </div>
+      ) : (
+        <>
+          <SectionLabel label={family === "industries" ? "How we do it" : "Services"} />
+          <h2>{family === "industries" ? "We only work with the best" : "All the page types you need, under one delivery model"}</h2>
+          <p class="section-copy">
+            Use the library of pages, sections, and delivery patterns to move from static concepts to
+            a real system with less friction.
+          </p>
+        </>
+      )}
+
+      {family !== "solutions" && (
+        <div class={`tile-grid ${family === "technologies" ? "tile-grid--three" : "tile-grid--services"}`}>
+          {(family === "services" ? serviceTiles : cards).map((item: DetailEntry | (typeof serviceTiles)[number]) => (
+            <article class={`info-tile ${family === "technologies" && item.title === cards[2]?.title ? "info-tile--dark" : ""}`}>
+              <h3>{item.title}</h3>
+              <p>{"summary" in item ? item.summary : item.copy}</p>
+              <a href={`/${family}/${"slug" in item ? item.slug : "accessibility-first-product-design"}`}>Learn more ↗</a>
+              {"tags" in item && item.tags.length > 0 && (
+                <ul class="tag-list">
+                  {item.tags.slice(0, 4).map((tag: string) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+              )}
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  {(family === "solutions" || family === "technologies") && (
+    <section class="section">
+      <div class="container">
+        <article class="banner banner--blue">
+          <div>
+            <SectionLabel label="Technologies" tone="light" />
+            <h2>Tech Expertise for Every Project</h2>
+            <p>
+              Learn how MoldstudTM makes it easy to hire remote experts with skills in a variety of
+              technologies, from Javascript to Dockers.
+            </p>
+          </div>
+        </article>
+
+        <div class="tech-grid">
+          {techStack.map((item) => (
+            <div class="tech-grid__item">{item}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container promo-split">
+      <article class="promo-panel promo-panel--cta">
+        <SectionLabel label="Action right now" tone="light" />
+        <h2>Build and scale remote engineering teams</h2>
+        <p>
+          Get AI-vetted developers and full-service teams perfectly matched to your tech stack and
+          project roadmap.
+        </p>
+        <Button href="/request-profiles" label="Build my team now" size="sm" />
+      </article>
+
+      <div class="cert-list">
+        <SectionLabel label="Certifications" />
+        <h2>Certifications &amp; Awards</h2>
+        {certifications.map((cert) => (
+          <article class="cert-card">
+            <div class="cert-card__badge">ISO</div>
+            <div>
+              <h3>{cert.title}</h3>
+              <p>{cert.copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="container faq-layout">
+      <div class="faq-layout__copy">
+        <SectionLabel label="Frequent questions & answers" />
+        <h2>Still have questions? Find your answers here</h2>
+        <Button href="/hire-us" label="Get 30 min consultation" size="sm" />
+        <div class="toggle-row">
+          <span class="toggle-pill">I'm a talent</span>
+          <span class="toggle-pill toggle-pill--active">I'm a company</span>
+        </div>
+      </div>
+      <FaqList items={mainFaqs} />
+    </div>
+  </section>
+
+  <SiteFooter />
+</main>

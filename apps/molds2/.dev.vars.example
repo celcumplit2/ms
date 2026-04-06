@@ -1,0 +1,9 @@
+APP_ENV=development
+ROOT_DOMAIN=<root-domain>
+SITE_HOST=www.<root-domain>
+IMAGE_HOST=img.<root-domain>
+API_HOST=api.<root-domain>
+COMMENTS_DB_ID=<comments-db-id>
+COMMENTS_PREVIEW_DB_ID=<comments-preview-db-id>
+MEDIA_BUCKET_NAME=molds2-media-production
+MEDIA_PREVIEW_BUCKET_NAME=molds2-media-preview

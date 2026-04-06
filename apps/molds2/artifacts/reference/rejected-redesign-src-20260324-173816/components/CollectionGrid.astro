@@ -1,0 +1,29 @@
+---
+import type { ArticleEntry, CareerEntry, CaseStudyEntry, DetailEntry, ProfileEntry } from "../data";
+import MarketingCard from "./MarketingCard.astro";
+
+type GridItem = ArticleEntry | CareerEntry | CaseStudyEntry | DetailEntry | ProfileEntry;
+
+interface Props {
+  items: GridItem[];
+  hrefPrefix: string;
+  darkEvery?: number;
+}
+
+const { items, hrefPrefix, darkEvery = 2 } = Astro.props;
+---
+
+<div class="collection-grid">
+  {items.map((item, index) => (
+    <MarketingCard
+      eyebrow={item.eyebrow}
+      title={item.title}
+      body={item.summary}
+      href={`${hrefPrefix}/${item.slug}`}
+      tags={item.tags}
+      stat={item.stat}
+      image={item.image}
+      variant={index % darkEvery === darkEvery - 1 ? "dark" : "light"}
+    />
+  ))}
+</div>

@@ -1,0 +1,28 @@
+---
+import CollectionGrid from "../../components/CollectionGrid.astro";
+import PageHero from "../../components/PageHero.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { caseStudies } from "../../data";
+---
+
+<SiteLayout title="Case studies | Moldstud">
+  <PageHero
+    eyebrow="Case studies"
+    title="Proof routes designed inside the same layout system."
+    intro="Case study pages carry the same clipped CTAs, mixed surfaces, and modular section logic as the rest of the redesign."
+    image="/images/home/values.png"
+    imageAlt="Case studies"
+    primary={{ href: "/hire-us", label: "Start project" }}
+    secondary={{ href: "/services", label: "Explore services" }}
+    asideTitle="Case studies list"
+    asideBody="Proof sections are treated as route families, not single showcase pages."
+  />
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Case studies" title="Proof blocks remain close to the same card language as services and industries." />
+      <CollectionGrid items={caseStudies} hrefPrefix="/case-studies" darkEvery={2} />
+    </div>
+  </section>
+</SiteLayout>

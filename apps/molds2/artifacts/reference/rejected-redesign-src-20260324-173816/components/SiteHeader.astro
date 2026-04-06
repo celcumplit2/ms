@@ -1,0 +1,24 @@
+---
+import { navigation } from "../data";
+---
+
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="site-brand" href="/">
+      <img src="/images/logo.svg" alt="Moldstud" />
+      <span>Moldstud</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      {navigation.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="button button--green button--sm" href="/hire-us">Get 30 min project</a>
+      <a class="button button--blue button--sm" href="/request-profiles">Hire talents</a>
+      <a class="site-header__contact" href="/contacts">Contact</a>
+    </div>
+  </div>
+</header>

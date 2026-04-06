@@ -1,0 +1,88 @@
+@use "mixins";
+@use "buttons";
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("/images/home/bg.svg") no-repeat center center;
+  min-height: 100%;
+
+  > span, h1, > p {
+    text-align: center;
+  }
+
+  > span:first-of-type {
+    --bg-tag-color: var(--bg-tag-blue);
+    @include mixins.label;
+    margin: 0 0 16px;
+    background-color: var(--bg-body);
+  }
+
+  > p a {
+    @include buttons.btn;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: block;
+    list-style: none;
+
+    li {
+      border-top: 1px solid var(--button-secondary-border-color);
+      border-bottom: 1px solid var(--button-secondary-border-color);
+      padding: 24px 0;
+      margin: 0;
+
+      &:first-of-type {
+        border-bottom: none;
+      }
+    }
+
+    a {
+      display: flex;
+      column-gap: 24px;
+      align-items: start;
+      color: var(--color-body);
+    }
+
+    span {
+      display: flex;
+      flex-direction: column;
+    }
+
+    strong {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 600;
+      color: var(--color-heading);
+    }
+  }
+
+  dl {
+    border-top: 1px solid var(--button-secondary-border-color);
+    border-bottom: 1px solid var(--button-secondary-border-color);
+    padding: 24px 0;
+    width: 100%;
+    margin: 0;
+
+    &:first-of-type {
+      border-bottom: none;
+    }
+
+    dt {
+      display: flex;
+      align-items: center;
+      column-gap: 24px;
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 600;
+    }
+
+    dd {
+      padding-left: 24px;
+    }
+  }
+}

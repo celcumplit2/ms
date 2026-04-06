@@ -1,0 +1,92 @@
+---
+import { talentProfiles } from "../data/site";
+
+interface Props {
+  mode: "request-profiles" | "talents-designers" | "career-apply";
+  title: string;
+  intro: string;
+}
+
+const { mode, title, intro } = Astro.props;
+const largeGrid = mode !== "career-apply";
+---
+
+<main class="market-shell">
+  <header class="market-header">
+    <div class="market-header__top">Toptal launches HireGlobal ⚡ The most competitively priced global workforce payroll platform.</div>
+    <div class="market-header__nav">
+      <img src="/images/logo.svg" alt="Moldstud" width="102" height="32" />
+      <nav>
+        <a href="/request-profiles">Hire Talent</a>
+        <a href="/solutions">Consulting &amp; Services</a>
+        <a href="/articles">Blog</a>
+        <a href="/about-us">About Us</a>
+      </nav>
+      <div class="market-header__actions">
+        <a href="/request-profiles">Apply as a Talent</a>
+        <a class="market-button" href="/hire-us">Hire Top Talent</a>
+        <a href="/contacts">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="market-hero">
+    <div class="market-container">
+      <div class="market-hero__copy">
+        <a class="market-back" href="/">←</a>
+        <h1>{title}</h1>
+        <p>{intro}</p>
+      </div>
+
+      {largeGrid ? (
+        <>
+          <div class="market-filter-row">
+            <label>Budget range<select><option>400k - $ 500k</option></select></label>
+            <label>Investment objective<select><option>Cash Flow</option></select></label>
+            <label>Bedrooms, bathrooms &amp; car parks<select><option>Any, 1+, 2+</option></select></label>
+            <label>Land size<select><option>100 m² - 700m²</option></select></label>
+            <label>States<select><option>All States</option></select></label>
+            <button type="button" class="market-clear">✕ Clear filter</button>
+          </div>
+
+          <div class="market-profile-grid">
+            {Array.from({ length: 12 }).map((_, index) => {
+              const profile = talentProfiles[index % talentProfiles.length];
+              return (
+                <article class="market-profile-card">
+                  <div class="market-profile-card__head">
+                    <img src={profile.avatar} alt="" loading="lazy" />
+                    <div>
+                      <strong>{profile.name}</strong>
+                      <p>{profile.role}</p>
+                      <span>{profile.experience}</span>
+                    </div>
+                  </div>
+                  <p class="market-profile-card__label">Skills</p>
+                  <ul class="tag-list">
+                    {profile.skills.map((skill) => <li>{skill}</li>)}
+                  </ul>
+                </article>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <div class="market-apply-grid">
+          <div class="market-step-list">
+            {["Less than 10", "11 - 50", "51 - 200", "201 - 1000", "1001 - 5000", "More than 5000"].map((option, index) => (
+              <button class={`market-step ${index === 1 ? "market-step--active" : ""}`} type="button">{option}<span>→</span></button>
+            ))}
+          </div>
+          <form class="filter-panel">
+            <input placeholder="Full name" />
+            <input placeholder="Work email" />
+            <input placeholder="Phone number (Optional)" />
+            <button class="market-button market-button--full" type="button">Match with the best talent in 48hrs</button>
+            <span class="market-form-link">Are you a talent?</span>
+          </form>
+        </div>
+      )}
+    </div>
+  </section>
+</main>

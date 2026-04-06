@@ -1,0 +1,40 @@
+@use "sass:map";
+@use "breakpoints";
+@use "mixins";
+
+.heading {
+  display: grid;
+  gap: 18px 28px;
+  margin-bottom: var(--section-space-tight);
+
+  p:first-child {
+    @include mixins.subheading;
+    margin: 0;
+  }
+
+  h1,
+  p:last-child {
+    margin: 0;
+  }
+}
+
+@media (min-width: map.get(breakpoints.$breakpoints, "lg")) {
+  .heading {
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+    align-items: start;
+
+    p:first-child {
+      grid-column: 1 / -1;
+    }
+
+    h1 {
+      max-width: 12ch;
+    }
+
+    p:last-child {
+      max-width: 34ch;
+      justify-self: end;
+      padding-top: 12px;
+    }
+  }
+}

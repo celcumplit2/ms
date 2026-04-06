@@ -1,0 +1,22 @@
+.badge {
+  display: inline-block;
+  background-color: var(--badge-bg-gray);
+  color: var(--badge-color-gray);
+  border: 1px solid var(--badge-border-color-gray);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 24px;
+}
+
+.badge--small {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.badge--primary {
+  background-color: var(--badge-bg-blue);
+  color: var(--badge-color-blue);
+  border-color: var(--badge-border-color-blue);
+}

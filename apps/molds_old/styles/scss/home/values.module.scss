@@ -1,0 +1,82 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../mixins";
+
+.values {
+  display: flex;
+  flex-direction: column;
+
+  hgroup p:first-child {
+    @include mixins.subheading;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 8px;
+  }
+
+  input {
+    display: none;
+  }
+
+  div p {
+    padding-left: 64px;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 12px;
+  }
+
+  input:not(:checked) + p {
+    --line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--line-clamp);
+    line-clamp: var(--line-clamp);
+    -webkit-box-orient: vertical;
+  }
+
+  label {
+    display: flex;
+    gap: 8px;
+    color: var(--color-subheading);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    margin: 0 0 32px 64px;
+    cursor: pointer;
+  }
+
+  input:checked + p + label {
+    img {
+      transform: rotate(180deg);
+    }
+  }
+
+  > img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--img-border-radius);
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'lg')) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 64px;
+
+    hgroup {
+      width: 100%;
+    }
+
+    div {
+      flex: 1;
+    }
+  }
+}

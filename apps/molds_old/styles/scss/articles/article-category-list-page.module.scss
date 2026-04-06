@@ -1,0 +1,18 @@
+@use "article-mixins";
+
+.category {
+  margin-bottom: var(--grid-gap-y);
+  @include article-mixins.article-list;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  > header {
+    @include article-mixins.article-list-header;
+  }
+}
+
+.pagination {
+  margin-top: var(--grid-gap-y);
+}

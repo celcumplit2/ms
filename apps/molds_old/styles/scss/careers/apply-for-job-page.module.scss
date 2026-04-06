@@ -1,0 +1,18 @@
+@use "../mixins";
+
+.heading {
+  text-align: center;
+  max-width: 768px;
+  margin: 0 auto;
+
+  p:first-child {
+    @include mixins.subheading;
+  }
+}
+
+// TODO: Move this to ApplyForJobForm styles
+.success {
+  color: var(--color-green);
+  text-align: center;
+  margin-top: 64px;
+}

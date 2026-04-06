@@ -1,0 +1,40 @@
+---
+import Button from "./Button.astro";
+import SectionLabel from "./SectionLabel.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import type { ProfileEntry } from "../data/site";
+
+interface Props {
+  entry: ProfileEntry;
+}
+
+const { entry } = Astro.props;
+---
+
+<main class="page-shell page-shell--light">
+  <section class="content-hero">
+    <SiteHeader theme="light" />
+    <div class="container profile-page">
+      <img class="profile-page__avatar" src={entry.image ?? "/images/about-us/about-us.png"} alt="" loading="lazy" />
+      <div>
+        <SectionLabel label={entry.eyebrow} />
+        <h1>{entry.title}</h1>
+        <p>{entry.summary}</p>
+        <div class="article-page__meta">
+          <span>{entry.role}</span>
+          <span>{entry.location}</span>
+          <span>{entry.stat}</span>
+        </div>
+        <ul class="tag-list">
+          {entry.skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+        <ul class="feature-list">
+          {entry.highlights.map((highlight) => <li>{highlight}</li>)}
+        </ul>
+        <Button href="/request-profiles" label="Request more profiles" />
+      </div>
+    </div>
+  </section>
+  <SiteFooter />
+</main>

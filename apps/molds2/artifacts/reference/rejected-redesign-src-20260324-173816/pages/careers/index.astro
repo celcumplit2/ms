@@ -1,0 +1,32 @@
+---
+import CollectionGrid from "../../components/CollectionGrid.astro";
+import FaqSection from "../../components/FaqSection.astro";
+import PageHero from "../../components/PageHero.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { careers } from "../../data";
+import { footerFaq } from "../../data/site-content";
+---
+
+<SiteLayout title="Careers | Moldstud">
+  <PageHero
+    eyebrow="Careers"
+    title="Open roles in the same system that powers the client-facing site."
+    intro="The careers family keeps the same clipped-button language, dense section rhythm, and mixed card surfaces from the Figma references."
+    image="/images/careers/careers.png"
+    imageAlt="Careers"
+    primary={{ href: "/request-profiles", label: "Hire talents" }}
+    secondary={{ href: "/contacts", label: "Contact us" }}
+    asideTitle="Careers page"
+    asideBody="Role cards, proof blocks, and application routes all belong to the same shared UI library."
+  />
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Open roles" title="Career cards follow the same visual language as services and profiles." />
+      <CollectionGrid items={careers} hrefPrefix="/careers" darkEvery={2} />
+    </div>
+  </section>
+
+  <FaqSection items={footerFaq} />
+</SiteLayout>

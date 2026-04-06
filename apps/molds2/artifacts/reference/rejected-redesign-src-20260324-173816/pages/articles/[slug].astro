@@ -1,0 +1,19 @@
+---
+import ArticlePage from "../../components/ArticlePage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { articles } from "../../data";
+
+export function getStaticPaths() {
+  return articles.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const related = articles.filter((item) => item.slug !== entry.slug).slice(0, 2);
+---
+
+<SiteLayout title={`${entry.title} | Moldstud`}>
+  <ArticlePage entry={entry} related={related} />
+</SiteLayout>

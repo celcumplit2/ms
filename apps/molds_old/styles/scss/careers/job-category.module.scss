@@ -1,0 +1,58 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../buttons";
+
+.category {
+  --job-grid-gap-y: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--job-grid-gap-y);
+
+  h2 {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+
+    strong {
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
+
+  div:first-child {
+    p {
+      margin-bottom: 16px;
+    }
+
+    p:last-of-type {
+      border-top: 1px solid var(--color-footer-delimiter);
+      padding-top: 12px;
+    }
+
+    a {
+      @include buttons.btn;
+      display: inline-block;
+    }
+  }
+
+  div:last-child {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--job-grid-gap-y);
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, "lg")) {
+    --job-grid-gap-y: 24px;
+    flex-direction: row;
+    column-gap: 64px;
+
+    div:first-child {
+      flex: 0 1 520px;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+---
+import type { ActionLink } from "../data";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  body: string;
+  primary?: ActionLink;
+  secondary?: ActionLink;
+}
+
+const { eyebrow, title, body, primary, secondary } = Astro.props;
+---
+
+<section class="section">
+  <div class="shell">
+    <div class="callout-band">
+      <div>
+        <p class="eyebrow eyebrow--inverse">{eyebrow}</p>
+        <h2>{title}</h2>
+        <p>{body}</p>
+      </div>
+      <div class="callout-band__actions">
+        {primary && <a class="button button--green" href={primary.href}>{primary.label}</a>}
+        {secondary && <a class="button button--blue" href={secondary.href}>{secondary.label}</a>}
+      </div>
+    </div>
+  </div>
+</section>

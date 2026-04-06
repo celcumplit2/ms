@@ -1,0 +1,57 @@
+---
+import PageHero from "../../components/PageHero.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { profiles } from "../../data";
+
+export function getStaticPaths() {
+  return profiles.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<SiteLayout title={`${entry.title} | Moldstud`}>
+  <PageHero
+    eyebrow={entry.eyebrow}
+    title={entry.title}
+    intro={entry.summary}
+    metrics={[
+      { value: entry.role, label: "Role" },
+      { value: entry.location, label: "Location" },
+      { value: entry.stat || "Profile", label: "Profile type" },
+    ]}
+    image={entry.image}
+    imageAlt={entry.title}
+    primary={{ href: "/request-profiles", label: "Request profiles" }}
+    secondary={{ href: "/contacts", label: "Talk to team" }}
+    asideTitle="Person page"
+    asideBody="Profile routes stay visibly connected to the same card and detail language as the rest of the site."
+  />
+
+  <section class="section">
+    <div class="shell three-up">
+      <div class="detail-block">
+        <p class="eyebrow">Skills</p>
+        <ul class="detail-checks">
+          {entry.skills.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="detail-sidebar__panel">
+        <p class="eyebrow">Highlights</p>
+        <ul class="detail-checks">
+          {entry.highlights.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="detail-sidebar__quote">
+        <p>{entry.role}</p>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

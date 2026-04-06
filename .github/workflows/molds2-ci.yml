@@ -1,0 +1,46 @@
+name: MOLDS2 CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/molds2/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/molds2-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "apps/molds2/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/molds2-ci.yml"
+
+jobs:
+  check-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.18.3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.12.0
+          cache: pnpm
+
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Astro checks
+        run: pnpm --dir apps/molds2 check
+
+      - name: Build MOLDS2
+        run: pnpm --dir apps/molds2 build

@@ -1,0 +1,70 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../buttons";
+
+@mixin article-list-header {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px 5px;
+
+  h2 {
+    margin: 0;
+
+    a {
+      color: inherit;
+
+      @media (max-width: map.get(breakpoints.$breakpoints, 'sm')) {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+      }
+    }
+  }
+
+  > a {
+    @include buttons.btn-secondary;
+  }
+}
+
+@mixin article-list($showThree: false) {
+  display: flex;
+  row-gap: var(--grid-gap-y-xl);
+
+  /* Mobile Styles */
+  @media (max-width: map.get(breakpoints.$breakpoints, 'sm')) {
+    flex-direction: column;
+  }
+
+  /* Desktop & Tablet Styles */
+  @media (width > map.get(breakpoints.$breakpoints, 'sm')) {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    column-gap: var(--grid-gap-x);
+  }
+
+  /* Tablet Styles */
+  @media (width > map.get(breakpoints.$breakpoints, 'sm')) and (max-width: map.get(breakpoints.$breakpoints, 'xl')) {
+    .article-card {
+      //width: 49%;
+      flex: 0 1 calc((100% - var(--grid-gap-x)) / 2);
+    }
+  }
+
+  /* Desktop Styles */
+  @media (min-width: map.get(breakpoints.$breakpoints, 'xl')) {
+    gap: var(--grid-gap-y-xl) var(--grid-gap-x-xl);
+
+    .article-card {
+      @if $showThree {
+        //width: 32%;
+        flex: 0 1 calc((100% - var(--grid-gap-x-xl) * 2) / 3);
+      } @else {
+        //width: 23.5%;
+        flex: 0 1 calc((100% - var(--grid-gap-x-xl) * 3) / 4);
+      }
+    }
+  }
+}

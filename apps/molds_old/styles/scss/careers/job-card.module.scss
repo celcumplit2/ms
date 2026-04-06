@@ -1,0 +1,93 @@
+@use "sass:map";
+@use "../breakpoints";
+@use "../mixins";
+
+.job-card {
+  padding: 24px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-footer-delimiter);
+  border-radius: var(--border-radius);
+
+  header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin-bottom: 16px;
+
+    > a {
+      @include mixins.read-more;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+    }
+  }
+
+  hgroup {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 8px;
+    flex: 1;
+
+    h3 {
+      width: 100%;
+      margin-bottom: 0;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    a {
+      color: var(--color-heading);
+    }
+
+    p {
+      --bg-tag-color: var(--bg-tag-red);
+      @include mixins.label;
+      margin: 0;
+
+      &:first-of-type {
+        &:before {
+          --bg-tag-color: var(--bg-tag-blue);
+        }
+      }
+    }
+  }
+
+  > p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  footer {
+    display: flex;
+    column-gap: 20px;
+
+    p {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      margin: 0;
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, 'lg')) {
+    header {
+      flex-direction: row;
+      justify-content: space-between;
+
+      > a {
+        order: 1;
+      }
+
+      hgroup {
+        order: 0;
+
+        h3 {
+          width: auto;
+        }
+      }
+    }
+  }
+}

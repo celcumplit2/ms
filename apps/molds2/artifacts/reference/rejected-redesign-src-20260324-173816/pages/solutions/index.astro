@@ -1,0 +1,18 @@
+---
+import ListingPage from "../../components/ListingPage.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { homeFaqs } from "../../data/site-content";
+import { solutions } from "../../data";
+---
+
+<SiteLayout title="Solutions | Moldstud">
+  <ListingPage
+    eyebrow="Solutions"
+    title="Solution routes explain the operating model behind the redesign."
+    intro="These pages keep the same light shell and reuse the section order from the Figma list-page family."
+    items={solutions}
+    hrefPrefix="/solutions"
+    faqItems={homeFaqs}
+    image="/images/about-us/plan.png"
+  />
+</SiteLayout>

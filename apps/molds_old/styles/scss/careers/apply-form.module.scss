@@ -1,0 +1,18 @@
+@use "../mixins";
+
+#apply-form {
+  max-width: 480px;
+  margin: 0 auto;
+
+  hgroup {
+    text-align: center;
+
+    p:first-child {
+      @include mixins.subheading;
+    }
+  }
+
+  > p {
+    text-align: center;
+  }
+}

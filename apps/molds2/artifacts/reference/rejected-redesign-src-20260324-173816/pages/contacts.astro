@@ -1,0 +1,40 @@
+---
+import FormPanel from "../components/FormPanel.astro";
+import MarketingCard from "../components/MarketingCard.astro";
+import PageHero from "../components/PageHero.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { contactPage } from "../data";
+---
+
+<SiteLayout title="Contacts | Moldstud">
+  <PageHero
+    eyebrow={contactPage.eyebrow}
+    title={contactPage.title}
+    intro={contactPage.intro}
+    image="/images/forms/schedule-a-call.png"
+    imageAlt="Contact Moldstud"
+    primary={{ href: "/hire-us", label: "Project intake" }}
+    secondary={{ href: "/request-profiles", label: "Hire talents" }}
+    asideTitle="Contact route"
+    asideBody="The visual system keeps business routes compact and visibly connected to the main site language."
+  />
+
+  <section class="section">
+    <div class="shell three-up">
+      {contactPage.offices.map((item, index) => (
+        <MarketingCard eyebrow="Office" title={item} body="Structured contact blocks replace loose text-heavy contact pages." variant={index === 1 ? "dark" : "light"} />
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <FormPanel
+        eyebrow="Contact form"
+        title="Share project scope, blockers, or delivery context."
+        body="Forms remain static in this phase. The current task is layout fidelity and route coverage."
+        submitLabel="Send request"
+      />
+    </div>
+  </section>
+</SiteLayout>

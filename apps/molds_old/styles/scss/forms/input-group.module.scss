@@ -1,0 +1,38 @@
+.input-group {
+  display: flex;
+  align-items: start;
+
+  input {
+    order: 1;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+
+    &:focus + span {
+      border-color: var(--color-primary);
+      outline: var(--color-primary) solid 1px;
+    }
+  }
+
+  span {
+    order: 0;
+    border-top: 1px solid var(--form-input-border-color);
+    border-bottom: 1px solid var(--form-input-border-color);
+    border-left: 1px solid var(--form-input-border-color);
+    border-radius: var(--form-input-border-radius) 0 0 var(--form-input-border-radius);
+    font-size: 16px;
+    line-height: 24px;
+    padding: 10px 14px;
+    box-sizing: border-box;
+
+    img {
+      display: block;
+    }
+  }
+
+  & + p {
+    color: var(--color-red);
+    font-size: 14px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}

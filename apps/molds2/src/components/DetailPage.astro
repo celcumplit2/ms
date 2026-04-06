@@ -1,0 +1,226 @@
+---
+import Button from "./Button.astro";
+import FaqList from "./FaqList.astro";
+import SectionLabel from "./SectionLabel.astro";
+import SiteFooter from "./SiteFooter.astro";
+import SiteHeader from "./SiteHeader.astro";
+import {
+  benefitTiles,
+  heroCards,
+  industryTiles,
+  mainFaqs,
+  techStack,
+  type DetailEntry,
+} from "../data/site";
+
+interface Props {
+  family: "services" | "industries" | "solutions" | "technologies";
+  entry: DetailEntry;
+  heroImage?: { src: string; alt: string };
+}
+
+const { family, entry, heroImage } = Astro.props;
+
+const accordionTitles =
+  family === "solutions"
+    ? [
+        "Seamless integration into your team",
+        "Collaboration with ux/ui designers",
+        "Building scalable user interfaces",
+        "Performance optimization",
+        "API and backend collaboration",
+        "UI consistency and quality",
+      ]
+    : entry.sections.map((section) => section.title);
+---
+
+<main class="page-shell page-shell--dark">
+  <section class="hero hero--detail hero--dark">
+    <SiteHeader theme="dark" />
+    <div class="container hero__inner hero__inner--detail">
+      <div class="theme-switch" aria-hidden="true">
+        <span>◔</span>
+        <span>☼</span>
+      </div>
+      <div class="hero__copy">
+        <h1>{entry.title}</h1>
+        <p>{entry.intro}</p>
+        <div class="action-row">
+          <Button href="/hire-us" label="I need a product" size="sm" />
+          <a class="text-link text-link--light" href="/request-profiles">I need engineers ↗</a>
+        </div>
+
+        <div class="metric-strip metric-strip--dark">
+          {entry.metrics.slice(0, 4).map((metric) => (
+            <div>
+              <span>{metric.label}</span>
+              <strong>{metric.value}</strong>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {heroImage && (
+        <div class="hero__image-panels">
+          <div class="hero__image-panel hero__image-panel--wide">
+            <img src={heroImage.src} alt={heroImage.alt} loading="lazy" />
+          </div>
+          <div class="hero__image-panel">
+            <img src={heroImage.src} alt="" loading="lazy" />
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container intro-accordion">
+      <div class="intro-accordion__copy">
+        <SectionLabel label={family === "services" ? "Benefits" : family === "solutions" ? "Expertise" : "Why it matters"} />
+        <h2>
+          {family === "services" && "Why organizations choose Moldstud"}
+          {family === "industries" && "Why organizations choose Moldstud"}
+          {family === "solutions" && `What ${entry.title.toLowerCase()} means at MoldstudTM`}
+          {family === "technologies" && `Why ${entry.title.split(" ")[0]} is the right choice for modern applications`}
+        </h2>
+        <p>{entry.sections[0]?.body ?? entry.summary}</p>
+      </div>
+
+      {family === "services" || family === "industries" || family === "technologies" ? (
+        <div class="benefit-grid">
+          {benefitTiles.slice(0, family === "technologies" ? 9 : 6).map((item) => (
+            <article class="benefit-tile">
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="faq-list">
+          {accordionTitles.map((title, index) => (
+            <details class="faq-item" open={index === 0}>
+              <summary>{title}</summary>
+              <p>{entry.sections[index % entry.sections.length]?.body ?? entry.summary}</p>
+            </details>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container case-study">
+      <div class="case-study__head">
+        <SectionLabel label="Case studies" />
+        <h2>Success stories written with Moldstud</h2>
+      </div>
+      <div class="case-study__content">
+        <img src="/images/home/services.png" alt="Healthcare case study" loading="lazy" />
+        <div class="case-study__body">
+          <div class="case-study__meta">
+            <div>
+              <span>Industry</span>
+              <strong>CTO of Healthcare Startup</strong>
+            </div>
+            <div>
+              <span>Country</span>
+              <strong>Germany</strong>
+            </div>
+          </div>
+          <p>
+            Spearheaded the creation of the MediCloud platform, a secure and HIPAA-compliant
+            solution for remote healthcare, integrating AI-driven diagnostics and real-time
+            monitoring to greatly improve patient outcomes and data security.
+          </p>
+          <div class="metric-row">
+            <div><strong>+5</strong><span>hrs average response time</span></div>
+            <div><strong>+8</strong><span>hrs daily active users</span></div>
+            <div><strong>+15</strong><span>hrs customer support inquiries</span></div>
+            <div><strong>+10</strong><span>hrs new feature requests</span></div>
+          </div>
+          <Button href="/case-studies/reframing-a-content-heavy-growth-site" label="Read more" variant="ghost" size="sm" />
+        </div>
+      </div>
+
+      <article class="banner banner--blue">
+        <div>
+          <SectionLabel label="Technologies" tone="light" />
+          <h2>Tech Expertise for Every Project</h2>
+          <p>
+            Learn how MoldstudTM makes it easy to hire remote experts with skills in a variety of
+            technologies, from Javascript to Dockers.
+          </p>
+        </div>
+      </article>
+
+      <div class="tech-grid">
+        {techStack.map((item) => (
+          <div class="tech-grid__item">{item}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionLabel label="Profiles" />
+      <h2>Top 5% Figma designers ready to start</h2>
+      <div class="talent-market-grid">
+        {Array.from({ length: 18 }).map((_, index) => {
+          const card = heroCards[index % heroCards.length];
+          return (
+            <article class={`talent-market-card ${index === 3 ? "talent-market-card--featured" : ""}`}>
+              <img src={card.avatar} alt="" loading="lazy" />
+              <div>
+                <p>{card.name}, {card.years}</p>
+                <strong>{card.role}</strong>
+                <ul class="tag-list">
+                  {card.skills.map((skill) => (
+                    <li>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container industry-section">
+      <SectionLabel label="Industries" />
+      <h2>Expert talent across diverse industries</h2>
+      <p class="section-copy">
+        Explore how our MoldstudTM streamlines the process of finding and hiring remote
+        professionals across various sectors, from healthcare to finance.
+      </p>
+      <div class="tile-grid tile-grid--industries">
+        {industryTiles.map((tile) => (
+          <article class="info-tile">
+            <h3>{tile.title}</h3>
+            <p>{tile.copy}</p>
+            <a href={tile.href}>Learn more ↗</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container faq-layout">
+      <div class="faq-layout__copy">
+        <SectionLabel label="Frequent questions & answers" />
+        <h2>Still have questions? Find your answers here</h2>
+        <Button href="/hire-us" label="Get 30 min consultation" size="sm" />
+        <div class="toggle-row">
+          <span class="toggle-pill">I'm a talent</span>
+          <span class="toggle-pill toggle-pill--active">I'm a company</span>
+        </div>
+      </div>
+      <FaqList items={entry.faqs.length ? entry.faqs : mainFaqs} />
+    </div>
+  </section>
+
+  <SiteFooter />
+</main>

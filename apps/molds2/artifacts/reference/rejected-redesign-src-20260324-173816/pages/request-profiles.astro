@@ -1,0 +1,40 @@
+---
+import CollectionGrid from "../components/CollectionGrid.astro";
+import FormPanel from "../components/FormPanel.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { profiles, requestProfilesPage } from "../data";
+---
+
+<SiteLayout title="Request profiles | Moldstud">
+  <PageHero
+    eyebrow={requestProfilesPage.eyebrow}
+    title={requestProfilesPage.title}
+    intro={requestProfilesPage.intro}
+    image="/images/home/expertise.png"
+    imageAlt="Request candidate profiles"
+    primary={{ href: "/contacts", label: "Talk to team" }}
+    secondary={{ href: "/hire-us", label: "Project intake" }}
+    asideTitle="Request profiles"
+    asideBody="Profile presentation follows the same dark-light card system as services and careers."
+  />
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Profiles" title="Use demo profiles now, replace them with real candidate data later." />
+      <CollectionGrid items={profiles} hrefPrefix="/profiles" darkEvery={2} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <FormPanel
+        eyebrow="Role request"
+        title="Share the role, timezone, and collaboration model."
+        body="The current route is wired for design review. Real recruiting and CRM logic can attach later."
+        submitLabel="Request profiles"
+      />
+    </div>
+  </section>
+</SiteLayout>

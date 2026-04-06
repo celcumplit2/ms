@@ -1,0 +1,56 @@
+---
+import PageHero from "../../components/PageHero.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { caseStudies } from "../../data";
+
+export function getStaticPaths() {
+  return caseStudies.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<SiteLayout title={`${entry.title} | Moldstud`}>
+  <PageHero
+    eyebrow={entry.eyebrow}
+    title={entry.title}
+    intro={entry.intro}
+    metrics={[
+      { value: entry.client, label: "Client" },
+      { value: entry.outcome, label: "Outcome" },
+      { value: entry.duration, label: "Duration" },
+    ]}
+    image={entry.image}
+    imageAlt={entry.title}
+    primary={{ href: "/hire-us", label: "Start project" }}
+    secondary={{ href: "/case-studies", label: "All case studies" }}
+    asideTitle="Case study page"
+    asideBody={entry.summary}
+  />
+
+  <section class="section">
+    <div class="shell three-up">
+      <div class="detail-block">
+        <p class="eyebrow">Challenge</p>
+        <p>{entry.challenge}</p>
+      </div>
+      <div class="detail-block">
+        <p class="eyebrow">Approach</p>
+        <p>{entry.approach}</p>
+      </div>
+      <div class="detail-sidebar__quote">
+        <p>{entry.result}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="Result" title={entry.outcome} body={entry.result} />
+    </div>
+  </section>
+</SiteLayout>

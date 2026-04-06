@@ -1,24 +1,21 @@
 {
-  "name": "molds2",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "ms",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.18.3",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.12.0",
+    "pnpm": ">=10"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "check": "astro check",
-    "sync:moldstud": "node scripts/mirror-moldstud.mjs",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^6.0.7"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.8",
-    "cheerio": "^1.2.0",
-    "typescript": "^5.9.3"
+    "dev:molds2": "pnpm --dir apps/molds2 dev",
+    "build:molds2": "pnpm --dir apps/molds2 build",
+    "check:molds2": "pnpm --dir apps/molds2 check",
+    "dev:molds_old": "pnpm --dir apps/molds_old dev",
+    "build:molds_old": "pnpm --dir apps/molds_old build",
+    "check:molds_old": "pnpm --dir apps/molds_old check",
+    "check": "pnpm run check:molds2 && pnpm run check:molds_old",
+    "rewritegen:import-pages": "pnpm --dir apps/molds_old run rewritegen:import-pages",
+    "rewritegen:import-payload": "pnpm --dir apps/molds_old run rewritegen:import-payload"
   }
 }

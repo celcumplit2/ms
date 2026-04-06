@@ -1,0 +1,32 @@
+---
+import type { FaqItem } from "../data";
+import SectionHeading from "./SectionHeading.astro";
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  body?: string;
+  items: FaqItem[];
+}
+
+const {
+  eyebrow = "FAQ",
+  title = "Questions that normally appear before approval, rollout, and content replacement.",
+  body,
+  items,
+} = Astro.props;
+---
+
+<section class="section section--faq">
+  <div class="shell">
+    <SectionHeading eyebrow={eyebrow} title={title} body={body} />
+    <div class="faq-grid">
+      {items.map((item) => (
+        <details class="faq-item">
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

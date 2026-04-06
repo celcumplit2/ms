@@ -1,0 +1,76 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1733843113138,
+      "tag": "20241210150513_simple_stryfe",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1733843177005,
+      "tag": "20241210150617_mature_anthem",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1734206175218,
+      "tag": "20241214195615_wonderful_saracen",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1734260836810,
+      "tag": "20241215110716_mute_randall",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1734560370838,
+      "tag": "20241218221930_worried_nighthawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1743021468106,
+      "tag": "20250326203748_curved_xavin",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1743071336486,
+      "tag": "20250327102856_many_wind_dancer",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1743100692492,
+      "tag": "20250327183812_light_gabe_jones",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1761469389945,
+      "tag": "20251026090309_violet_natasha_romanoff",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1765645269878,
+      "tag": "20251213170109_rainy_nitro",
+      "breakpoints": true
+    }
+  ]
+}

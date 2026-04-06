@@ -1,0 +1,11 @@
+.label {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  margin-bottom: 6px;
+
+  &.error {
+    color: var(--color-red);
+  }
+}
