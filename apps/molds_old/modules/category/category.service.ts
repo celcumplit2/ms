@@ -20,7 +20,6 @@ function getCategoryRepository(): CategoryRepository {
 
   return categoryRepository;
 }
-
 function getArticleRepository(): ArticleRepository {
   if (!articleRepository) {
     articleRepository = new ArticleRepository(database);
@@ -155,4 +154,3 @@ export async function editCategory({id, data}: { id: number, data: Record<string
 export async function deleteCategory({id}: { id: number }): Promise<void> {
   await getCategoryRepository().remove({id});
 }
-

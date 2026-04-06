@@ -15,4 +15,3 @@ export default function Submit({className, ...restProps}: DetailedHTMLProps<Inpu
         />
     );
 }
-

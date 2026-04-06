@@ -15,7 +15,6 @@ function getCommentRepository(): CommentRepository {
 
   return commentRepository;
 }
-
 export async function countComments(): Promise<number> {
   return getCommentRepository().count({});
 }
@@ -85,4 +84,3 @@ export async function editComment({id, data}: { id: number, data: Record<string,
 export async function deleteComment({id}: { id: number }): Promise<void> {
   await getCommentRepository().remove({id});
 }
-

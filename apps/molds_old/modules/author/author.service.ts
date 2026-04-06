@@ -15,7 +15,6 @@ function getAuthorRepository(): AuthorRepository {
 
   return authorRepository;
 }
-
 export async function countAuthors(): Promise<number> {
   return await getAuthorRepository().count({});
 }
@@ -81,4 +80,3 @@ export async function deleteAuthor({id}: { id: number }): Promise<void> {
 
   await repository.remove({id});
 }
-

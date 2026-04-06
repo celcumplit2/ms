@@ -450,7 +450,7 @@
         var variantsList = SHAPE_TO_VARIANTS[shape] || SHAPE_TO_VARIANTS["trend"];
         var startIdx = variantsList.indexOf(variant);
         if (startIdx < 0) startIdx = 0;
-        for (var k=1; k<variantsList.length; k++){ 
+        for (var k=1; k<variantsList.length; k++){
           var cand = variantsList[(startIdx + k) % variantsList.length];
           if (!usedVariants.has(cand)) { variant = cand; break; }
         }
