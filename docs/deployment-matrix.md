@@ -14,13 +14,31 @@ This repository is a monorepo with two deployable applications:
 - CI: `.github/workflows/molds2-ci.yml`
 - Deploy: `.github/workflows/molds2-deploy.yml`
 
-`molds2` deploy is intentionally `workflow_dispatch` only for now. It expects:
+`molds2` now has a live Cloudflare Pages project:
 
-- `apps/molds2/wrangler.jsonc`
+- project:
+  - `molds2-site`
+- URL:
+  - `https://molds2-site.pages.dev`
+- source:
+  - `celcumplit2/ms`
+- production branch:
+  - `main`
+
+The Git integration has already been configured on Cloudflare with monorepo path filters:
+
+- include:
+  - `apps/molds2/**`
+  - `package.json`
+  - `pnpm-lock.yaml`
+  - `pnpm-workspace.yaml`
+- exclude:
+  - `apps/molds_old/**`
+
+The manual deploy workflow now triggers a Cloudflare Pages deployment through the API after local workspace validation. It expects:
+
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
-
-The repository currently contains only `wrangler.jsonc.example`, so live Cloudflare deployment stays gated until the real config is added.
 
 ### MOLDS_OLD
 
@@ -52,6 +70,5 @@ The deploy workflow now assumes the production checkout uses the same monorepo l
 
 Before enabling production deploy from GitHub:
 
-1. add the live `apps/molds2/wrangler.jsonc`
-2. align the production server checkout to the new monorepo layout
-3. review secret names and deploy-root assumptions once on the server
+1. align the production server checkout to the new monorepo layout
+2. review secret names and deploy-root assumptions once on the server

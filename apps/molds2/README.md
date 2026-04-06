@@ -49,10 +49,15 @@ Core implementation files:
 
 ## Cloudflare Pages
 
-- Framework preset: `Astro`
-- Build command: `npm run build`
-- Output directory: `dist`
-- Node version: `>=22.12.0`
+- Live project: `molds2-site`
+- Live URL: `https://molds2-site.pages.dev`
+- Git source: `celcumplit2/ms` on branch `main`
+- Build command on Cloudflare: `pnpm install --frozen-lockfile && pnpm --dir apps/molds2 build`
+- Output directory on Cloudflare: `apps/molds2/dist`
+- Node version: `22.x`
+- Trigger filtering on Cloudflare:
+  - includes `apps/molds2/**`, `package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`
+  - excludes `apps/molds_old/**`
 
 ## Reporting Base
 
