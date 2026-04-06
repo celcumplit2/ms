@@ -45,17 +45,25 @@ The manual deploy workflow now triggers a Cloudflare Pages deployment through th
 - CI: `.github/workflows/molds-old-ci.yml`
 - Deploy: `.github/workflows/molds-old-deploy.yml`
 
-`molds_old` deploy expects:
+`molds_old` now deploys via server-side build over SSH. The workflow expects:
 
-- app secrets for Next.js/server build
 - SSH access to the production server
 - `DEPLOY_ROOT` pointing at the monorepo root on the server
+- production `.env` already present on the server for `apps/molds_old`
 
-Local `prod:build` for `molds_old` also needs the Stack Auth environment variables. Without them, the build stops at `/auth/[...stack]` before page-data collection completes.
-
-The deploy workflow now assumes the production checkout uses the same monorepo layout:
+The deploy workflow assumes the production checkout uses the same monorepo layout:
 
 - `${DEPLOY_ROOT}/apps/molds_old`
+
+Current production flow:
+
+1. `git pull --ff-only` on the server
+2. clear `apps/molds_old/.next` and `apps/molds_old/cron/.build`
+3. `pnpm --dir apps/molds_old run prod:install`
+4. `pnpm --dir apps/molds_old run prod:build`
+5. `pm2 startOrReload ecosystem.config.js --update-env`
+
+Automatic migrations were removed from the GitHub-runner build path because the production database is reachable from the server runtime, not reliably from GitHub-hosted runners. If schema changes are needed later, run migrations from the server context.
 
 ## Local Root Commands
 
