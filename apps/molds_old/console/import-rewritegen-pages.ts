@@ -2,8 +2,9 @@ import {importRewritegenPayloadDirectory} from '@/modules/article/rewritegen-imp
 import {mkdir, writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 
-const REWRITEGEN_SOLUTIONS_ROOT = 'C:\\Zenno\\Rewritegen\\RW\\rewritegen_full\\out\\solutions';
 const REPORT_PATH = resolve(process.cwd(), 'docs', 'rewritegen-imported-pages.md');
+
+import {resolveRewritegenSolutionsRoot} from './rewritegen-paths';
 
 function buildReport(results: Awaited<ReturnType<typeof importRewritegenPayloadDirectory>>): string {
   const lines = [
@@ -23,7 +24,8 @@ function buildReport(results: Awaited<ReturnType<typeof importRewritegenPayloadD
 }
 
 async function handle() {
-  const results = await importRewritegenPayloadDirectory(REWRITEGEN_SOLUTIONS_ROOT);
+  const rewritegenSolutionsRoot = await resolveRewritegenSolutionsRoot();
+  const results = await importRewritegenPayloadDirectory(rewritegenSolutionsRoot);
 
   await mkdir(resolve(process.cwd(), 'docs'), {recursive: true});
   await writeFile(REPORT_PATH, buildReport(results), 'utf8');

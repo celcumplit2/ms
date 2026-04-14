@@ -2,7 +2,7 @@
 @use "article-mixins";
 
 .article-related, .article-recommended {
-  margin-top: 32px;
+  margin-top: 0;
   @include article-mixins.article-list(true);
 
   header {

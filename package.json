@@ -15,6 +15,7 @@
     "build:molds_old": "pnpm --dir apps/molds_old build",
     "check:molds_old": "pnpm --dir apps/molds_old check",
     "check": "pnpm run check:molds2 && pnpm run check:molds_old",
+    "rewritegen:bootstrap-targets": "pnpm --dir apps/molds_old run rewritegen:bootstrap-targets",
     "rewritegen:import-pages": "pnpm --dir apps/molds_old run rewritegen:import-pages",
     "rewritegen:import-payload": "pnpm --dir apps/molds_old run rewritegen:import-payload"
   }

@@ -3,7 +3,6 @@ import {Footer} from '@/components/layout/footer';
 import {Header} from '@/components/layout/header';
 import {BASE_URL} from '@/config';
 import {GTM_ID} from '@/config/google.config';
-import {footerMenus, headerMenu, logoSrc} from '@/config/menu.config';
 import {GoogleTagManager} from '@next/third-parties/google';
 import type {Metadata} from 'next';
 import '@/styles/scss/main.scss';
@@ -199,9 +198,9 @@ export default function RootLayout({children}: Readonly<{ children: ReactNode }>
     return (
         <>
             {process.env.NODE_ENV === 'production' && (<GoogleTagManager gtmId={GTM_ID}/>)}
-            <Header menu={headerMenu} logoSrc={logoSrc}/>
-            <main id="main">{children}</main>
-            <Footer menus={footerMenus} logoSrc={logoSrc}/>
+            <Header/>
+            <main id="main" className="site-main">{children}</main>
+            <Footer/>
             <CookieConsentWrapper/>
             <script
                 type="application/ld+json"

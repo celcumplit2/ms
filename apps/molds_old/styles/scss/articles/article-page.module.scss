@@ -1,3 +1,13 @@
+.article-page-shell {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  min-width: 0;
+}
+
+.rewritegen-page-shell {
+  padding-bottom: 8px;
+}
+
 .article-published-info {
   color: var(--color-subheading);
   font-weight: 600;
@@ -5,15 +15,24 @@
   line-height: 24px;
 }
 
+.article-post-body {
+  display: grid;
+  gap: 32px;
+  margin-top: 32px;
+  min-width: 0;
+}
+
+.article-post-section {
+  min-width: 0;
+}
+
 .rewritegen-hero {
   position: relative;
   overflow: hidden;
-  display: grid;
-  gap: 0;
-  margin-bottom: 36px;
+  margin-bottom: 44px;
   border: 1px solid rgba(30, 32, 58, 0.08);
   border-radius: 28px;
-  padding: 30px 32px 32px;
+  padding: 32px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(242, 242, 250, 0.98)),
     #fdfdff;
@@ -46,8 +65,53 @@
   }
 }
 
+.rewritegen-hero-inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 30px;
+  min-width: 0;
+}
+
+.rewritegen-hero-inner-no-image {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.rewritegen-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 8px 0;
+
+  :global(.article-cta) {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    margin-top: 28px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: #2d36ff;
+    box-shadow: 0 16px 30px rgba(45, 54, 255, 0.18);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  :global(.article-cta:hover) {
+    background: #2431ff;
+    box-shadow: 0 18px 32px rgba(45, 54, 255, 0.22);
+    transform: translateY(-1px);
+  }
+}
+
 .rewritegen-published-info {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   color: #2d36ff;
   font-size: 0.88rem;
   font-weight: 700;
@@ -61,21 +125,28 @@
 
 .rewritegen-title {
   margin: 0;
-  max-width: 980px;
+  max-width: 13ch;
   font-family: "IBM Plex Sans Condensed", var(--font-inter), sans-serif;
-  font-size: clamp(3rem, 5.2vw, 5.4rem);
+  font-size: clamp(2.55rem, 4.3vw, 4.5rem);
   line-height: 0.94;
   letter-spacing: -0.045em;
   color: #26283b;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 .rewritegen-intro {
   margin: 22px 0 0;
-  max-width: 880px;
+  max-width: 34ch;
   font-family: "Onest", var(--font-inter), sans-serif;
-  font-size: clamp(1.02rem, 1.45vw, 1.16rem);
+  font-size: clamp(0.98rem, 1.1vw, 1.08rem);
   line-height: 1.72;
   color: #8386a1;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .article-cover-image {
@@ -90,12 +161,17 @@
   }
 }
 
+.rewritegen-hero-media {
+  display: flex;
+  min-width: 0;
+}
+
 .rewritegen-cover-shell {
   position: relative;
-  width: min(100%, 1180px);
-  max-width: 100%;
-  margin-top: 28px;
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  max-width: none;
+  min-height: clamp(320px, 34vw, 460px);
+  height: 100%;
   border: 1px solid rgba(30, 32, 58, 0.08);
   border-radius: 30px;
   overflow: hidden;
@@ -114,6 +190,12 @@
   border-radius: 0;
   object-fit: cover;
   object-position: center;
+}
+
+.rewritegen-post-body {
+  gap: 44px;
+  margin-top: 56px;
+  padding-bottom: 8px;
 }
 
 .article-body {
@@ -147,18 +229,48 @@
 }
 
 @media screen and (max-width: 991px) {
+  .article-page-shell {
+    width: 100%;
+  }
+
+  .article-post-body {
+    gap: 30px;
+    margin-top: 30px;
+  }
+
   .rewritegen-hero {
+    margin-bottom: 36px;
     padding: 24px 22px 24px;
     border-radius: 22px;
   }
 
+  .rewritegen-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .rewritegen-hero-content {
+    padding: 0;
+  }
+
   .rewritegen-title {
-    font-size: clamp(2.4rem, 9vw, 4rem);
+    font-size: clamp(2.05rem, 8.2vw, 3.55rem);
+    max-width: none;
+  }
+
+  .rewritegen-intro {
+    max-width: none;
+    -webkit-line-clamp: 5;
   }
 
   .rewritegen-cover-shell {
-    max-width: 100%;
     border-radius: 24px;
+    min-height: 0;
     aspect-ratio: 16 / 11;
+  }
+
+  .rewritegen-post-body {
+    gap: 36px;
+    margin-top: 44px;
   }
 }

@@ -13,6 +13,7 @@
     "migrate:migrate": "drizzle-kit migrate",
     "migrate:pull": "drizzle-kit pull",
     "studio": "drizzle-kit studio",
+    "rewritegen:bootstrap-targets": "tsx console/bootstrap-rewritegen-targets.ts",
     "rewritegen:import-payload": "tsx console/import-rewritegen-payload.ts",
     "rewritegen:import-pages": "tsx console/import-rewritegen-pages.ts",
     "prod:install": "pnpm install --frozen-lockfile && cd cron && pnpm install --frozen-lockfile",

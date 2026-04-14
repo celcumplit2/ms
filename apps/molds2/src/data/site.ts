@@ -702,6 +702,18 @@ export const simplePages = {
     intro:
       "Production legal copy can replace this structure later. For now, the page preserves the final layout shell and supporting hierarchy.",
   },
+  "/terms-and-conditions": {
+    slug: "terms-and-conditions",
+    title: "Terms and conditions",
+    intro:
+      "This lightweight page keeps the new-site shell in place for legal content until the final production copy is ready.",
+  },
+  "/cookie-policy": {
+    slug: "cookie-policy",
+    title: "Cookie policy",
+    intro:
+      "Use this route for the final cookie policy copy. The main goal here is to keep legal pages inside the new-site runtime as well.",
+  },
 };
 
 const listingConfigs = {

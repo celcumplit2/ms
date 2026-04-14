@@ -2,12 +2,12 @@ import {Collection} from '@/core/dto/collection';
 import {UnprocessablePayload} from '@/core/errors/unprocessable-payload';
 import {validate} from '@/core/validators';
 import {database} from '@/database';
-import {InferNonNullableResultType} from '@/database/schema';
 import {SelectLatestArticle} from '@/modules/article/article.model';
-import {SelectCategory} from '@/modules/category/category.model';
+import {category, SelectCategory} from '@/modules/category/category.model';
 import {ArticleRepository} from '@/modules/article/article.repository';
 import {CategoryRepository} from '@/modules/category/category.repository';
 import {categorySchema} from '@/modules/category/categories.dto';
+import {inArray} from 'drizzle-orm';
 import {z} from 'zod';
 
 let categoryRepository: CategoryRepository | undefined;
@@ -90,27 +90,67 @@ export async function browseRootCategoriesAndArticles({offset, limit}: {
   const articles = await aRepository.allLatestPublished({
     offset: offset,
     limit: limit,
-    relations: ['category', 'category.parent'],
-  }) as (InferNonNullableResultType<'latestArticle', { category: true }> & { category: { parent: SelectCategory } })[];
-  const categoryArticles: Record<number, (InferNonNullableResultType<'latestArticle', { category: true }> & {
-    category: { parent: SelectCategory }
-  })[]> = {};
-  const items: Array<{ category: SelectCategory, articles: SelectLatestArticle[] }> = [];
+  });
 
-  articles.forEach((article) => {
-    if (article.category && article.category.parentId) {
-      categoryArticles[article.category.parentId] = categoryArticles[article.category.parentId] ? [...categoryArticles[article.category.parentId], article] : [article];
+  const categoryIds = Array.from(new Set(
+    articles
+      .map((item) => item.categoryId)
+      .filter((item): item is number => item !== null),
+  ));
+
+  if (categoryIds.length === 0) {
+    return new Collection({items: [], total: 0});
+  }
+
+  const categories = await database.query.category.findMany({
+    where: inArray(category.id, categoryIds),
+  });
+  const parentIds = Array.from(new Set(
+    categories
+      .map((item) => item.parentId)
+      .filter((item): item is number => item !== null),
+  ));
+  const parents = parentIds.length > 0
+    ? await database.query.category.findMany({
+      where: inArray(category.id, parentIds),
+    })
+    : [];
+  const categoriesById = new Map(categories.map((item) => [item.id, item]));
+  const parentsById = new Map(parents.map((item) => [item.id, item]));
+  const grouped = new Map<number, { category: SelectCategory, articles: SelectLatestArticle[] }>();
+
+  articles.forEach((item) => {
+    if (!item.categoryId) {
+      return;
+    }
+
+    const currentCategory = categoriesById.get(item.categoryId);
+
+    if (!currentCategory?.parentId) {
+      return;
+    }
+
+    const parentCategory = parentsById.get(currentCategory.parentId);
+
+    if (!parentCategory) {
+      return;
+    }
+
+    const existing = grouped.get(parentCategory.id);
+
+    if (existing) {
+      existing.articles.push(item);
+    } else {
+      grouped.set(parentCategory.id, {
+        category: parentCategory,
+        articles: [item],
+      });
     }
   });
 
-  Object.values(categoryArticles).forEach((articles) => {
-    items.push({
-      category: articles[0].category!.parent,
-      articles,
-    });
-  });
+  const items = Array.from(grouped.values());
 
-  return new Collection({items, total: Object.keys(categoryArticles).length});
+  return new Collection({items, total: items.length});
 }
 
 export async function readCategory({id}: { id: number }): Promise<SelectCategory | undefined> {
@@ -118,7 +158,20 @@ export async function readCategory({id}: { id: number }): Promise<SelectCategory
 }
 
 export async function readCategoryByAlias({alias, relations = []}: { alias: string, relations?: string[] }): Promise<SelectCategory | undefined> {
-  return await getCategoryRepository().oneByAlias({alias, relations});
+  const repository = getCategoryRepository();
+  const item = await repository.oneByAlias({alias});
+
+  if (!item) {
+    return undefined;
+  }
+
+  if (!relations.includes('parent') || item.parentId === null) {
+    return item;
+  }
+
+  const parent = await repository.oneById({id: item.parentId});
+
+  return {...item, parent} as SelectCategory;
 }
 
 export async function addCategory({data}: { data: Record<string, unknown> }): Promise<number> {

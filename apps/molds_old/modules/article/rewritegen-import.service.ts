@@ -39,6 +39,7 @@ const rewritegenPayloadSchema = z.object({
     meta_title: z.string().min(1),
     meta_description: z.string().min(1),
     time_to_read: z.number().int().positive(),
+    image: z.string().optional().default(''),
     article_body_html: z.string().min(1),
   }),
   runtime: z.object({
@@ -107,7 +108,7 @@ function buildReplacementEntity(existing: SelectArticle, payload: RewritegenArti
   return {
     alias: existing.alias,
     title: trimTo(payload.article.title, 255),
-    image: existing.image,
+    image: payload.article.image || existing.image,
     authorId: existing.authorId,
     categoryId: existing.categoryId,
     intro: payload.article.intro,
@@ -125,6 +126,7 @@ function buildReplacementEntity(existing: SelectArticle, payload: RewritegenArti
 function isEntityChanged(existing: SelectArticle, next: InsertArticle): boolean {
   return (
     existing.title !== next.title ||
+    existing.image !== next.image ||
     existing.intro !== next.intro ||
     existing.content !== next.content ||
     existing.timeToRead !== next.timeToRead ||

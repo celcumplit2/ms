@@ -1,6 +1,5 @@
 import {Footer} from '@/components/layout/footer';
 import {Header} from '@/components/layout/header';
-import {footerMenus, headerMenu, logoSrc} from '@/config/menu.config';
 import styles from '@/styles/scss/not-found.module.scss';
 import '@/styles/scss/main.scss';
 import Image from 'next/image';
@@ -9,7 +8,8 @@ import Link from 'next/link';
 export default function NotFoundPage() {
     return (
         <>
-            <main id="main">
+            <Header/>
+            <main id="main" className="site-main">
                 <section className={styles['not-found']}>
                     <span>404 Error</span>
                     <h1>We can&#39;t find this page</h1>
@@ -33,8 +33,7 @@ export default function NotFoundPage() {
                     </ul>
                 </section>
             </main>
-            <Header menu={headerMenu} logoSrc={logoSrc}/>
-            <Footer menus={footerMenus} logoSrc={logoSrc}/>
+            <Footer/>
         </>
     );
 }

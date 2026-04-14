@@ -28,6 +28,9 @@ apps/*/.codex-next.err.log
 # python / local env
 .venv/
 venv/
+Bela/
+bela/
+bd/
 
 # OS / editor
 .DS_Store

@@ -1,33 +1,33 @@
-import {Logo} from '@/components/layout/logo';
-import Link from 'next/link';
+import {headerActions, headerMenu, logoSrc} from '@/config/menu.config';
 
-export type Menu = Array<{
-    label: string;
-    href: string;
-}>;
-
-interface Props {
-    logoSrc: string;
-    menu: Menu;
-}
-
-export function Header({menu, logoSrc}: Props) {
+export function Header() {
     return (
-        <header id="header">
-            <Logo src={logoSrc} />
+        <header className="site-header site-header--light">
+            <div className="shell-container site-header__inner">
+                <a className="site-header__brand" href="/">
+                    <img src={logoSrc} width="102" height="32" alt="MoldStud"/>
+                </a>
 
-            <input type="checkbox" id="main-menu-toggler" />
-            <label htmlFor="main-menu-toggler">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
+                <nav aria-label="Primary" className="site-header__nav">
+                    {headerMenu.map((item) => (
+                        <a key={item.label} href={item.href} data-caret={item.showCaret ? 'true' : undefined}>
+                            {item.label}
+                        </a>
+                    ))}
+                </nav>
 
-            <nav>
-                {menu.map((item) => (
-                    <Link key={item.label} href={{pathname: item.href}} title={item.label}>{item.label}</Link>
-                ))}
-            </nav>
+                <div className="site-header__actions">
+                    <a className="site-shell-button site-shell-button--green site-shell-button--sm" href={headerActions.primary.href}>
+                        {headerActions.primary.label}
+                    </a>
+                    <a className="site-shell-button site-shell-button--blue site-shell-button--sm" href={headerActions.secondary.href}>
+                        {headerActions.secondary.label}
+                    </a>
+                    <a className="site-header__join" href={headerActions.tertiary.href}>
+                        {headerActions.tertiary.label} -&gt;
+                    </a>
+                </div>
+            </div>
         </header>
     );
 }
