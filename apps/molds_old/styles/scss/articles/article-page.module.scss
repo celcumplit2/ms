@@ -126,7 +126,7 @@
 .rewritegen-title {
   margin: 0;
   max-width: 13ch;
-  font-family: "IBM Plex Sans Condensed", var(--font-inter), sans-serif;
+  font-family: var(--font-ibm-plex-sans-condensed), var(--font-inter), sans-serif;
   font-size: clamp(2.55rem, 4.3vw, 4.5rem);
   line-height: 0.94;
   letter-spacing: -0.045em;
@@ -139,7 +139,7 @@
 .rewritegen-intro {
   margin: 22px 0 0;
   max-width: 34ch;
-  font-family: "Onest", var(--font-inter), sans-serif;
+  font-family: var(--font-onest), var(--font-inter), sans-serif;
   font-size: clamp(0.98rem, 1.1vw, 1.08rem);
   line-height: 1.72;
   color: #8386a1;

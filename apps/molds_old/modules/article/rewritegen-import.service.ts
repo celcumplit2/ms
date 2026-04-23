@@ -1,8 +1,8 @@
 import {database} from '@/database';
-import {InsertArticle, latestArticle, SelectArticle} from '@/modules/article/article.model';
+import {ArticleStatus, InsertArticle, latestArticle, SelectArticle} from '@/modules/article/article.model';
 import {ArticleRepository} from '@/modules/article/article.repository';
 import {eq} from 'drizzle-orm';
-import {readFile, readdir} from 'node:fs/promises';
+import {access, readFile, readdir} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {z} from 'zod';
 
@@ -62,7 +62,7 @@ export type RewritegenImportResult = {
   dryRun: boolean;
   matchedAlias?: string;
   sourceSlug: string;
-  status: 'updated' | 'dry_run' | 'missing_target' | 'unchanged';
+  status: 'updated' | 'dry_run' | 'missing_target' | 'unchanged' | 'inserted';
   targetAlias: string;
   title: string;
 };
@@ -162,6 +162,55 @@ export async function importRewritegenArticlePayload(
   }
 
   if (!existing) {
+    const targetMeta = payload.target as Record<string, unknown>;
+    const categoryId = targetMeta['category_id'];
+    const authorId = targetMeta['author_id'];
+
+    if (typeof categoryId === 'number' && typeof authorId === 'number') {
+      const publishedAtRaw = targetMeta['published_at'];
+      const publishedAt = publishedAtRaw ? new Date(publishedAtRaw as string) : new Date();
+      const insertEntity: InsertArticle = {
+        alias: payload.target.alias,
+        title: trimTo(payload.article.title, 255),
+        image: payload.article.image || '',
+        authorId,
+        categoryId,
+        intro: payload.article.intro,
+        content: buildRewritegenStoredContent(payload),
+        status: ArticleStatus.published,
+        timeToRead: payload.article.time_to_read,
+        metaTitle: trimTo(payload.article.meta_title, 255),
+        metaDescription: payload.article.meta_description,
+        publishedAt,
+        createdAt: publishedAt,
+        updatedAt: new Date(),
+      };
+
+      if (options.dryRun) {
+        return {
+          changed: true,
+          dryRun: true,
+          sourceSlug: payload.source.slug,
+          status: 'dry_run',
+          targetAlias: payload.target.alias,
+          title: payload.article.title,
+        };
+      }
+
+      const articleId = await articleRepository.save({entity: insertEntity});
+      await syncLatestArticle(payload.target.alias, insertEntity);
+
+      return {
+        articleId,
+        changed: true,
+        dryRun: false,
+        sourceSlug: payload.source.slug,
+        status: 'inserted',
+        targetAlias: payload.target.alias,
+        title: payload.article.title,
+      };
+    }
+
     return {
       changed: false,
       dryRun: Boolean(options.dryRun),
@@ -239,7 +288,13 @@ export async function collectRewritegenPayloadFiles(directoryPath: string): Prom
       continue;
     }
 
-    files.push(resolve(root, entry.name, 'article.payload.json'));
+    const payloadPath = resolve(root, entry.name, 'article.payload.json');
+    try {
+      await access(payloadPath);
+      files.push(payloadPath);
+    } catch {
+      // Directory exists but payload not yet generated (e.g. timed out) — skip silently
+    }
   }
 
   return files;

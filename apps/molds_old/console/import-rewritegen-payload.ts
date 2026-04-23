@@ -54,23 +54,6 @@ async function pathExists(filePath: string): Promise<boolean> {
 }
 
 async function importFromDirectory(targetPath: string, dryRun: boolean): Promise<void> {
-  const files = await collectRewritegenPayloadFiles(targetPath);
-  const missingFiles = files.filter((filePath) => !filePath.endsWith('article.payload.json'));
-
-  if (missingFiles.length > 0) {
-    throw new Error(`Unexpected payload paths in ${targetPath}`);
-  }
-
-  const absent = [];
-  for (const filePath of files) {
-    if (!(await pathExists(filePath))) {
-      absent.push(filePath);
-    }
-  }
-  if (absent.length > 0) {
-    throw new Error(`Missing payload files:\n${absent.join('\n')}`);
-  }
-
   const results = await importRewritegenPayloadDirectory(targetPath, {dryRun});
   results.forEach(printResult);
   console.log(`Processed ${results.length} payload(s).`);

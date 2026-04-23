@@ -25,6 +25,20 @@ jobs:
           script: |
             cd ${{ vars.DEPLOY_ROOT }}
             git pull --ff-only
+            # Run any pending SQL migrations (reads DB creds from apps/molds_old/.env.local)
+            if [ -d apps/molds_old/migrations ]; then
+              set -a; source apps/molds_old/.env.local; set +a
+              APPLIED_FILE=apps/molds_old/migrations/.applied
+              touch "$APPLIED_FILE"
+              for sql_file in apps/molds_old/migrations/*.sql; do
+                filename=$(basename "$sql_file")
+                if ! grep -qxF "$filename" "$APPLIED_FILE"; then
+                  echo "Applying migration: $filename"
+                  mysql -h"${DATABASE_HOST}" -P"${DATABASE_PORT}" -u"${DATABASE_USER}" -p"${DATABASE_PASSWORD}" "${DATABASE_NAME}" < "$sql_file"
+                  echo "$filename" >> "$APPLIED_FILE"
+                fi
+              done
+            fi
             rm -rf apps/molds_old/.next apps/molds_old/cron/.build
             pnpm --dir apps/molds_old run prod:install
             pnpm --dir apps/molds_old run prod:build

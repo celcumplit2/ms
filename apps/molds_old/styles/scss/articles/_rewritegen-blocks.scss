@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=Onest:wght@400;500;600;700&display=swap");
-
 .rg-article-body {
   --rg-page: #fdfdff;
   --rg-bg: #ffffff;
@@ -28,8 +26,8 @@
   --rg-border: var(--rg-line);
   --rg-surface: #ffffff;
   --rg-muted-bg: #f2f2fa;
-  --rg-font-body: "Onest", var(--font-inter), sans-serif;
-  --rg-font-display: "IBM Plex Sans Condensed", var(--font-inter), sans-serif;
+  --rg-font-body: var(--font-onest), var(--font-inter), sans-serif;
+  --rg-font-display: var(--font-ibm-plex-sans-condensed), var(--font-inter), sans-serif;
   --rg-section-gap: 32px;
   --rg-block-gap: 24px;
   --rg-copy-size: clamp(1rem, 0.98rem + 0.12vw, 1.04rem);
