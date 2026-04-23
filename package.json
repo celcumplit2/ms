@@ -17,6 +17,9 @@
     "check": "pnpm run check:molds2 && pnpm run check:molds_old",
     "rewritegen:bootstrap-targets": "pnpm --dir apps/molds_old run rewritegen:bootstrap-targets",
     "rewritegen:import-pages": "pnpm --dir apps/molds_old run rewritegen:import-pages",
-    "rewritegen:import-payload": "pnpm --dir apps/molds_old run rewritegen:import-payload"
+    "rewritegen:import-payload": "pnpm --dir apps/molds_old run rewritegen:import-payload",
+    "legacy:extract-blog-dump": "corepack pnpm --dir apps/molds_old run legacy:extract-blog-dump",
+    "legacy:build-blog-sqlite": "corepack pnpm --dir apps/molds_old run legacy:build-blog-sqlite",
+    "legacy:build-comments-sqlite": "corepack pnpm --dir apps/molds_old run legacy:build-comments-sqlite"
   }
 }

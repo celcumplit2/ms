@@ -1,9 +1,9 @@
 import CommentItem from '@/components/comments/comment-item';
-import {SelectComment} from '@/modules/comment/comment.model';
+import {ArticleComment} from '@/modules/comment/article-comment';
 import styles from '@/styles/scss/comments/comment-list.module.scss';
 
 interface CommentListProps {
-    comments: SelectComment[];
+    comments: ArticleComment[];
 }
 
 export default function CommentList({comments}: CommentListProps) {

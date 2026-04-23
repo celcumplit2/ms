@@ -1,8 +1,8 @@
-import {SelectComment} from '@/modules/comment/comment.model';
+import {ArticleComment} from '@/modules/comment/article-comment';
 import {formatDistanceStrict} from 'date-fns';
 
 interface CommentItemProps {
-    comment: SelectComment;
+    comment: ArticleComment;
 }
 
 export default function CommentItem({comment}: CommentItemProps) {

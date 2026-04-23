@@ -16,6 +16,9 @@
     "rewritegen:bootstrap-targets": "tsx console/bootstrap-rewritegen-targets.ts",
     "rewritegen:import-payload": "tsx console/import-rewritegen-payload.ts",
     "rewritegen:import-pages": "tsx console/import-rewritegen-pages.ts",
+    "legacy:extract-blog-dump": "tsx console/extract-legacy-blog-dump.ts",
+    "legacy:build-blog-sqlite": "tsx console/build-legacy-blog-sqlite.ts",
+    "legacy:build-comments-sqlite": "tsx console/build-legacy-comments-sqlite.ts",
     "prod:install": "pnpm install --frozen-lockfile && cd cron && pnpm install --frozen-lockfile",
     "prod:build": "pnpm run build && cd cron && pnpm run build",
     "re-link-article-images": "tsx console/re-link-article-images.ts"

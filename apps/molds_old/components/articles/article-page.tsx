@@ -12,9 +12,11 @@ import {database} from '@/database';
 import {ArticleRepository} from '@/modules/article/article.repository';
 import {author} from '@/modules/author/author.model';
 import {category} from '@/modules/category/category.model';
+import {ArticleComment} from '@/modules/comment/article-comment';
 import {comment, CommentStatus} from '@/modules/comment/comment.model';
+import {getLegacyArticleUrl, readLegacyPublishedCommentsByArticleUrl} from '@/modules/comment/legacy-comment.service';
 import styles from '@/styles/scss/articles/article-page.module.scss';
-import {and, eq} from 'drizzle-orm';
+import {and, asc, eq} from 'drizzle-orm';
 import {Metadata} from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -67,12 +69,48 @@ export default async function ArticlePage({alias}: { alias: string }) {
     const getCachedArticle = cache(async (a: string) => articleRepository.onePublishedByAlias({alias: a}));
     const getCachedAuthor = cache(async (id: number) => database.query.author.findFirst({where: eq(author.id, id)}));
     const getCachedCategory = cache(async (id: number) => database.query.category.findFirst({where: eq(category.id, id)}));
-    const getCachedComments = cache(async (articleId: number) => database.query.comment.findMany({
-        where: and(
-            eq(comment.articleId, articleId),
-            eq(comment.status, CommentStatus.published),
-        ),
-    }));
+    const getCachedComments = cache(async (articleId: number, articleAlias: string): Promise<ArticleComment[]> => {
+        const [databaseComments, legacyComments] = await Promise.all([
+            database.query.comment.findMany({
+                where: and(
+                    eq(comment.articleId, articleId),
+                    eq(comment.status, CommentStatus.published),
+                ),
+                orderBy: [asc(comment.publishedAt), asc(comment.id)],
+            }),
+            readLegacyPublishedCommentsByArticleUrl(getLegacyArticleUrl(articleAlias)),
+        ]);
+
+        const mergedComments = [
+            ...databaseComments.map((item) => ({
+                id: item.id,
+                name: item.name,
+                content: item.content,
+                publishedAt: item.publishedAt,
+                source: 'database' as const,
+            })),
+            ...legacyComments,
+        ];
+        const seen = new Set<string>();
+
+        return mergedComments
+            .sort((left, right) => left.publishedAt.getTime() - right.publishedAt.getTime())
+            .filter((item) => {
+                const dedupeKey = [
+                    item.name.trim().toLowerCase(),
+                    item.content.trim().toLowerCase(),
+                    item.publishedAt.toISOString(),
+                ].join('::');
+
+                if (seen.has(dedupeKey)) {
+                    return false;
+                }
+
+                seen.add(dedupeKey);
+
+                return true;
+            });
+    });
     const article = await getCachedArticle(alias.substring(2));
 
     if (!article) {
@@ -87,7 +125,7 @@ export default async function ArticlePage({alias}: { alias: string }) {
     }
 
     const parentCategory = articleCategory.parentId ? await getCachedCategory(articleCategory.parentId) : undefined;
-    const comments = await getCachedComments(article.id);
+    const comments = await getCachedComments(article.id, article.alias);
 
     const breadcrumbs: BreadcrumbsLink[] = [
         {label: 'Articles', href: '/articles'},
@@ -183,7 +221,7 @@ export default async function ArticlePage({alias}: { alias: string }) {
                                         src: article.image,
                                         width: 1216,
                                         height: 912,
-                                    })} alt={article.title} width="1216" height="912" loading="lazy" className={articleCoverImageClassName}/>
+                                    })} alt={article.title} width="1216" height="912" priority className={articleCoverImageClassName}/>
                                 </div>
                             </div>
                         )}

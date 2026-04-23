@@ -5,8 +5,14 @@ const molds2Origin = (process.env.MOLDS2_ORIGIN || 'http://127.0.0.1:4321').repl
 const nextConfig: NextConfig = {
   staticPageGenerationTimeout: 240,
   typedRoutes: true,
+  serverExternalPackages: ['node:sqlite'],
   experimental: {
     authInterrupts: true,
+    turbopack: {
+      resolveAlias: {
+        'node:sqlite': {esm: 'node:sqlite', cjs: 'node:sqlite'},
+      },
+    },
   },
   images: {
     remotePatterns: [
