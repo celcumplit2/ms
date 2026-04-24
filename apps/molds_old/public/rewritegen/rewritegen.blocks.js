@@ -226,7 +226,7 @@
   function initCharts(root){
     var scope = root || document;
     var PAGE_SLUG = resolvePageSlug(scope);
-    var SHAPE_TO_VARIANTS = {"trend": ["line_basic", "line_area", "line_stepped", "line_multi"], "compare": ["bar_grouped", "bar_stacked", "bar_hbar", "bar_hbar_stacked"], "composition": ["doughnut", "pie", "polar"], "relationship": ["scatter", "bubble"], "mixed": ["mixed_bar_line"]};
+    var SHAPE_TO_VARIANTS = {"trend": ["line_basic", "line_area", "line_stepped", "line_multi"], "compare": ["bar_grouped", "bar_stacked", "bar_hbar", "bar_hbar_stacked"], "composition": ["doughnut", "pie", "polar"], "relationship": ["scatter", "bubble"], "mixed": ["mixed_bar_line"], "radar": ["radar"]};
     var styleRoot = document.querySelector(".rg-article-body") || document.documentElement;
     function cssVar(name, fallback){
       try{
@@ -271,6 +271,13 @@
     }
     function inferShape(ch){
       if (ch.shape && SHAPE_TO_VARIANTS[ch.shape]) return ch.shape;
+      var kind = (ch.kind || "").toLowerCase();
+      if (kind === "pie" || kind === "doughnut" || kind === "polar") return "composition";
+      if (kind === "radar") return "radar";
+      if (kind === "scatter" || kind === "bubble") return "relationship";
+      if (kind === "stacked_bar") return "compare";
+      if (kind === "bar") return "compare";
+      if (kind === "line") return "trend";
       if (Array.isArray(ch.series) && ch.series.length >= 2) return "compare";
       if (Array.isArray(ch.series) && ch.series.length){
         var s0 = ch.series[0];
@@ -285,8 +292,9 @@
       var labels = Array.isArray(ch.labels) ? ch.labels.slice() : [];
       var series = Array.isArray(ch.series) ? ch.series : [];
       var palette = [
-        cssVar("--rg-chart-c1","#2d36ff"), cssVar("--rg-chart-c2","#171726"), cssVar("--rg-chart-c3","#5d68ff"), cssVar("--rg-chart-c4","#cfd5ff"), cssVar("--rg-chart-c5","#24253f"),
-        cssVar("--rg-chart-c6","#7b88ff"), cssVar("--rg-chart-c7","#9ca7ff"), cssVar("--rg-chart-c8","#e6e9ff"), cssVar("--rg-chart-c9","#6c6f88"), cssVar("--rg-chart-c10","#9aa1c2")
+        cssVar("--rg-chart-c1","#2d36ff"), cssVar("--rg-chart-c2","#e84393"), cssVar("--rg-chart-c3","#00b89c"),
+        cssVar("--rg-chart-c4","#f7a325"), cssVar("--rg-chart-c5","#9b59b6"), cssVar("--rg-chart-c6","#27ae60"),
+        cssVar("--rg-chart-c7","#e74c3c"), cssVar("--rg-chart-c8","#16a085"), cssVar("--rg-chart-c9","#f39c12"), cssVar("--rg-chart-c10","#7f8c8d")
       ];
       var txt = cssVar("--rg-chart-text","#0f172a");
       var muted = cssVar("--rg-chart-muted","#475569");
@@ -372,15 +380,18 @@
           type = "doughnut";
           baseOpts.plugins.legend.position = "right";
           baseOpts.cutout = "60%";
+          data.datasets = data.datasets.map(function(d){ return Object.assign({}, d, { backgroundColor: labels.map(function(_,i){ return palette[i % palette.length]; }), borderColor: "transparent" }); });
           break;
         case "pie":
           type = "pie";
           baseOpts.plugins.legend.position = "right";
+          data.datasets = data.datasets.map(function(d){ return Object.assign({}, d, { backgroundColor: labels.map(function(_,i){ return palette[i % palette.length]; }), borderColor: "transparent" }); });
           break;
         case "polar":
           type = "polarArea";
           baseOpts.plugins.legend.position = "right";
           baseOpts.scales = { r:{ beginAtZero:true } };
+          data.datasets = data.datasets.map(function(d){ return Object.assign({}, d, { backgroundColor: labels.map(function(_,i){ return palette[i % palette.length] + "cc"; }), borderColor: "transparent" }); });
           break;
         case "scatter":
           type = "scatter";
@@ -401,6 +412,12 @@
             data.datasets = [ Object.assign({}, datasets[0], { type:"bar" }), line ];
             baseOpts.scales = { y:{ beginAtZero:true }, y1:{ beginAtZero:true, position:"right", grid:{ drawOnChartArea:false } } };
           }
+          break;
+        case "radar":
+          type = "radar";
+          baseOpts.plugins.legend.display = true;
+          baseOpts.scales = { r:{ beginAtZero:true, pointLabels:{ color: txt }, grid:{ color: grid }, ticks:{ color: muted, backdropColor:"transparent" } } };
+          data.datasets = datasets.map(function(d, idx){ var c = palette[idx % palette.length]; return Object.assign({}, d, { borderColor: c, backgroundColor: c + "33", pointBackgroundColor: c, fill:true }); });
           break;
         default:
           type = "bar";

@@ -44,16 +44,16 @@
   --rg-chart-muted: var(--rg-muted);
   --rg-chart-grid: rgba(131, 134, 161, 0.22);
   --rg-chart-border: rgba(131, 134, 161, 0.42);
-  --rg-chart-c1: var(--rg-a1);
-  --rg-chart-c2: var(--rg-card-dark);
-  --rg-chart-c3: color-mix(in srgb, var(--rg-a1) 72%, white);
-  --rg-chart-c4: color-mix(in srgb, var(--rg-a1) 28%, white);
-  --rg-chart-c5: var(--rg-card-dark-soft);
-  --rg-chart-c6: color-mix(in srgb, var(--rg-a2) 58%, white);
-  --rg-chart-c7: color-mix(in srgb, var(--rg-a1) 46%, white);
-  --rg-chart-c8: color-mix(in srgb, var(--rg-a1) 18%, white);
-  --rg-chart-c9: color-mix(in srgb, var(--rg-card-dark) 22%, white);
-  --rg-chart-c10: color-mix(in srgb, var(--rg-card-dark) 42%, white);
+  --rg-chart-c1: #2d36ff;
+  --rg-chart-c2: #e84393;
+  --rg-chart-c3: #00b89c;
+  --rg-chart-c4: #f7a325;
+  --rg-chart-c5: #9b59b6;
+  --rg-chart-c6: #27ae60;
+  --rg-chart-c7: #e74c3c;
+  --rg-chart-c8: #16a085;
+  --rg-chart-c9: #f39c12;
+  --rg-chart-c10: #7f8c8d;
   width: 100%;
   max-width: none;
   margin: 0 auto;
@@ -147,7 +147,7 @@
     margin-bottom: 18px;
     min-width: 0;
 
-    h3 {
+    h2 {
       margin: 0;
       font-family: var(--rg-font-display);
       max-width: 16ch;
@@ -161,10 +161,10 @@
     }
   }
 
-  > #summary > .head h3,
-  > #scenarios > .head h3,
-  #scenarios > .solution-section > .head h3,
-  > .solution-section > .head h3 {
+  > #summary > .head h2,
+  > #scenarios > .head h2,
+  #scenarios > .solution-section > .head h2,
+  > .solution-section > .head h2 {
     font-size: clamp(1.95rem, 3vw, 2.8rem);
   }
 
@@ -1464,11 +1464,11 @@
       grid-column: span 1;
     }
 
-    .head h3,
-    > #summary > .head h3,
-    > #scenarios > .head h3,
-    #scenarios > .solution-section > .head h3,
-    > .solution-section > .head h3 {
+    .head h2,
+    > #summary > .head h2,
+    > #scenarios > .head h2,
+    #scenarios > .solution-section > .head h2,
+    > .solution-section > .head h2 {
       max-width: none;
       font-size: clamp(1.72rem, 5.1vw, 2.2rem);
     }
