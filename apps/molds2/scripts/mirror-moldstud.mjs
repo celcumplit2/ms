@@ -554,16 +554,37 @@ ${markdownList(
 	return discovery;
 }
 
-async function mirrorSite(discovery) {
-	const pagePaths = [...new Set([...ROOT_PAGES, ...discovery.selectedArticles.map((item) => item.href)])];
+async function loadRewrittenArticlePaths() {
+	// Fetch rewritten article paths from molds_old API endpoint
+	// Falls back to empty array if the server is unavailable
+	const apiUrl = `${ORIGIN}/api/rewritegen-articles`;
+	try {
+		const response = await fetch(apiUrl, {headers: {'user-agent': USER_AGENT}});
+		if (!response.ok) throw new Error(`HTTP ${response.status}`);
+		const paths = await response.json();
+		console.log(`  API: ${paths.length} rewritten articles found`);
+		return paths;
+	} catch (err) {
+		console.warn(`  API unavailable (${err.message}), using sample articles only`);
+		return [];
+	}
+}
+
+async function mirrorSite(discovery, rewrittenArticlePaths) {
+	const pagePaths = [...new Set([...ROOT_PAGES, ...rewrittenArticlePaths, ...discovery.selectedArticles.map((i) => i.href)])];
 	pagePaths.forEach((routePath) => mirroredPages.add(canonicalRoute(routePath)));
 
 	await clearMirroredPublic();
 	await writeText(path.join(publicDir, 'local-enhancements.js'), `${LOCAL_ENHANCEMENTS}\n`);
 
+	let done = 0;
 	for (const routePath of pagePaths) {
 		const transformedHtml = await transformPage(routePath);
 		await writeText(path.join(publicDir, pageFsPath(routePath)), transformedHtml);
+		done++;
+		if (done % 50 === 0) {
+			console.log(`  mirrored ${done}/${pagePaths.length} pages…`);
+		}
 	}
 
 	await writeJson(
@@ -577,8 +598,10 @@ async function mirrorSite(discovery) {
 
 async function main() {
 	const discovery = await generateDiscovery();
-	await mirrorSite(discovery);
-	console.log(`Mirrored ${ROOT_PAGES.length + discovery.selectedArticles.length} pages from ${ORIGIN}`);
+	console.log('Loading rewritten article paths from DB…');
+	const rewrittenArticlePaths = await loadRewrittenArticlePaths();
+	await mirrorSite(discovery, rewrittenArticlePaths);
+	console.log(`Mirrored ${ROOT_PAGES.length + rewrittenArticlePaths.length} pages from ${ORIGIN}`);
 	console.log(`Assets downloaded: ${downloadedAssets.size}`);
 }
 
