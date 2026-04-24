@@ -2,14 +2,17 @@ name: MOLDS2 Deploy
 
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: Git branch to deploy through Cloudflare Pages
-        required: true
-        default: main
+  push:
+    branches: [main]
+    paths:
+      - "apps/molds2/**"
+      - "apps/molds_old/app/api/rewritegen-articles/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/molds2-deploy.yml"
 
 jobs:
-  trigger-pages-deployment:
+  deploy:
     runs-on: ubuntu-latest
     env:
       CLOUDFLARE_PAGES_PROJECT: molds2-site
@@ -34,34 +37,14 @@ jobs:
       - name: Run Astro checks
         run: pnpm --dir apps/molds2 check
 
+      - name: Mirror moldstud articles
+        run: pnpm --dir apps/molds2 sync:moldstud
+
       - name: Build MOLDS2
         run: pnpm --dir apps/molds2 build
 
-      - name: Trigger Cloudflare Pages deployment
+      - name: Deploy to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          DEPLOY_BRANCH: ${{ inputs.branch }}
-        run: |
-          set -euo pipefail
-
-          response_file="$(mktemp)"
-
-          curl -fsSL \
-            -X POST \
-            "https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects/${CLOUDFLARE_PAGES_PROJECT}/deployments" \
-            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
-            -H "Content-Type: application/json" \
-            -d "{\"branch\":\"${DEPLOY_BRANCH}\",\"commit_dirty\":\"false\"}" \
-            > "${response_file}"
-
-          python - "${response_file}" <<'PY'
-          import json
-          import pathlib
-          import sys
-
-          payload = json.loads(pathlib.Path(sys.argv[1]).read_text())
-          result = payload["result"]
-          print(f"Triggered deployment: {result['id']}")
-          print(f"Deployment URL: {result['url']}")
-          PY
+        run: pnpm --dir apps/molds2 exec wrangler pages deploy dist --project-name=${{ env.CLOUDFLARE_PAGES_PROJECT }} --branch=main
