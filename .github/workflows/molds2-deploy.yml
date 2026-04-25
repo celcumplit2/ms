@@ -6,7 +6,6 @@ on:
     branches: [main]
     paths:
       - "apps/molds2/**"
-      - "apps/molds_old/app/api/rewritegen-articles/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - ".github/workflows/molds2-deploy.yml"
@@ -36,9 +35,6 @@ jobs:
 
       - name: Run Astro checks
         run: pnpm --dir apps/molds2 check
-
-      - name: Mirror moldstud articles
-        run: pnpm --dir apps/molds2 sync:moldstud
 
       - name: Build MOLDS2
         run: pnpm --dir apps/molds2 build

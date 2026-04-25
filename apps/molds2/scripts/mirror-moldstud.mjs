@@ -14,19 +14,9 @@ const ORIGIN = 'https://moldstud.com';
 const USER_AGENT =
 	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36';
 
-const ROOT_PAGES = [
-	'/',
-	'/services',
-	'/careers',
-	'/about-us',
-	'/contacts',
-	'/hire-us',
-	'/industries',
-	'/solutions',
-	'/technologies',
-	'/articles',
-	'/privacy-policy',
-];
+// Astro generates all static pages (/, /services, /about-us, etc.) from its own components.
+// The mirror only handles article detail pages fetched from the rewritegen API.
+const ROOT_PAGES = [];
 
 const publicDir = path.join(projectRoot, 'public');
 const discoveryDir = path.join(projectRoot, 'artifacts', 'discovery');
