@@ -17,6 +17,12 @@ interface ConsentPreferences {
     date?: Date;
 }
 
+declare global {
+    interface Window {
+        dataLayer?: Record<string, unknown>[];
+    }
+}
+
 function getInitialIsOpen(): boolean {
     if (typeof window === 'undefined') {
         return false;
@@ -58,6 +64,17 @@ function saveLocalStorageConsent(consent: ConsentPreferences): void {
     }));
 }
 
+function pushDataLayerConsentUpdate(consent: ConsentPreferences): void {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        event: 'cookie_consent_update',
+        cookie_consent: {
+            statistic: consent.statistic,
+            marketing: consent.marketing,
+        },
+    });
+}
+
 export default function CookieConsent() {
     const [isOpen, setIsOpen] = useState<boolean>(getInitialIsOpen());
     const [tab, setTab] = useState<ConsentTab>('consent');
@@ -65,6 +82,7 @@ export default function CookieConsent() {
 
     function handleConsentAllowance(consent: ConsentPreferences): void {
         saveLocalStorageConsent(consent);
+        pushDataLayerConsentUpdate(consent);
         setIsOpen(false);
     }
 

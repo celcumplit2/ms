@@ -6,13 +6,13 @@ const nextConfig: NextConfig = {
   staticPageGenerationTimeout: 240,
   typedRoutes: true,
   serverExternalPackages: ['node:sqlite'],
+  turbopack: {
+    resolveAlias: {
+      'node:sqlite': {esm: 'node:sqlite', cjs: 'node:sqlite'},
+    },
+  },
   experimental: {
     authInterrupts: true,
-    turbopack: {
-      resolveAlias: {
-        'node:sqlite': {esm: 'node:sqlite', cjs: 'node:sqlite'},
-      },
-    },
   },
   images: {
     remotePatterns: [
